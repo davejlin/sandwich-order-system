@@ -10,6 +10,11 @@ namespace SandwichOrderingSystemConsoleApp
 {
     public class Context : DbContext
     {
+        public Context()
+        {
+            Database.SetInitializer(new DatabaseInitializer());
+        }
+
         public DbSet<Sandwich> Sandwiches { get; set; }
     }
 }
