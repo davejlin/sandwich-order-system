@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SandwichOrderingSystemConsoleApp.Deserializer
 {
-    class DataParser : IDataParser
+    public class DataParser : IDataParser
     {
         public List<string[]> ParseData(string contents)
         {

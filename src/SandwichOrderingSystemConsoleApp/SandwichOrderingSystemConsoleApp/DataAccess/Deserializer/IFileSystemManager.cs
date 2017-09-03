@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SandwichOrderingSystemConsoleApp.Deserializer
 {
-    interface IFileSystemManager
+    public interface IFileSystemManager
     {
         string[] GetItemNames();
         string GetContents(string fileName);

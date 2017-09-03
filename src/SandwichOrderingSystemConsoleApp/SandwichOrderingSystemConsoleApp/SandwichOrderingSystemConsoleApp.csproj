@@ -52,18 +52,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Db\Context.cs" />
-    <Compile Include="Db\DatabaseInitializer.cs" />
-    <Compile Include="Deserializer\DataInitializer.cs" />
-    <Compile Include="Deserializer\DataParser.cs" />
-    <Compile Include="Deserializer\FileSystemManager.cs" />
-    <Compile Include="Deserializer\IDataInitializer.cs" />
-    <Compile Include="Deserializer\IDataParser.cs" />
-    <Compile Include="Deserializer\IFileSystemManager.cs" />
-    <Compile Include="Deserializer\IItemFactory.cs" />
-    <Compile Include="Deserializer\ItemFactory.cs" />
+    <Compile Include="DataAccess\Db\Context.cs" />
+    <Compile Include="DataAccess\Db\DatabaseInitializer.cs" />
+    <Compile Include="DataAccess\Deserializer\DataInitializer.cs" />
+    <Compile Include="DataAccess\Deserializer\DataParser.cs" />
+    <Compile Include="DataAccess\Deserializer\FileSystemManager.cs" />
+    <Compile Include="DataAccess\Deserializer\IDataInitializer.cs" />
+    <Compile Include="DataAccess\Deserializer\IDataParser.cs" />
+    <Compile Include="DataAccess\Deserializer\IFileSystemManager.cs" />
+    <Compile Include="DataAccess\Deserializer\IItemFactory.cs" />
+    <Compile Include="DataAccess\Deserializer\ItemFactory.cs" />
+    <Compile Include="Models\IItem.cs" />
     <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\Sandwich.cs" />
+    <Compile Include="Models\SignatureSandwich.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,7 +89,7 @@
     <Content Include="Data\Filling.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Sandwich.txt">
+    <Content Include="Data\SignatureSandwich.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Vegetable.txt">

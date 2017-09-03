@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SandwichOrderingSystemConsoleApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SandwichOrderingSystemConsoleApp.Deserializer
 {
-    interface IDataInitializer
+    public interface IItemFactory
     {
-        Dictionary<string, List<string[]>> GetItemsDict();
+        T CreateItem<T>(string[] properties) where T : class;
     }
 }

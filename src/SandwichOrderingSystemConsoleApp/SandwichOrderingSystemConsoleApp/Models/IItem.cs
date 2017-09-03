@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace SandwichOrderingSystemConsoleApp.Models
 {
-    public class Sandwich : Item
+    interface IItem
     {
-        public int Id { get; set; }
+        int Id { get; set; }
+        string Name { get; set; }
+        decimal Price { get; set; }
     }
 }

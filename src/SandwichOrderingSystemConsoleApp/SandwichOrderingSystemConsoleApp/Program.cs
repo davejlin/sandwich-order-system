@@ -15,13 +15,13 @@ namespace SandwichOrderingSystemConsoleApp
         {
             var dataRetriever = new FileSystemManager();
             var dataParser = new DataParser();
-            var dataInitializer = new DataInitializer(dataRetriever, dataParser);
             var itemFactory = new ItemFactory();
+            var dataInitializer = new DataInitializer(dataRetriever, dataParser, itemFactory);
 
-            using (var context = new Context(dataInitializer, itemFactory))
+            using (var context = new Context(dataInitializer))
             {
-                var sandwiches = context.Sandwiches.ToList();
-                foreach (Sandwich sandwich in sandwiches)
+                var sandwiches = context.SignatureSandwichSet.ToList();
+                foreach (SignatureSandwich sandwich in sandwiches)
                 {
                     Console.WriteLine("{0} {1:C}", sandwich.Name, sandwich.Price);
                 }

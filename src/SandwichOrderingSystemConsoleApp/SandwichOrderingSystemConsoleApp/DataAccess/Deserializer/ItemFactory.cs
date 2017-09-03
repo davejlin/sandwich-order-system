@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace SandwichOrderingSystemConsoleApp.Deserializer
 {
-    class ItemFactory : IItemFactory
+    public class ItemFactory : IItemFactory
     {
         public T CreateItem<T> (string[] properties) where T : class
         {
