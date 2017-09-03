@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystemConsoleApp.Models
+namespace SandwichOrderingSystemConsoleApp.Deserializer
 {
-    public class Sandwich : Item
+    interface IDataParser
     {
-        public int Id { get; set; }
+        List<string[]> ParseData(string contents);
     }
 }
