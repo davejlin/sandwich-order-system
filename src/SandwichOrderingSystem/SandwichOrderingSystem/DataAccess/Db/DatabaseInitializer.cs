@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using SandwichOrderingSystem.Deserializer;
+using SandwichOrderingSystem.DataAccess.Deserializer;
 using SandwichOrderingSystem.Models;
 using System.Reflection;
 
-namespace SandwichOrderingSystem.Db
+namespace SandwichOrderingSystem.DataAccess.Db
 {
     public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<Context>
     {

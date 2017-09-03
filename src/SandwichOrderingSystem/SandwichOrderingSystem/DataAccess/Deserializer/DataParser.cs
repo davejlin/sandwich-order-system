@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.Deserializer
+namespace SandwichOrderingSystem.DataAccess.Deserializer
 {
     public class DataParser : IDataParser
     {

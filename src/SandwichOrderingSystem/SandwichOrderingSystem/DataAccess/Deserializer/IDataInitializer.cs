@@ -1,11 +1,11 @@
-﻿using SandwichOrderingSystem.Db;
+﻿using SandwichOrderingSystem.DataAccess.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.Deserializer
+namespace SandwichOrderingSystem.DataAccess.Deserializer
 {
     public interface IDataInitializer
     {

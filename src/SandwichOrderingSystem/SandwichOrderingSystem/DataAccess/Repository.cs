@@ -1,5 +1,5 @@
-﻿using SandwichOrderingSystem.Db;
-using SandwichOrderingSystem.Deserializer;
+﻿using SandwichOrderingSystem.DataAccess.Db;
+using SandwichOrderingSystem.DataAccess.Deserializer;
 using SandwichOrderingSystem.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem
+namespace SandwichOrderingSystem.DataAccess
 {
     public class Repository : IRepository
     {

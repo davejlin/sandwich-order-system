@@ -52,18 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repository\Db\Context.cs" />
-    <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Repository\Db\DatabaseInitializer.cs" />
-    <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\Deserializer\DataInitializer.cs" />
-    <Compile Include="Repository\Deserializer\DataParser.cs" />
-    <Compile Include="Repository\Deserializer\FileSystemManager.cs" />
-    <Compile Include="Repository\Deserializer\IDataInitializer.cs" />
-    <Compile Include="Repository\Deserializer\IDataParser.cs" />
-    <Compile Include="Repository\Deserializer\IFileSystemManager.cs" />
-    <Compile Include="Repository\Deserializer\IItemFactory.cs" />
-    <Compile Include="Repository\Deserializer\ItemFactory.cs" />
+    <Compile Include="DataAccess\Db\Context.cs" />
+    <Compile Include="DataAccess\Repository.cs" />
+    <Compile Include="DataAccess\Db\DatabaseInitializer.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
+    <Compile Include="DataAccess\Deserializer\DataInitializer.cs" />
+    <Compile Include="DataAccess\Deserializer\DataParser.cs" />
+    <Compile Include="DataAccess\Deserializer\FileSystemManager.cs" />
+    <Compile Include="DataAccess\Deserializer\IDataInitializer.cs" />
+    <Compile Include="DataAccess\Deserializer\IDataParser.cs" />
+    <Compile Include="DataAccess\Deserializer\IFileSystemManager.cs" />
+    <Compile Include="DataAccess\Deserializer\IItemFactory.cs" />
+    <Compile Include="DataAccess\Deserializer\ItemFactory.cs" />
     <Compile Include="Models\Vegetable.cs" />
     <Compile Include="Models\Cheese.cs" />
     <Compile Include="Models\Condiment.cs" />

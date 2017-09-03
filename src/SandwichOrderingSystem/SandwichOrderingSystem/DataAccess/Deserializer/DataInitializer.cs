@@ -1,4 +1,4 @@
-﻿using SandwichOrderingSystem.Db;
+﻿using SandwichOrderingSystem.DataAccess.Db;
 using SandwichOrderingSystem.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.Deserializer
+namespace SandwichOrderingSystem.DataAccess.Deserializer
 {
     public class DataInitializer : IDataInitializer
     {

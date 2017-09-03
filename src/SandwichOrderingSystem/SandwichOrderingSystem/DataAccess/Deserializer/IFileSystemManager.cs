@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.Deserializer
+namespace SandwichOrderingSystem.DataAccess.Deserializer
 {
     public interface IFileSystemManager
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SandwichOrderingSystem.Models;
 using System.Reflection;
 
-namespace SandwichOrderingSystem.Deserializer
+namespace SandwichOrderingSystem.DataAccess.Deserializer
 {
     public class ItemFactory : IItemFactory
     {
