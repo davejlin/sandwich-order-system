@@ -1,4 +1,5 @@
-﻿using SandwichOrderingSystemShared.DataAccess;
+﻿using SandwichOrderingSystem.DI;
+using SandwichOrderingSystemShared.DataAccess;
 using SandwichOrderingSystemShared.DataAccess.Deserializer;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,14 @@ namespace SandwichOrderingSystem
     {
         static void Main(string[] args)
         {
-            var dataRetriever = new FileSystemManager();
-            var dataParser = new DataParser();
-            var itemFactory = new ItemFactory();
-            var dataInitializer = new DataInitializer(dataRetriever, dataParser, itemFactory);
-            var dataAccessor = new Repository(dataInitializer);
+            var container = DIContainer.Container.InitContainer();
 
-            dataAccessor.DisplayAllItems();
+            var repository = container.Resolve<IRepository>();
+            repository.DisplayAllItems();
+
             Console.ReadLine();
+
+            container.Dispose();
         }
     }
 }
