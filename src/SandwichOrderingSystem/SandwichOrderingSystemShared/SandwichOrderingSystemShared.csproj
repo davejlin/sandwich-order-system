@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1AAE8D3D-5297-4E13-8954-05F2CFAC9AC4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{89FFDADB-67D7-4E11-86CF-21B76EAACCA6}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SandwichOrderingSystem</RootNamespace>
-    <AssemblyName>SandwichOrderingSystem</AssemblyName>
+    <RootNamespace>SandwichOrderingSystemShared</RootNamespace>
+    <AssemblyName>SandwichOrderingSystemShared</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -52,18 +49,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DataAccess\Db\Context.cs" />
+    <Compile Include="DataAccess\Db\DatabaseInitializer.cs" />
+    <Compile Include="DataAccess\Deserializer\DataInitializer.cs" />
+    <Compile Include="DataAccess\Deserializer\DataParser.cs" />
+    <Compile Include="DataAccess\Deserializer\FileSystemManager.cs" />
+    <Compile Include="DataAccess\Deserializer\IDataInitializer.cs" />
+    <Compile Include="DataAccess\Deserializer\IDataParser.cs" />
+    <Compile Include="DataAccess\Deserializer\IFileSystemManager.cs" />
+    <Compile Include="DataAccess\Deserializer\IItemFactory.cs" />
+    <Compile Include="DataAccess\Deserializer\ItemFactory.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
+    <Compile Include="DataAccess\Repository.cs" />
+    <Compile Include="Models\Bread.cs" />
+    <Compile Include="Models\Cheese.cs" />
+    <Compile Include="Models\Condiment.cs" />
+    <Compile Include="Models\Drink.cs" />
+    <Compile Include="Models\Filling.cs" />
+    <Compile Include="Models\IItem.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\SignatureSandwich.cs" />
+    <Compile Include="Models\Vegetable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Bread.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Cheese.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Condiment.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Drink.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Filling.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\SignatureSandwich.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Vegetable.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SandwichOrderingSystemShared\SandwichOrderingSystemShared.csproj">
-      <Project>{89ffdadb-67d7-4e11-86cf-21b76eaacca6}</Project>
-      <Name>SandwichOrderingSystemShared</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

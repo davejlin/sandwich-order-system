@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.DataAccess.Deserializer
+namespace SandwichOrderingSystemShared.DataAccess.Deserializer
 {
     public class FileSystemManager : IFileSystemManager
     {

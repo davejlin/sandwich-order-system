@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.Models
+namespace SandwichOrderingSystemShared.Models
 {
-    public class Filling : Item
+    public class Vegetable : Item
     {
     }
 }

@@ -1,5 +1,5 @@
-﻿using SandwichOrderingSystem.DataAccess.Deserializer;
-using SandwichOrderingSystem.Models;
+﻿using SandwichOrderingSystemShared.DataAccess.Deserializer;
+using SandwichOrderingSystemShared.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.DataAccess.Db
+namespace SandwichOrderingSystemShared.DataAccess.Db
 {
     public class Context : DbContext
     {

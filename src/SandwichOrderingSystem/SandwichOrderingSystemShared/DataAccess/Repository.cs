@@ -1,6 +1,6 @@
-﻿using SandwichOrderingSystem.DataAccess.Db;
-using SandwichOrderingSystem.DataAccess.Deserializer;
-using SandwichOrderingSystem.Models;
+﻿using SandwichOrderingSystemShared.DataAccess.Db;
+using SandwichOrderingSystemShared.DataAccess.Deserializer;
+using SandwichOrderingSystemShared.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.DataAccess
+namespace SandwichOrderingSystemShared.DataAccess
 {
     public class Repository : IRepository
     {

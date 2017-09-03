@@ -1,5 +1,5 @@
-﻿using SandwichOrderingSystem.DataAccess.Db;
-using SandwichOrderingSystem.Models;
+﻿using SandwichOrderingSystemShared.DataAccess.Db;
+using SandwichOrderingSystemShared.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SandwichOrderingSystem.DataAccess.Deserializer
+namespace SandwichOrderingSystemShared.DataAccess.Deserializer
 {
     public class DataInitializer : IDataInitializer
     {
@@ -16,7 +16,7 @@ namespace SandwichOrderingSystem.DataAccess.Deserializer
         IDataParser dataParser;
         IItemFactory itemFactory;
 
-        private const string modelsNameSpace = "SandwichOrderingSystem.Models";
+        private const string modelsNameSpace = "SandwichOrderingSystemShared.Models";
 
         public DataInitializer(IFileSystemManager fileSystemManager, IDataParser dataParser, IItemFactory itemFactory)
         {
