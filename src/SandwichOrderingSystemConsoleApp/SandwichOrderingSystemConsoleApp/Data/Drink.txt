@@ -1,1 +1,8 @@
-﻿
+﻿Coke, 2
+Pepsi, 2
+Sprite, 2
+Mountain Dew, 2
+Root Beer, 2
+Dr. Pepper, 2
+Bottled Water, 2
+Tap Water, 0

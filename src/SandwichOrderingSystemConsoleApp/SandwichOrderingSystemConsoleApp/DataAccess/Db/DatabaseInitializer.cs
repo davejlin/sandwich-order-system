@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace SandwichOrderingSystemConsoleApp.Db
 {
-    public class DatabaseInitializer : DropCreateDatabaseAlways<Context>
+    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<Context>
     {
         IDataInitializer dataInitializer;
 

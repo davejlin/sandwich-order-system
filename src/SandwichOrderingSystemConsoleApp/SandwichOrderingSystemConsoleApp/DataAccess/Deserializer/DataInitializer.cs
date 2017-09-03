@@ -70,8 +70,8 @@ namespace SandwichOrderingSystemConsoleApp.Deserializer
 
         public void addToContextDBSet<T>(T instance, Context context) where T : class
         {
-            string dBSetName = typeof(T).Name + "Set";
-            var contextDBSet = context.GetType().GetProperty(dBSetName).GetValue(context) as DbSet<T>;
+            string dbSetName = typeof(T).Name + "Set";
+            var contextDBSet = context.GetType().GetProperty(dbSetName).GetValue(context) as DbSet<T>;
             contextDBSet.Add(instance);
         }
 

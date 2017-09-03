@@ -1,4 +1,5 @@
-﻿using SandwichOrderingSystemConsoleApp.Db;
+﻿using SandwichOrderingSystemConsoleApp.DataAccess.Db;
+using SandwichOrderingSystemConsoleApp.Db;
 using SandwichOrderingSystemConsoleApp.Deserializer;
 using SandwichOrderingSystemConsoleApp.Models;
 using System;
@@ -17,17 +18,10 @@ namespace SandwichOrderingSystemConsoleApp
             var dataParser = new DataParser();
             var itemFactory = new ItemFactory();
             var dataInitializer = new DataInitializer(dataRetriever, dataParser, itemFactory);
+            var dataAccessor = new DataAccessor(dataInitializer);
 
-            using (var context = new Context(dataInitializer))
-            {
-                var sandwiches = context.SignatureSandwichSet.ToList();
-                foreach (SignatureSandwich sandwich in sandwiches)
-                {
-                    Console.WriteLine("{0} {1:C}", sandwich.Name, sandwich.Price);
-                }
-
-                Console.ReadLine();
-            }
+            dataAccessor.DisplayAllItems();
+            Console.ReadLine();
         }
     }
 }

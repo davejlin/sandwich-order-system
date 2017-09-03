@@ -1,1 +1,7 @@
-﻿
+﻿Turkey, 0
+Beef, 0
+Chicken, 0
+Tuna, 0
+Tofu, 0
+Tempeh, 0
+Ham, 0

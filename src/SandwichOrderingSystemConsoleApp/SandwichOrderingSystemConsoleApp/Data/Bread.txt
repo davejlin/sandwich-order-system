@@ -1,1 +1,7 @@
-﻿
+﻿White, 0
+Whole Wheat, 0
+Multigrain, 0
+Rye, 0
+Italian, 0
+French, 0
+Sour Dough, 0

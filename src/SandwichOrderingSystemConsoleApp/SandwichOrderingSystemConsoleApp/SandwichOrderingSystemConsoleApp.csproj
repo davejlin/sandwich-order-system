@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\Db\Context.cs" />
+    <Compile Include="DataAccess\Db\DataAccessor.cs" />
     <Compile Include="DataAccess\Db\DatabaseInitializer.cs" />
+    <Compile Include="DataAccess\Db\IDataAccessor.cs" />
     <Compile Include="DataAccess\Deserializer\DataInitializer.cs" />
     <Compile Include="DataAccess\Deserializer\DataParser.cs" />
     <Compile Include="DataAccess\Deserializer\FileSystemManager.cs" />
@@ -62,8 +64,14 @@
     <Compile Include="DataAccess\Deserializer\IFileSystemManager.cs" />
     <Compile Include="DataAccess\Deserializer\IItemFactory.cs" />
     <Compile Include="DataAccess\Deserializer\ItemFactory.cs" />
+    <Compile Include="Models\Vegetable.cs" />
+    <Compile Include="Models\Cheese.cs" />
+    <Compile Include="Models\Condiment.cs" />
+    <Compile Include="Models\Drink.cs" />
+    <Compile Include="Models\Filling.cs" />
     <Compile Include="Models\IItem.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Bread.cs" />
     <Compile Include="Models\SignatureSandwich.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

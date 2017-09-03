@@ -1,1 +1,4 @@
-﻿
+﻿American, 1
+Swiss, 1
+Monterey Jack, 1
+Cheddar, 1
