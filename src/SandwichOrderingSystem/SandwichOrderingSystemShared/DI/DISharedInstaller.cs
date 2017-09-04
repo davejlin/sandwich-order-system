@@ -1,15 +1,8 @@
 ﻿using Castle.MicroKernel.Registration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SandwichOrderingSystemShared.DataAccess;
-using SandwichOrderingSystemShared.DataAccess.Db;
 using SandwichOrderingSystemShared.DataAccess.Deserializer;
-using SandwichOrderingSystemShared.Models;
 
 namespace SandwichOrderingSystemShared.DI
 {

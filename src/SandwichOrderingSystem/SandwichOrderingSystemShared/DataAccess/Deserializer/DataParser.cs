@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SandwichOrderingSystemShared.DataAccess.Deserializer
 {
     public class DataParser : IDataParser
     {
-        public List<string[]> ParseData(string contents)
+        public IEnumerable<string[]> ParseData(string contents)
         {
             List<string[]> propertiesList = new List<string[]>();
 

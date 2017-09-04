@@ -1,12 +1,8 @@
 ﻿using SandwichOrderingSystemShared.DataAccess.Db;
-using SandwichOrderingSystemShared.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SandwichOrderingSystemShared.DataAccess.Deserializer
 {
@@ -53,9 +49,9 @@ namespace SandwichOrderingSystemShared.DataAccess.Deserializer
             }
         }
 
-        private Dictionary<string, List<string[]>> getItemsDict()
+        private Dictionary<string, IEnumerable<string[]>> getItemsDict()
         {
-            Dictionary<string, List<string[]>> results = new Dictionary<string, List<string[]>>();
+            Dictionary<string, IEnumerable<string[]>> results = new Dictionary<string, IEnumerable<string[]>>();
 
             var itemNames = fileSystemManager.GetItemNames();
             foreach (var itemName in itemNames)

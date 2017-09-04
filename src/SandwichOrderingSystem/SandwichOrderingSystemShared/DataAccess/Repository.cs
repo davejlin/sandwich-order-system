@@ -4,10 +4,7 @@ using SandwichOrderingSystemShared.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SandwichOrderingSystemShared.DataAccess
 {
@@ -19,7 +16,7 @@ namespace SandwichOrderingSystemShared.DataAccess
             this.dataInitializer = dataInitializer;
         }
 
-        public IList<T> GetItem<T>() where T : class, IItem
+        public IEnumerable<T> GetItem<T>() where T : class, IItem
         {
             string dBSetName = typeof(T).Name + "Set";
             using (Context context = GetContext())
