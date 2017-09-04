@@ -2,9 +2,9 @@
 
 namespace SandwichOrderSystem.Views
 {
-    public class ConsoleWrapper
+    public class ConsoleWrapper : IConsoleWrapper
     {
-        public static string ReadInput(string prompt, bool forceToLowercase = false)
+        public string ReadInput(string prompt, bool forceToLowercase = false)
         {
             Console.WriteLine();
             Console.Write(prompt);
@@ -12,22 +12,22 @@ namespace SandwichOrderSystem.Views
             return forceToLowercase ? input.ToLower() : input;
         }
 
-        public static void ClearOutput()
+        public void ClearOutput()
         {
             Console.Clear();
         }
 
-        public static void Output(string message)
+        public void Output(string message)
         {
             Console.Write(message);
         }
 
-        public static void Output(string format, params object[] arg)
+        public void Output(string format, params object[] arg)
         {
             Console.Write(format, arg);
         }
 
-        public static void OutputLine(string message, bool outputBlankLineBeforeMessage = true)
+        public void OutputLine(string message, bool outputBlankLineBeforeMessage = true)
         {
             if (outputBlankLineBeforeMessage)
             {
@@ -36,12 +36,12 @@ namespace SandwichOrderSystem.Views
             Console.WriteLine(message);
         }
 
-        public static void OutputLine(string format, params object[] arg)
+        public void OutputLine(string format, params object[] arg)
         {
             Console.WriteLine(format, arg);
         }
 
-        public static void OutputBlankLine()
+        public void OutputBlankLine()
         {
             Console.WriteLine();
         }

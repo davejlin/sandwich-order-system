@@ -1,5 +1,5 @@
 ﻿using SandwichOrderSystem.DI;
-using SandwichOrderSystemShared.DataAccess;
+using SandwichOrderSystem.States.Level1States;
 using System;
 
 namespace SandwichOrderSystem
@@ -9,9 +9,8 @@ namespace SandwichOrderSystem
         static void Main(string[] args)
         {
             var container = DIContainer.Container.InitContainer();
-
-            var repository = container.Resolve<IRepository>();
-            repository.DisplayAllItems();
+            var level1Context = container.Resolve<ILevel1Context>();
+            level1Context.MenuCommands();
 
             Console.ReadLine();
 

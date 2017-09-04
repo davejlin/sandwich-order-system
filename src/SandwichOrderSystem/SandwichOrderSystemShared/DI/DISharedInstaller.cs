@@ -25,7 +25,7 @@ namespace SandwichOrderSystemShared.DI
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            DISharedInstaller.Container = container;
+            Container = container;
 
             container.Register(Component.For<IRepository>().ImplementedBy<Repository>());
 
