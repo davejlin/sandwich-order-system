@@ -14,9 +14,10 @@ namespace SandwichOrderSystemShared.DataAccess.Db
         public DbSet<SignatureSandwich> SignatureSandwichSet { get; set; }
         public DbSet<Vegetable> VegetableSet { get; set; }
 
-        public Context()
+        public Context(IDatabaseInitializerFactory databaseInitializerFactory)
         {
-            Database.SetInitializer(new DatabaseInitializer());
+            var databaseInitializer = databaseInitializerFactory.createDatabaseInitializer();
+            Database.SetInitializer(databaseInitializer);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

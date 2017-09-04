@@ -9,6 +9,13 @@ namespace SandwichOrderSystemShared.DataAccess
 {
     public class Repository : IRepository
     {
+        IContextFactory contextFactory;
+
+        public Repository(IContextFactory contextFactory)
+        {
+            this.contextFactory = contextFactory;
+        }
+
         public IEnumerable<T> GetItem<T>() where T : class, IItem
         {
             string dBSetName = typeof(T).Name + "Set";
@@ -35,7 +42,7 @@ namespace SandwichOrderSystemShared.DataAccess
 
         private Context GetContext()
         {
-            var context = new Context();
+            var context = contextFactory.createContext();
             //context.Database.Log = (message) => Debug.WriteLine(message);
             return context;
         }

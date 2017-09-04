@@ -2,6 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SandwichOrderSystemShared.DataAccess;
+using SandwichOrderSystemShared.DataAccess.Db;
 using SandwichOrderSystemShared.DataAccess.Deserializer;
 
 namespace SandwichOrderSystemShared.DI
@@ -32,6 +33,12 @@ namespace SandwichOrderSystemShared.DI
             container.Register(Component.For<IDataParser>().ImplementedBy<DataParser>());
             container.Register(Component.For<IFileSystemManager>().ImplementedBy<FileSystemManager>());
             container.Register(Component.For<IItemFactory>().ImplementedBy<ItemFactory>());
+
+            container.Register(Component.For<IContextFactory>().ImplementedBy<ContextFactory>());
+            container.Register(Component.For<IDatabaseInitializerFactory>().ImplementedBy<DatabaseInitializerFactory>());
+
+            container.Register(Component.For<Context>().LifeStyle.Transient);
+            container.Register(Component.For<DatabaseInitializer>().LifeStyle.Transient);
         }
     }
 }
