@@ -1,7 +1,7 @@
 ﻿using System;
 using SandwichOrderSystem.Views;
 
-namespace SandwichOrderSystem.States.Level1States
+namespace SandwichOrderSystem.States.Level1
 {
     public class AddOrderState : Level1State
     {
@@ -14,14 +14,9 @@ namespace SandwichOrderSystem.States.Level1States
             throw new NotImplementedException();
         }
 
-        public override void MenuCommands()
+        public override string MenuCommands()
         {
-            console.Output("Add order state");
-        }
-
-        public override void ReturnToMain()
-        {
-            throw new NotImplementedException();
+            return "";
         }
     }
 }

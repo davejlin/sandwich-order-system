@@ -1,7 +1,7 @@
 ﻿using System;
 using SandwichOrderSystem.Views;
 
-namespace SandwichOrderSystem.States.Level1States
+namespace SandwichOrderSystem.States.Level1
 {
     public class DisplayOrderState : Level1State
     {
@@ -14,12 +14,7 @@ namespace SandwichOrderSystem.States.Level1States
             throw new NotImplementedException();
         }
 
-        public override void MenuCommands()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void ReturnToMain()
+        public override string MenuCommands()
         {
             throw new NotImplementedException();
         }

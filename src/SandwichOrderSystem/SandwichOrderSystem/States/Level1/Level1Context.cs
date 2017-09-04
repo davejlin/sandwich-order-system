@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace SandwichOrderSystem.States.Level1States
+namespace SandwichOrderSystem.States.Level1
 {
     public class Level1Context : ILevel1Context
     {
-        public Level1State MainMenuState { get; }
+        public Level1State MainState { get; }
         public Level1State CancelOrderState { get; }
         public Level1State DisplayOrderState { get; }
         public Level1State AddOrderState { get; }
-        public Level1State CompleteOrderState { get; }
+        public Level1State FinishOrderState { get; }
 
         private Level1State state;
         public Level1State State
@@ -25,13 +25,13 @@ namespace SandwichOrderSystem.States.Level1States
             CancelOrderState cancelOrderState,
             DisplayOrderState displayOrderState,
             AddOrderState addOrderState,
-            CompleteOrderState completeOrderState)
+            FinishOrderState finishOrderState)
         {
-            this.MainMenuState = mainMenuState;
-            this.CancelOrderState = cancelOrderState;
-            this.DisplayOrderState = displayOrderState;
-            this.AddOrderState = addOrderState;
-            this.CompleteOrderState = completeOrderState;
+            MainState = mainMenuState;
+            CancelOrderState = cancelOrderState;
+            DisplayOrderState = displayOrderState;
+            AddOrderState = addOrderState;
+            FinishOrderState = finishOrderState;
 
             State = mainMenuState;
         }
@@ -41,14 +41,9 @@ namespace SandwichOrderSystem.States.Level1States
             state.Action();
         }
 
-        public void MenuCommands()
+        public string MenuCommands()
         {
-            state.MenuCommands();
-        }
-
-        public void ReturnToMain()
-        {
-            state.ReturnToMain();
+            return state.MenuCommands();
         }
     }
 }

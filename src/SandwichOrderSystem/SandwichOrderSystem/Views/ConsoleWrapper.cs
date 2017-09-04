@@ -45,5 +45,18 @@ namespace SandwichOrderSystem.Views
         {
             Console.WriteLine();
         }
+
+        public void PromptToContinue()
+        {
+            OutputBlankLine();
+            ReadInput(" Press Enter to return to Main Menu: ", false);
+        }
+
+        public void PromptInvalidCommand()
+        {
+            ClearOutput();
+            OutputLine(" Please enter valid command.", true);
+            PromptToContinue();
+        }
     }
 }

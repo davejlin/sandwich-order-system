@@ -62,17 +62,19 @@
   <ItemGroup>
     <Compile Include="DI\DIContainer.cs" />
     <Compile Include="DI\DIMainInstaller.cs" />
+    <Compile Include="IOrderManager.cs" />
+    <Compile Include="OrderManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="States\Level1States\AddOrderState.cs" />
-    <Compile Include="States\Level1States\DisplayOrderState.cs" />
-    <Compile Include="States\Level1States\CompleteOrderState.cs" />
-    <Compile Include="States\Level1States\ILevel1Context.cs" />
-    <Compile Include="States\Level1States\Level1Context.cs" />
-    <Compile Include="States\Level1States\Level1State.cs" />
-    <Compile Include="States\Level1States\MainState.cs" />
-    <Compile Include="States\Level1States\CancelOrderState.cs" />
-    <Compile Include="States\Level1States\ILevel1State.cs" />
+    <Compile Include="States\Level1\AddOrderState.cs" />
+    <Compile Include="States\Level1\DisplayOrderState.cs" />
+    <Compile Include="States\Level1\FinishOrderState.cs" />
+    <Compile Include="States\Level1\ILevel1Context.cs" />
+    <Compile Include="States\Level1\Level1Context.cs" />
+    <Compile Include="States\Level1\Level1State.cs" />
+    <Compile Include="States\Level1\MainState.cs" />
+    <Compile Include="States\Level1\CancelOrderState.cs" />
+    <Compile Include="States\Level1\ILevel1State.cs" />
     <Compile Include="Views\ConsoleWrapper.cs" />
     <Compile Include="Views\IConsoleWrapper.cs" />
   </ItemGroup>
