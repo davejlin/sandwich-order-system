@@ -1,5 +1,4 @@
-﻿using SandwichOrderSystemShared.DataAccess.Deserializer;
-using SandwichOrderSystemShared.Models;
+﻿using SandwichOrderSystemShared.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -15,9 +14,9 @@ namespace SandwichOrderSystemShared.DataAccess.Db
         public DbSet<SignatureSandwich> SignatureSandwichSet { get; set; }
         public DbSet<Vegetable> VegetableSet { get; set; }
 
-        public Context(IDataInitializer dataInitializer)
+        public Context()
         {
-            Database.SetInitializer(new DatabaseInitializer(dataInitializer));
+            Database.SetInitializer(new DatabaseInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

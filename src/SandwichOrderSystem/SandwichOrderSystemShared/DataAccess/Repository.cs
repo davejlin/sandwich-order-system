@@ -1,5 +1,4 @@
 ﻿using SandwichOrderSystemShared.DataAccess.Db;
-using SandwichOrderSystemShared.DataAccess.Deserializer;
 using SandwichOrderSystemShared.Models;
 using System;
 using System.Collections.Generic;
@@ -10,12 +9,6 @@ namespace SandwichOrderSystemShared.DataAccess
 {
     public class Repository : IRepository
     {
-        IDataInitializer dataInitializer;
-        public Repository(IDataInitializer dataInitializer)
-        {
-            this.dataInitializer = dataInitializer;
-        }
-
         public IEnumerable<T> GetItem<T>() where T : class, IItem
         {
             string dBSetName = typeof(T).Name + "Set";
@@ -42,7 +35,7 @@ namespace SandwichOrderSystemShared.DataAccess
 
         private Context GetContext()
         {
-            var context = new Context(dataInitializer);
+            var context = new Context();
             //context.Database.Log = (message) => Debug.WriteLine(message);
             return context;
         }
