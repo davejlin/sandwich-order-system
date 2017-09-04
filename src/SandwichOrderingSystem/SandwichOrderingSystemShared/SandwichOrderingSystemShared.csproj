@@ -70,15 +70,15 @@
     <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="DataAccess\Repository.cs" />
     <Compile Include="DI\DISharedInstaller.cs" />
-    <Compile Include="Models\Bread.cs" />
-    <Compile Include="Models\Cheese.cs" />
-    <Compile Include="Models\Condiment.cs" />
-    <Compile Include="Models\Drink.cs" />
-    <Compile Include="Models\Filling.cs" />
-    <Compile Include="Models\IItem.cs" />
-    <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\SignatureSandwich.cs" />
-    <Compile Include="Models\Vegetable.cs" />
+    <Compile Include="Models\Items\Bread.cs" />
+    <Compile Include="Models\Items\Cheese.cs" />
+    <Compile Include="Models\Items\Condiment.cs" />
+    <Compile Include="Models\Items\Drink.cs" />
+    <Compile Include="Models\Items\Filling.cs" />
+    <Compile Include="Models\Items\IItem.cs" />
+    <Compile Include="Models\Items\Item.cs" />
+    <Compile Include="Models\Items\SignatureSandwich.cs" />
+    <Compile Include="Models\Items\Vegetable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

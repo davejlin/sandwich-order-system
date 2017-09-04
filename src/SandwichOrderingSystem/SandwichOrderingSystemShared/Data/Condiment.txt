@@ -1,6 +1,6 @@
-﻿Ketchup, 1
-Mustard, 1
-Mayonnaise, 1
-Tahini, 1
-Relish, 1
-Hot Sauce, 1
+﻿Ketchup, 0
+Mustard, 0
+Mayonnaise, 0
+Tahini, 0
+Relish, 0
+Hot Sauce, 0

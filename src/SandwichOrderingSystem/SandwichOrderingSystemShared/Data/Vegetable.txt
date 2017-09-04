@@ -1,5 +1,5 @@
-﻿Onion, 0
-Lettuce, 0
-Tomato, 0
-Cucumber, 0
-Pickle, 0
+﻿Onion, 0.5
+Lettuce, 0.5
+Tomato, 0.5
+Cucumber, 0.5
+Pickle, 0.25

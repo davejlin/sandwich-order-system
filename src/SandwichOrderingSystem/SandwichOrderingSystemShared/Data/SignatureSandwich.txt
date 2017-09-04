@@ -1,8 +1,8 @@
-﻿Terrific Tuna, 3.49
-Bonus Beef, 4.49
-Chicken Wonder, 3.99
-Turkey Treat, 3.49
-Italian Special, 4.99
-Meatball Sub, 4.99
-Cheesey Delight, 4.49
-Humus Wrap, 4.49 
+﻿Terrific Tuna, 3.5
+Bonus Beef, 4.5
+Chicken Wonder, 4
+Turkey Treat, 3.5
+Italian Special, 4
+Meatball Sub, 4.5
+Cheesey Delight, 4
+Humus Wrap, 3

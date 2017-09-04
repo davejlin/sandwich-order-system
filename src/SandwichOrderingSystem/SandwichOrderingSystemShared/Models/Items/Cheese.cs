@@ -1,6 +1,4 @@
 ﻿namespace SandwichOrderingSystemShared.Models
 {
-    public class Cheese : Item
-    {
-    }
+    public class Cheese : Item {}
 }

@@ -1,7 +1,7 @@
-﻿Turkey, 0
-Beef, 0
-Chicken, 0
-Tuna, 0
-Tofu, 0
-Tempeh, 0
-Ham, 0
+﻿Turkey, 1.75
+Beef, 2
+Chicken, 1.75
+Tuna, 1.5
+Tofu, 1.25
+Tempeh, 1.25
+Ham, 1.5
