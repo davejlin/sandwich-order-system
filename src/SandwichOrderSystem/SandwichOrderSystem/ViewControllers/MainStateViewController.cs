@@ -1,6 +1,6 @@
 ﻿namespace SandwichOrderSystem.ViewControllers
 {
-    public class MainStateViewController : IViewController
+    public class MainStateViewController
     {
         public string MenuCommands { get { return Constants.MAIN_STATE_COMMANDS; } }
         public string MenuTitle { get { return Constants.MAIN_STATE_TITLE; } }

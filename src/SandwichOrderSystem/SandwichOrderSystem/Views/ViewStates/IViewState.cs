@@ -4,5 +4,6 @@
     {
         void Action();
         string MenuCommands();
+        void SetContext(IViewContext context);
     }
 }

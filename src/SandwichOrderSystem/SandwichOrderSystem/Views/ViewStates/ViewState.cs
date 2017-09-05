@@ -1,37 +1,70 @@
-﻿namespace SandwichOrderSystem.Views.ViewStates
-{
-    public abstract class ViewState : IViewState
-    {
-        protected IConsoleWrapper console;
-        protected IViewContext context;
+﻿using SandwichOrderSystem.ViewControllers;
+using static SandwichOrderSystem.Constants;
 
-        public ViewState(IConsoleWrapper console)
+namespace SandwichOrderSystem.Views.ViewStates
+{
+    public class ViewState : IViewState
+    {
+        private IConsoleWrapper console;
+
+        private IViewController viewController;
+        private IViewContext context;
+
+        public ViewState(IViewController viewController, IConsoleWrapper console)
         {
             this.console = console;
+            this.viewController = viewController;
         }
 
-        public abstract void Action();
-        public abstract string MenuCommands();
+        public void Action()
+        {
+
+        }
+        public string MenuCommands()
+        {
+            string command = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
+
+            if (!viewController.ExecuteUserCommand(command))
+            {
+                PromptInvalidCommand();
+            }
+
+            return command;
+        }
 
         public void SetContext(IViewContext context)
         {
             this.context = context;
+            viewController.SetContext(context);
         }
 
-        protected string menuPrompt(string title, string commands)
+        private string menuPrompt(string title, string commands)
         {
             console.ClearOutput();
             console.OutputLine(title, true);
             console.OutputBlankLine();
-            console.Output(Constants.VIEW_STATE_COMMANDS_TITLE);
+            console.Output(VIEW_STATE_COMMANDS_TITLE);
             console.OutputLine(commands, false);
 
-            return console.ReadInput(Constants.VIEW_STATE_ENTER_COMMAND_TITLE, true);
+            return console.ReadInput(VIEW_STATE_ENTER_COMMAND_TITLE, true);
         }
 
-        protected void returnToMain()
+        private void returnToMain()
         {
-            context.State = context.MainState;
+            context.ViewNumber = ViewStateNumber.Main;
+        }
+
+        public void PromptToContinue()
+        {
+            console.OutputBlankLine();
+            console.ReadInput(CONSOLE_PROMPT_TO_CONTINUE, false);
+        }
+
+        public void PromptInvalidCommand()
+        {
+            console.ClearOutput();
+            console.OutputLine(CONSOLE_INVALID_COMMAND, true);
+            PromptToContinue();
         }
     }
 }

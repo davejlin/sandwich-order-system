@@ -1,47 +1,27 @@
-﻿namespace SandwichOrderSystem.Views.ViewStates
+﻿using static SandwichOrderSystem.Constants;
+
+namespace SandwichOrderSystem.Views.ViewStates
 {
     public class ViewContext : IViewContext
     {
-        public ViewState MainState { get; }
-        public ViewState CancelOrderState { get; }
-        public ViewState DisplayOrderState { get; }
-        public ViewState AddItemsState { get; }
-        public ViewState FinishOrderState { get; }
+        private IViewState viewState;
+        public ViewStateNumber ViewNumber { get; set; }
 
-        private ViewState state;
-        public ViewState State
+        public ViewContext(IViewState viewState)
         {
-            set
-            {
-                state = value;
-                state.SetContext(this);
-            } 
-       }
-
-        public ViewContext(
-            MainState mainMenuState,
-            CancelOrderState cancelOrderState,
-            DisplayOrderState displayOrderState,
-            AddItemsState addOrderState,
-            FinishOrderState finishOrderState)
-        {
-            MainState = mainMenuState;
-            CancelOrderState = cancelOrderState;
-            DisplayOrderState = displayOrderState;
-            AddItemsState = addOrderState;
-            FinishOrderState = finishOrderState;
-
-            State = mainMenuState;
+            this.viewState = viewState;
+            this.viewState.SetContext(this);
+            ViewNumber = 0;
         }
 
         public void Action()
         {
-            state.Action();
+            viewState.Action();
         }
 
         public string MenuCommands()
         {
-            return state.MenuCommands();
+            return viewState.MenuCommands();
         }
     }
 }

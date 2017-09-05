@@ -45,18 +45,5 @@ namespace SandwichOrderSystem.Views
         {
             Console.WriteLine();
         }
-
-        public void PromptToContinue()
-        {
-            OutputBlankLine();
-            ReadInput(Constants.CONSOLE_PROMPT_TO_CONTINUE, false);
-        }
-
-        public void PromptInvalidCommand()
-        {
-            ClearOutput();
-            OutputLine(Constants.CONSOLE_INVALID_COMMAND, true);
-            PromptToContinue();
-        }
     }
 }

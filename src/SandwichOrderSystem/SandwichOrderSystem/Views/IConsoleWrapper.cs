@@ -9,7 +9,5 @@
         void OutputLine(string message, bool outputBlankLineBeforeMessage = true);
         void OutputLine(string format, params object[] arg);
         void OutputBlankLine();
-        void PromptToContinue();
-        void PromptInvalidCommand();
     }
 }

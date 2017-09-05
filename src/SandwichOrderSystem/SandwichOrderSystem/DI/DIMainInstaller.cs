@@ -14,16 +14,8 @@ namespace SandwichOrderSystem.DI
             container.Register(Component.For<IConsoleAppManager>().ImplementedBy<ConsoleAppManager>());
             container.Register(Component.For<IConsoleWrapper>().ImplementedBy<ConsoleWrapper>());
             container.Register(Component.For<IViewContext>().ImplementedBy<ViewContext>());
-
-            container.Register(Types.FromThisAssembly()
-                .BasedOn<IViewState>()
-                .WithService.Base()
-                .WithService.Self());
-
-            container.Register(Types.FromThisAssembly()
-                .BasedOn<IViewController>()
-                .WithService.Base()
-                .WithService.Self());
+            container.Register(Component.For<IViewState>().ImplementedBy<ViewState>());
+            container.Register(Component.For<IViewController>().ImplementedBy<ViewController>());
         }
     }
 }
