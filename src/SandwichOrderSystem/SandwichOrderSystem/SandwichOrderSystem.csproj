@@ -60,12 +60,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="DI\DIContainer.cs" />
     <Compile Include="DI\DIMainInstaller.cs" />
     <Compile Include="IConsoleAppManager.cs" />
     <Compile Include="ConsoleAppManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewControllers\CancelOrderViewController.cs" />
+    <Compile Include="ViewControllers\IVewController.cs" />
+    <Compile Include="ViewControllers\MainStateViewController.cs" />
     <Compile Include="Views\ViewStates\AddOrderState.cs" />
     <Compile Include="Views\ViewStates\DisplayOrderState.cs" />
     <Compile Include="Views\ViewStates\FinishOrderState.cs" />
@@ -88,7 +92,9 @@
       <Name>SandwichOrderSystemShared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,26 +1,24 @@
-﻿using System;
-using SandwichOrderSystem.Views;
+﻿using SandwichOrderSystem.ViewControllers;
 
 namespace SandwichOrderSystem.Views.ViewStates
 {
     public class MainState : ViewState
     {
-        public MainState(IConsoleWrapper console) : base(console)
+        MainStateViewController viewController;
+        public MainState(MainStateViewController viewController, IConsoleWrapper console) : base(console)
         {
+            this.viewController = viewController;
         }
-
-        private const string commandCancel = "c";
-        private const string commandQuit = "q";
 
         public override string MenuCommands()
         {
-            string command = menuPrompt(" Main Order Menu ... ", " c - Cancel Order\n q - Quit");
+            string command = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
             switch (command)
             {
-                case commandCancel:
+                case MainStateViewController.CommandCancel:
                     context.State = context.CancelOrderState;
                     break;
-                case commandQuit:
+                case MainStateViewController.CommandQuit:
                     break;
                 default:
                     console.PromptInvalidCommand();

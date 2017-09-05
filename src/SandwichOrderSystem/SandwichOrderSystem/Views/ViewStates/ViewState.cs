@@ -24,10 +24,10 @@ namespace SandwichOrderSystem.Views.ViewStates
             console.ClearOutput();
             console.OutputLine(title, true);
             console.OutputBlankLine();
-            console.Output(" Commands:\n\n");
+            console.Output(Constants.VIEW_STATE_COMMANDS_TITLE);
             console.OutputLine(commands, false);
 
-            return console.ReadInput(" Enter a Command: ", true);
+            return console.ReadInput(Constants.VIEW_STATE_ENTER_COMMAND_TITLE, true);
         }
 
         protected void returnToMain()

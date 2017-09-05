@@ -4,18 +4,18 @@ namespace SandwichOrderSystem
 {
     public class ConsoleAppManager : IConsoleAppManager
     {
-        IViewContext level1Context;
-        public ConsoleAppManager(IViewContext level1Context)
+        IViewContext viewContext;
+        public ConsoleAppManager(IViewContext viewContext)
         {
-            this.level1Context = level1Context;
+            this.viewContext = viewContext;
         }
 
         public void start()
         {
-            var command = "";
-            while (command != "q")
+            string command = "";
+            while (command != Constants.VIEW_STATE_COMMAND_QUIT)
             {
-                command = level1Context.MenuCommands();
+                command = viewContext.MenuCommands();
             }
         }
     }

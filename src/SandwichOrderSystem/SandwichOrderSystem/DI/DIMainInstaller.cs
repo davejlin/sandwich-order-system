@@ -3,6 +3,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SandwichOrderSystem.Views.ViewStates;
 using SandwichOrderSystem.Views;
+using SandwichOrderSystem.ViewControllers;
 
 namespace SandwichOrderSystem.DI
 {
@@ -16,6 +17,11 @@ namespace SandwichOrderSystem.DI
 
             container.Register(Types.FromThisAssembly()
                 .BasedOn<IViewState>()
+                .WithService.Base()
+                .WithService.Self());
+
+            container.Register(Types.FromThisAssembly()
+                .BasedOn<IVewController>()
                 .WithService.Base()
                 .WithService.Self());
         }

@@ -1,27 +1,28 @@
-﻿using System;
-using SandwichOrderSystem.Views;
+﻿using SandwichOrderSystem.ViewControllers;
 
 namespace SandwichOrderSystem.Views.ViewStates
 {
     public class CancelOrderState : ViewState
     {
-        public CancelOrderState(IConsoleWrapper console) : base(console)
+        CancelOrderViewController viewController;
+        public CancelOrderState(CancelOrderViewController viewController, IConsoleWrapper console) : base(console)
         {
+            this.viewController = viewController;
         }
 
         public void Action()
         {
             console.ClearOutput();
-            string command = console.ReadInput(" Enter Y to confirm cancelling your order ... ", false);
+            string command = console.ReadInput(CancelOrderViewController.ActionConfirm, false);
 
             console.ClearOutput();
             switch (command)
             {
-                case "Y":
-                    console.OutputLine(" Your order was cancelled.", true);
+                case CancelOrderViewController.ActionCommandConfirm:
+                    console.OutputLine(CancelOrderViewController.ActionComplete, true);
                     break;
                 default:
-                    console.OutputLine(" Your order was not cancelled.", true);
+                    console.OutputLine(CancelOrderViewController.ActionIncomplete, true);
                     break;
             }
 
@@ -29,22 +30,18 @@ namespace SandwichOrderSystem.Views.ViewStates
             returnToMain();
         }
 
-        private const string commandConfirm = "c";
-        private const string commandReturn = "r";
-        private const string commandQuit = "q";
-
         public override string MenuCommands()
         {
-            string command = menuPrompt(" Cancel Order Menu ... ", " c - Cancel Order\n r - Return to Main Menu\n q - Quit");
+            string command = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
             switch (command)
             {
-                case commandConfirm:
+                case CancelOrderViewController.CommandConfirm:
                     Action();
                     break;
-                case commandReturn:
+                case CancelOrderViewController.CommandReturn:
                     returnToMain();
                     break;
-                case commandQuit:
+                case CancelOrderViewController.CommandQuit:
                     break;
                 default:
                     console.PromptInvalidCommand();

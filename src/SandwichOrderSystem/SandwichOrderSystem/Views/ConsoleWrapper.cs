@@ -49,13 +49,13 @@ namespace SandwichOrderSystem.Views
         public void PromptToContinue()
         {
             OutputBlankLine();
-            ReadInput(" Press Enter to return to Main Menu: ", false);
+            ReadInput(Constants.CONSOLE_PROMPT_TO_CONTINUE, false);
         }
 
         public void PromptInvalidCommand()
         {
             ClearOutput();
-            OutputLine(" Please enter valid command.", true);
+            OutputLine(Constants.CONSOLE_INVALID_COMMAND, true);
             PromptToContinue();
         }
     }
