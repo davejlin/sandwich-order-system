@@ -14,20 +14,25 @@
         public const string DISPLAY_ORDER_STATE_TITLE = " Display Order Menu ... ";
         public const string FINISH_ORDER_STATE_TITLE = " Finish Order Menu ... ";
 
-        public const string MAIN_STATE_COMMANDS = " a - Add Order Menu\n d - Display Order Menu\n c - Cancel Order Menu\n f - Finish Order Menu\n q - Quit";
-        public const string ADD_ORDER_STATE_COMMANDS = " a - Add Order\n r - Return to Main Menu\n q - Quit";
-        public const string DISPLAY_ORDER_STATE_COMMANDS = " d - Display Order\n r - Return to Main Menu\n q - Quit";
-        public const string FINISH_ORDER_STATE_COMMANDS = " f - Finish Order\n r - Return to Main Menu\n q - Quit";
-        public const string CANCEL_ORDER_STATE_COMMANDS = " c - Cancel Order\n r - Return to Main Menu\n q - Quit";
+        public const string MAIN_STATE_COMMANDS = " a - Add Items Menu\n d - Display Order\n c - Cancel Order\n\n f - Finish Order\n\n q - Quit";
+        public const string ADD_ORDER_STATE_COMMANDS = " s - Add Signature Sandwich\n c - Add Custom Sandwich\n d - Add Drink\n h - Add Chips\n\n r - Return to Main Menu\n q - Quit";
+        public const string DISPLAY_ORDER_STATE_COMMANDS = " d - Display Order\n\n r - Return to Main Menu\n q - Quit";
+        public const string FINISH_ORDER_STATE_COMMANDS = " f - Finish Order\n\n r - Return to Main Menu\n q - Quit";
+        public const string CANCEL_ORDER_STATE_COMMANDS = " c - Cancel Order\n\n r - Return to Main Menu\n q - Quit";
 
         public const string MAIN_STATE_COMMAND_ADD = "a";
         public const string MAIN_STATE_COMMAND_CANCEL = "c";
         public const string MAIN_STATE_COMMAND_DISPLAY = "d";
         public const string MAIN_STATE_COMMAND_FINISH = "f";
 
-        public const string ADD_ORDER_COMMAND_ADD = "a";
+        public const string ADD_ORDER_COMMAND_ADD_SIGNATURE_SANDWICH = "s";
+        public const string ADD_ORDER_COMMAND_ADD_CUSTOM_SANDWICH = "c";
+        public const string ADD_ORDER_COMMAND_ADD_CHIPS = "h";
+        public const string ADD_ORDER_COMMAND_ADD_DRINK = "d";
+
         public const string CANCEL_ORDER_COMMAND_CONFIRM = "c";
         public const string CANCEL_ORDER_ACTION_COMMAND_CONFIRM = "Y";
+
         public const string DISPLAY_ORDER_COMMAND_DISPLAY = "d";
         public const string FINISH_ORDER_COMMAND_FINISH = "f";
 

@@ -5,10 +5,11 @@
         ViewState MainState { get; }
         ViewState CancelOrderState { get; }
         ViewState DisplayOrderState { get; }
-        ViewState AddOrderState { get; }
+        ViewState AddItemsState { get; }
         ViewState FinishOrderState { get; }
         ViewState State { set; }
 
+        void Action();
         string MenuCommands();
     }
 }

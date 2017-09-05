@@ -10,12 +10,21 @@ namespace SandwichOrderSystem.Views.ViewStates
             this.viewController = viewController;
         }
 
+        public override void Action()
+        {
+            console.ClearOutput();
+            console.OutputLine(" Displaying order ... ", true);
+            console.PromptToContinue();
+            returnToMain();
+        }
+
         public override string MenuCommands()
         {
             string command = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
             switch (command)
             {
                 case DisplayOrderViewController.CommandDisplay:
+                    Action();
                     break;
                 case DisplayOrderViewController.CommandReturn:
                     returnToMain();

@@ -1,6 +1,6 @@
 ﻿namespace SandwichOrderSystem.ViewControllers
 {
-    public interface IVewController
+    public interface IViewController
     {
         string MenuTitle { get; }
         string MenuCommands { get; }

@@ -5,7 +5,7 @@
         public ViewState MainState { get; }
         public ViewState CancelOrderState { get; }
         public ViewState DisplayOrderState { get; }
-        public ViewState AddOrderState { get; }
+        public ViewState AddItemsState { get; }
         public ViewState FinishOrderState { get; }
 
         private ViewState state;
@@ -22,16 +22,21 @@
             MainState mainMenuState,
             CancelOrderState cancelOrderState,
             DisplayOrderState displayOrderState,
-            AddOrderState addOrderState,
+            AddItemsState addOrderState,
             FinishOrderState finishOrderState)
         {
             MainState = mainMenuState;
             CancelOrderState = cancelOrderState;
             DisplayOrderState = displayOrderState;
-            AddOrderState = addOrderState;
+            AddItemsState = addOrderState;
             FinishOrderState = finishOrderState;
 
             State = mainMenuState;
+        }
+
+        public void Action()
+        {
+            state.Action();
         }
 
         public string MenuCommands()

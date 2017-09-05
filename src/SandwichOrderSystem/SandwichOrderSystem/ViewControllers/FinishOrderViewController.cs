@@ -1,6 +1,6 @@
 ﻿namespace SandwichOrderSystem.ViewControllers
 {
-    public class FinishOrderViewController : IVewController
+    public class FinishOrderViewController : IViewController
     {
         public string MenuCommands { get { return Constants.FINISH_ORDER_STATE_COMMANDS; } }
         public string MenuTitle { get { return Constants.FINISH_ORDER_STATE_TITLE; } }

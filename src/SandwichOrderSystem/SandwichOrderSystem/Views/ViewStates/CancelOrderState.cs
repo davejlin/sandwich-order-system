@@ -10,7 +10,7 @@ namespace SandwichOrderSystem.Views.ViewStates
             this.viewController = viewController;
         }
 
-        public void Action()
+        public override void Action()
         {
             console.ClearOutput();
             string command = console.ReadInput(CancelOrderViewController.ActionConfirm, false);

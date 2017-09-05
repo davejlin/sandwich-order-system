@@ -1,6 +1,6 @@
 ﻿namespace SandwichOrderSystem.ViewControllers
 {
-    public class CancelOrderViewController : IVewController
+    public class CancelOrderViewController : IViewController
     {
         public string MenuCommands { get { return Constants.CANCEL_ORDER_STATE_COMMANDS; } }
         public string MenuTitle { get { return Constants.CANCEL_ORDER_STATE_TITLE; } }

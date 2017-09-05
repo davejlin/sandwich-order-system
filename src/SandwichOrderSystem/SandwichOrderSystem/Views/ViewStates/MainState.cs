@@ -10,13 +10,17 @@ namespace SandwichOrderSystem.Views.ViewStates
             this.viewController = viewController;
         }
 
+        public override void Action()
+        {
+        }
+
         public override string MenuCommands()
         {
             string command = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
             switch (command)
             {
                 case MainStateViewController.CommandAdd:
-                    context.State = context.AddOrderState;
+                    context.State = context.AddItemsState;
                     break;
                 case MainStateViewController.CommandCancel:
                     context.State = context.CancelOrderState;

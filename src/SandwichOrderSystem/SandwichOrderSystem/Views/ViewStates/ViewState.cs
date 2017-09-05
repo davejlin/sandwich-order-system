@@ -10,6 +10,7 @@
             this.console = console;
         }
 
+        public abstract void Action();
         public abstract string MenuCommands();
 
         public void SetContext(IViewContext context)

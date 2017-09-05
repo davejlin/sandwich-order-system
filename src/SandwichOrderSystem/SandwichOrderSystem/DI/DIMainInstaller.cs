@@ -21,7 +21,7 @@ namespace SandwichOrderSystem.DI
                 .WithService.Self());
 
             container.Register(Types.FromThisAssembly()
-                .BasedOn<IVewController>()
+                .BasedOn<IViewController>()
                 .WithService.Base()
                 .WithService.Self());
         }

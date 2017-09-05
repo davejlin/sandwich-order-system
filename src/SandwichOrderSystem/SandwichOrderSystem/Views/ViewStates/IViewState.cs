@@ -2,6 +2,7 @@
 {
     public interface IViewState
     {
+        void Action();
         string MenuCommands();
     }
 }

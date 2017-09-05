@@ -16,6 +16,7 @@ namespace SandwichOrderSystem
             while (command != Constants.VIEW_STATE_COMMAND_QUIT)
             {
                 command = viewContext.MenuCommands();
+                viewContext.Action();
             }
         }
     }
