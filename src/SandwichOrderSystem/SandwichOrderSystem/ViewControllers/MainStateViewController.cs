@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SandwichOrderSystem.ViewControllers
+﻿namespace SandwichOrderSystem.ViewControllers
 {
     public class MainStateViewController : IVewController
     {

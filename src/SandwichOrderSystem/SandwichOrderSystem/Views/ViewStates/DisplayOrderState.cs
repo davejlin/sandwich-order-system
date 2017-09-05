@@ -1,5 +1,4 @@
 ﻿using System;
-using SandwichOrderSystem.Views;
 
 namespace SandwichOrderSystem.Views.ViewStates
 {

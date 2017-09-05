@@ -1,6 +1,4 @@
-﻿using SandwichOrderSystem.Views;
-
-namespace SandwichOrderSystem.Views.ViewStates
+﻿namespace SandwichOrderSystem.Views.ViewStates
 {
     public abstract class ViewState : IViewState
     {

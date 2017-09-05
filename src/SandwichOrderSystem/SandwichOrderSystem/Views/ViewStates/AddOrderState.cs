@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SandwichOrderSystem.Views.ViewStates
+﻿namespace SandwichOrderSystem.Views.ViewStates
 {
     public class AddOrderState : ViewState
     {
