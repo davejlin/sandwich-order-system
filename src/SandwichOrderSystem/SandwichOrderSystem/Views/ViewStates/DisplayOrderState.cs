@@ -1,16 +1,33 @@
-﻿using System;
+﻿using SandwichOrderSystem.ViewControllers;
 
 namespace SandwichOrderSystem.Views.ViewStates
 {
     public class DisplayOrderState : ViewState
     {
-        public DisplayOrderState(IConsoleWrapper console) : base(console)
+        DisplayOrderViewController viewController;
+        public DisplayOrderState(DisplayOrderViewController viewController, IConsoleWrapper console) : base(console)
         {
+            this.viewController = viewController;
         }
 
         public override string MenuCommands()
         {
-            throw new NotImplementedException();
+            string command = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
+            switch (command)
+            {
+                case DisplayOrderViewController.CommandDisplay:
+                    break;
+                case DisplayOrderViewController.CommandReturn:
+                    returnToMain();
+                    break;
+                case DisplayOrderViewController.CommandQuit:
+                    break;
+                default:
+                    console.PromptInvalidCommand();
+                    break;
+            }
+
+            return command;
         }
     }
 }
