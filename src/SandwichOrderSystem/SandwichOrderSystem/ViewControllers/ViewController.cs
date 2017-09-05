@@ -1,5 +1,4 @@
-﻿using SandwichOrderSystem.Views;
-using SandwichOrderSystem.Views.ViewStates;
+﻿using SandwichOrderSystem.Views.ViewStates;
 using System;
 using System.Collections.Generic;
 using static SandwichOrderSystem.Constants;
