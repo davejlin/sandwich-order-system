@@ -1,6 +1,6 @@
 ﻿namespace SandwichOrderSystem
 {
-    public interface IOrderManager
+    public interface IConsoleAppManager
     {
         void start();
     }

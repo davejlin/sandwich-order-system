@@ -1,17 +1,17 @@
 ﻿using System;
 
-namespace SandwichOrderSystem.States.Level1
+namespace SandwichOrderSystem.Views.ViewStates
 {
-    public class Level1Context : ILevel1Context
+    public class ViewContext : IViewContext
     {
-        public Level1State MainState { get; }
-        public Level1State CancelOrderState { get; }
-        public Level1State DisplayOrderState { get; }
-        public Level1State AddOrderState { get; }
-        public Level1State FinishOrderState { get; }
+        public ViewState MainState { get; }
+        public ViewState CancelOrderState { get; }
+        public ViewState DisplayOrderState { get; }
+        public ViewState AddOrderState { get; }
+        public ViewState FinishOrderState { get; }
 
-        private Level1State state;
-        public Level1State State
+        private ViewState state;
+        public ViewState State
         {
             set
             {
@@ -20,7 +20,7 @@ namespace SandwichOrderSystem.States.Level1
             } 
        }
 
-        public Level1Context(
+        public ViewContext(
             MainState mainMenuState,
             CancelOrderState cancelOrderState,
             DisplayOrderState displayOrderState,
@@ -34,11 +34,6 @@ namespace SandwichOrderSystem.States.Level1
             FinishOrderState = finishOrderState;
 
             State = mainMenuState;
-        }
-
-        public void Action()
-        {
-            state.Action();
         }
 
         public string MenuCommands()

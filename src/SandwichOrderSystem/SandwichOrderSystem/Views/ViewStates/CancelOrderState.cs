@@ -1,15 +1,15 @@
 ﻿using System;
 using SandwichOrderSystem.Views;
 
-namespace SandwichOrderSystem.States.Level1
+namespace SandwichOrderSystem.Views.ViewStates
 {
-    public class CancelOrderState : Level1State
+    public class CancelOrderState : ViewState
     {
         public CancelOrderState(IConsoleWrapper console) : base(console)
         {
         }
 
-        public override void Action()
+        public void Action()
         {
             console.ClearOutput();
             string command = console.ReadInput(" Enter Y to confirm cancelling your order ... ", false);

@@ -1,11 +1,11 @@
-﻿using SandwichOrderSystem.States.Level1;
+﻿using SandwichOrderSystem.Views.ViewStates;
 
 namespace SandwichOrderSystem
 {
-    public class OrderManager : IOrderManager
+    public class ConsoleAppManager : IConsoleAppManager
     {
-        ILevel1Context level1Context;
-        public OrderManager(ILevel1Context level1Context)
+        IViewContext level1Context;
+        public ConsoleAppManager(IViewContext level1Context)
         {
             this.level1Context = level1Context;
         }

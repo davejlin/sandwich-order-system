@@ -1,17 +1,12 @@
 ﻿using System;
 using SandwichOrderSystem.Views;
 
-namespace SandwichOrderSystem.States.Level1
+namespace SandwichOrderSystem.Views.ViewStates
 {
-    public class MainState : Level1State
+    public class MainState : ViewState
     {
         public MainState(IConsoleWrapper console) : base(console)
         {
-        }
-
-        public override void Action()
-        {
-            // no action
         }
 
         private const string commandCancel = "c";

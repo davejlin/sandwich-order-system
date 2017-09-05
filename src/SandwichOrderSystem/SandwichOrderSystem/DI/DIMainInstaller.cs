@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using SandwichOrderSystem.States.Level1;
+using SandwichOrderSystem.Views.ViewStates;
 using SandwichOrderSystem.Views;
 
 namespace SandwichOrderSystem.DI
@@ -10,12 +10,12 @@ namespace SandwichOrderSystem.DI
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<IOrderManager>().ImplementedBy<OrderManager>());
+            container.Register(Component.For<IConsoleAppManager>().ImplementedBy<ConsoleAppManager>());
             container.Register(Component.For<IConsoleWrapper>().ImplementedBy<ConsoleWrapper>());
-            container.Register(Component.For<ILevel1Context>().ImplementedBy<Level1Context>());
+            container.Register(Component.For<IViewContext>().ImplementedBy<ViewContext>());
 
             container.Register(Types.FromThisAssembly()
-                .BasedOn<ILevel1State>()
+                .BasedOn<IViewState>()
                 .WithService.Base()
                 .WithService.Self());
         }

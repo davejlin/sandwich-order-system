@@ -7,8 +7,8 @@ namespace SandwichOrderSystem
         static void Main(string[] args)
         {
             var container = DIContainer.Container.InitContainer();
-            var orderManager = container.Resolve<IOrderManager>();
-            orderManager.start();
+            var consoleAppManager = container.Resolve<IConsoleAppManager>();
+            consoleAppManager.start();
             container.Dispose();
         }
     }

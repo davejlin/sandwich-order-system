@@ -8,7 +8,7 @@ namespace SandwichOrderSystem.Views
         {
             Console.WriteLine();
             Console.Write(prompt);
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().Trim();
             return forceToLowercase ? input.ToLower() : input;
         }
 

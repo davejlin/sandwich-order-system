@@ -1,17 +1,12 @@
 ﻿using System;
 using SandwichOrderSystem.Views;
 
-namespace SandwichOrderSystem.States.Level1
+namespace SandwichOrderSystem.Views.ViewStates
 {
-    public class FinishOrderState : Level1State
+    public class FinishOrderState : ViewState
     {
         public FinishOrderState(IConsoleWrapper console) : base(console)
         {
-        }
-
-        public override void Action()
-        {
-            throw new NotImplementedException();
         }
 
         public override string MenuCommands()

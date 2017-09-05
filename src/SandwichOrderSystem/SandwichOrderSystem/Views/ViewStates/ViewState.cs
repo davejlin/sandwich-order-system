@@ -1,21 +1,20 @@
 ﻿using SandwichOrderSystem.Views;
 
-namespace SandwichOrderSystem.States.Level1
+namespace SandwichOrderSystem.Views.ViewStates
 {
-    public abstract class Level1State : ILevel1State
+    public abstract class ViewState : IViewState
     {
         protected IConsoleWrapper console;
-        protected ILevel1Context context;
+        protected IViewContext context;
 
-        public Level1State(IConsoleWrapper console)
+        public ViewState(IConsoleWrapper console)
         {
             this.console = console;
         }
 
-        public abstract void Action();
         public abstract string MenuCommands();
 
-        public void SetContext(ILevel1Context context)
+        public void SetContext(IViewContext context)
         {
             this.context = context;
         }
