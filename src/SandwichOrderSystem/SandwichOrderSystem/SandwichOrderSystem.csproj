@@ -68,6 +68,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewControllers\IViewController.cs" />
+    <Compile Include="ViewControllers\ViewController_Initializers.cs" />
     <Compile Include="ViewControllers\ViewController.cs" />
     <Compile Include="Views\ViewState\IViewContext.cs" />
     <Compile Include="Views\ViewState\ViewContext.cs" />

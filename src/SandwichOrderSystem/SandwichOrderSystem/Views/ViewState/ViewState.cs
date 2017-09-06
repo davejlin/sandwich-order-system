@@ -1,4 +1,5 @@
 ﻿using SandwichOrderSystem.ViewControllers;
+using System.Collections.Generic;
 using static SandwichOrderSystem.Constants;
 
 namespace SandwichOrderSystem.Views.ViewState
@@ -38,13 +39,17 @@ namespace SandwichOrderSystem.Views.ViewState
             viewController.SetContext(context);
         }
 
-        private string menuPrompt(string title, string commands)
+        private string menuPrompt(string title, IEnumerable<string> menuCommands)
         {
             console.ClearOutput();
             console.OutputLine(title, true);
             console.OutputBlankLine();
             console.Output(VIEW_STATE_COMMANDS_TITLE);
-            console.OutputLine(commands, false);
+
+            foreach (var command in menuCommands)
+            {
+                console.OutputLine(command, false);
+            }
 
             return console.ReadInput(VIEW_STATE_ENTER_COMMAND_TITLE, true);
         }

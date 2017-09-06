@@ -21,7 +21,7 @@ namespace SandwichOrderSystem
         public const string VIEW_STATE_ENTER_COMMAND_TITLE = " Enter a Command: ";
 
         public const string MAIN_STATE_TITLE = " Main Order Menu ... ";
-        public const string ADD_ITEMS_STATE_TITLE = " Add Items Menu ... ";
+        public const string ADD_MEAL_STATE_TITLE = " Add Meal Menu ... ";
         public const string CANCEL_ORDER_STATE_TITLE = " Cancel Order Menu ... ";
         public const string DISPLAY_ORDER_STATE_TITLE = " Display Order Menu ... ";
         public const string FINISH_ORDER_STATE_TITLE = " Finish Order Menu ... ";
@@ -31,10 +31,10 @@ namespace SandwichOrderSystem
         public const string MAIN_STATE_COMMAND_DISPLAY = "d";
         public const string MAIN_STATE_COMMAND_FINISH = "f";
 
-        public const string ADD_ITEMS_COMMAND_ADD_SIGNATURE_SANDWICH = "s";
-        public const string ADD_ITEMS_COMMAND_ADD_CUSTOM_SANDWICH = "c";
-        public const string ADD_ITEMS_COMMAND_ADD_CHIPS = "h";
-        public const string ADD_ITEMS_COMMAND_ADD_DRINK = "d";
+        public const string ADD_MEAL_COMMAND_ADD_SIGNATURE_SANDWICH = "s";
+        public const string ADD_MEAL_COMMAND_ADD_CUSTOM_SANDWICH = "c";
+        public const string ADD_MEAL_COMMAND_ADD_CHIPS = "h";
+        public const string ADD_MEAL_COMMAND_ADD_DRINK = "d";
 
         public const string CANCEL_ORDER_COMMAND_CONFIRM = "c";
         public const string CANCEL_ORDER_ACTION_COMMAND_CONFIRM = "Y";
@@ -49,27 +49,29 @@ namespace SandwichOrderSystem
         public const string CANCEL_ORDER_ACTION_COMPLETE = " Your order was cancelled.";
         public const string CANCEL_ORDER_ACTION_INCOMPLETE = " Your order was not cancelled.";
 
-        public const string MAIN_STATE_COMMANDS = " a - Add Items Menu\n d - Display Order\n c - Cancel Order\n\n f - Finish Order\n\n q - Quit";
-        public const string ADD_ITEMS_STATE_COMMANDS = " s - Add Signature Sandwich\n c - Add Custom Sandwich\n d - Add Drink\n h - Add Chips\n\n r - Return to Main Menu\n q - Quit";
-        public const string DISPLAY_ORDER_STATE_COMMANDS = " d - Display Order\n\n r - Return to Main Menu\n q - Quit";
-        public const string FINISH_ORDER_STATE_COMMANDS = " f - Finish Order\n\n r - Return to Main Menu\n q - Quit";
-        public const string CANCEL_ORDER_STATE_COMMANDS = " c - Cancel Order\n\n r - Return to Main Menu\n q - Quit";
+        public const string ADD_MEAL_STATE_SIGNATURE_SANDWICH_COMMAND_TITLE = "Add Signature Sandwich";
+        public const string ADD_MEAL_STATE_CUSTOM_SANDWICH_COMMAND_TITLE = "Add Custom Sandwich";
+
+        public const string ADD_DRINK_STATE_COMMAND_TITLE = "Add Drink";
+        public const string ADD_CHIPS_STATE_COMMAND_TITLE = "Add Chips";
+        public const string ADD_CONDIMENT_STATE_COMMAND_TITLE = "Add Condiment";
+        public const string ADD_CHEESE_STATE_COMMAND_TITLE = "Add Cheese";
+        public const string ADD_VEGETABLE_STATE_COMMAND_TITLE = "Add Vegetable";
+
+        public const string ADD_MEAL_STATE_COMMAND_TITLE = "Add Meal";
+        public const string DISPLAY_ORDER_STATE_COMMAND_TITLE = "Display Order";
+        public const string CANCEL_ORDER_STATE_COMMAND_TITLE = "Cancel Order";
+        public const string FINISH_ORDER_STATE_COMMAND_TITLE = "Finish Order Checkout";
+
+        public const string VIEW_STATE_RETURN_COMMAND_TITLE = "Return to Main Menu";
+        public const string VIEW_STATE_QUIT_COMMAND_TITLE = "Quit";
 
         public static Dictionary<ViewStateNumber, string> MENU_TITLES = new Dictionary<ViewStateNumber, string> {
             { ViewStateNumber.Main, MAIN_STATE_TITLE },
-            { ViewStateNumber.Add, ADD_ITEMS_STATE_TITLE },
+            { ViewStateNumber.Add, ADD_MEAL_STATE_TITLE },
             { ViewStateNumber.Cancel, CANCEL_ORDER_STATE_TITLE },
             { ViewStateNumber.Display, DISPLAY_ORDER_STATE_TITLE },
             { ViewStateNumber.Finish, FINISH_ORDER_STATE_TITLE }
         };
-
-        public static Dictionary<ViewStateNumber, string> MENU_COMMANDS = new Dictionary<ViewStateNumber, string> {
-            { ViewStateNumber.Main, MAIN_STATE_COMMANDS },
-            { ViewStateNumber.Add, ADD_ITEMS_STATE_COMMANDS },
-            { ViewStateNumber.Cancel, CANCEL_ORDER_STATE_COMMANDS },
-            { ViewStateNumber.Display, DISPLAY_ORDER_STATE_COMMANDS },
-            { ViewStateNumber.Finish, FINISH_ORDER_STATE_COMMANDS }
-        };
-
     }
 }
