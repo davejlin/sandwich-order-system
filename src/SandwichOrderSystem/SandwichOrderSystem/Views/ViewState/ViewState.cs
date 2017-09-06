@@ -43,8 +43,8 @@ namespace SandwichOrderSystem.Views.ViewState
         {
             console.ClearOutput();
             console.OutputLine(title, true);
+            console.OutputLine(VIEW_STATE_COMMANDS_TITLE, true);
             console.OutputBlankLine();
-            console.Output(VIEW_STATE_COMMANDS_TITLE);
 
             foreach (var command in menuCommands)
             {
