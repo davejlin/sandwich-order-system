@@ -74,6 +74,8 @@
     <Compile Include="DataAccess\Db\DatabaseInitializerFactory.cs" />
     <Compile Include="DI\DISharedInstaller.cs" />
     <Compile Include="DataAccess\Db\IDatabaseInitializerFactory.cs" />
+    <Compile Include="Models\IOrders.cs" />
+    <Compile Include="Models\IOrder.cs" />
     <Compile Include="Models\Items\Chips.cs" />
     <Compile Include="Models\Items\Bread.cs" />
     <Compile Include="Models\Items\Cheese.cs" />
@@ -84,9 +86,13 @@
     <Compile Include="Models\Items\Item.cs" />
     <Compile Include="Models\Items\SignatureSandwich.cs" />
     <Compile Include="Models\Items\Vegetable.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ErrorHandler.cs" />
     <Compile Include="Services\IErrorHandler.cs" />
+    <Compile Include="Services\IOrderManager.cs" />
+    <Compile Include="Services\OrderManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Chips.txt">

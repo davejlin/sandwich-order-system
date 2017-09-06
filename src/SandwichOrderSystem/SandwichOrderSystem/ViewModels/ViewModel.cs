@@ -1,6 +1,7 @@
 ﻿using SandwichOrderSystem.Models;
 using SandwichOrderSystem.Services;
 using SandwichOrderSystemShared.Models;
+using SandwichOrderSystemShared.Services;
 using System;
 using System.Collections.Generic;
 
@@ -10,11 +11,12 @@ namespace SandwichOrderSystem.ViewModels
     {
         private IDictionary<Type, List<IMenuItem>> menuItemsDict;
 
-        IMenuItemsFactory menuItemsFactory;
+        IOrderManager orderManager;
 
-        public ViewModel(IMenuItemsFactory menuItemsFactory)
+        public ViewModel(IMenuItemsFactory menuItemsFactory, IOrderManager orderManager)
         {
-            this.menuItemsFactory = menuItemsFactory;
+            this.orderManager = orderManager;
+
             menuItemsDict = menuItemsFactory.CreateMenuItems();
         }
 

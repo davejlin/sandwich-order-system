@@ -18,14 +18,7 @@ namespace SandwichOrderSystem.Services
 
         public IMenuItem CreateMenuItem(IItem item, string menuCommand)
         {
-            IMenuItem menuItem = new MenuItem()
-            {
-                Id = item.Id,
-                Name = item.Name,
-                Price = item.Price,
-                MenuCommand = menuCommand
-            };
-
+            IMenuItem menuItem = new MenuItem(item, menuCommand);
             return menuItem;
         }
 
