@@ -109,16 +109,16 @@ namespace SandwichOrderSystem.ViewControllers
 
             menuCommandFunctions.Add(ViewStateNumber.Review, segueFunctionDict);
 
-            menuCommandFunctions.Add(ViewStateNumber.SignatureSandwich, createItemSegueFunctions<SignatureSandwich>(ViewStateNumber.Drink));
+            menuCommandFunctions.Add(ViewStateNumber.SignatureSandwich, createItemCommandFunctions<SignatureSandwich>(ViewStateNumber.Drink));
 
-            menuCommandFunctions.Add(ViewStateNumber.Bread, createItemSegueFunctions<Bread>(ViewStateNumber.Filling));
-            menuCommandFunctions.Add(ViewStateNumber.Filling, createItemSegueFunctions<Filling>(ViewStateNumber.Cheese));
+            menuCommandFunctions.Add(ViewStateNumber.Bread, createItemCommandFunctions<Bread>(ViewStateNumber.Filling));
+            menuCommandFunctions.Add(ViewStateNumber.Filling, createItemCommandFunctions<Filling>(ViewStateNumber.Cheese));
 
-            menuCommandFunctions.Add(ViewStateNumber.Cheese, createItemSegueFunctions<Cheese>(ViewStateNumber.Vegetable, true));
-            menuCommandFunctions.Add(ViewStateNumber.Vegetable, createItemSegueFunctions<Vegetable>(ViewStateNumber.Condiment, true));
-            menuCommandFunctions.Add(ViewStateNumber.Condiment, createItemSegueFunctions<Condiment>(ViewStateNumber.Drink, true));
-            menuCommandFunctions.Add(ViewStateNumber.Drink, createItemSegueFunctions<Drink>(ViewStateNumber.Chips, true));
-            menuCommandFunctions.Add(ViewStateNumber.Chips, createItemSegueFunctions<Chips>(ViewStateNumber.Review, true));
+            menuCommandFunctions.Add(ViewStateNumber.Cheese, createItemCommandFunctions<Cheese>(ViewStateNumber.Vegetable, true));
+            menuCommandFunctions.Add(ViewStateNumber.Vegetable, createItemCommandFunctions<Vegetable>(ViewStateNumber.Condiment, true));
+            menuCommandFunctions.Add(ViewStateNumber.Condiment, createItemCommandFunctions<Condiment>(ViewStateNumber.Drink, true));
+            menuCommandFunctions.Add(ViewStateNumber.Drink, createItemCommandFunctions<Drink>(ViewStateNumber.Chips, true));
+            menuCommandFunctions.Add(ViewStateNumber.Chips, createItemCommandFunctions<Chips>(ViewStateNumber.Review, true));
 
             menuCommandFunctions.Add(ViewStateNumber.CustomSandwich, deleteQuitSegueFunctions);
 
@@ -180,24 +180,24 @@ namespace SandwichOrderSystem.ViewControllers
             return segueFunctionDict;
         }
 
-        private Dictionary<string, Action> createItemSegueFunctions<T>(ViewStateNumber nextState, bool addSkipForOptionalItem = false) where T : class, IItem
+        private Dictionary<string, Action> createItemCommandFunctions<T>(ViewStateNumber nextState, bool addSkipForOptionalItem = false) where T : class, IItem
         {
-            var segueFunctionDict = new Dictionary<string, Action>();
+            var commandFunctionDict = new Dictionary<string, Action>();
             var itemMenuCommands = viewModel.GetItemCommands<T>();
 
             foreach (string command in itemMenuCommands)
             {
-                segueFunctionDict.Add(command, () => context.ViewNumber = nextState);
+                commandFunctionDict.Add(command, () => context.ViewNumber = nextState);
             }
 
             if (addSkipForOptionalItem)
             {
-                segueFunctionDict.Add(SKIP_COMMAND, () => context.ViewNumber = nextState);
+                commandFunctionDict.Add(SKIP_COMMAND, () => context.ViewNumber = nextState);
             }
 
-            segueFunctionDict = segueFunctionDict.Concat(createDeleteQuitSegueFunctions()).ToDictionary(x => x.Key, x => x.Value);
+            commandFunctionDict = commandFunctionDict.Concat(createDeleteQuitSegueFunctions()).ToDictionary(x => x.Key, x => x.Value);
 
-            return segueFunctionDict;
+            return commandFunctionDict;
         }
     }
 }
