@@ -44,9 +44,9 @@ namespace SandwichOrderSystem.ViewControllers
         {
             this.command = command;
 
-            if (menuSegueFunctions[context.ViewNumber].ContainsKey(command))
+            if (menuCommandFunctions[context.ViewNumber].ContainsKey(command))
             {
-                var segueFunction = menuSegueFunctions[context.ViewNumber][command];
+                var segueFunction = menuCommandFunctions[context.ViewNumber][command];
                 segueFunction();
                 return true;
             }
