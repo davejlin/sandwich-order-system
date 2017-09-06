@@ -1,6 +1,5 @@
 ﻿using SandwichOrderSystem.Models;
 using SandwichOrderSystem.Services;
-using SandwichOrderSystemShared.DataAccess;
 using SandwichOrderSystemShared.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ namespace SandwichOrderSystem.ViewModels
 {
     public class ViewModel : IViewModel
     {
-        private Dictionary<Type, List<IMenuItem>> menuItemsDict;
+        private IDictionary<Type, List<IMenuItem>> menuItemsDict;
 
         IMenuItemsFactory menuItemsFactory;
 
@@ -20,9 +19,9 @@ namespace SandwichOrderSystem.ViewModels
         }
 
         string menuCommandFormat = " {0} - {1,-20} {2}";
-        public IEnumerable<string> GetItemForMenuCommands<T>() where T : class, IItem
+        public IEnumerable<string> GetItemCommandMenu<T>() where T : class, IItem
         {
-            List<string> itemMenuCommands = new List<string>();
+            List<string> commandMenu = new List<string>();
 
             if (menuItemsDict.ContainsKey(typeof(T)))
             {
@@ -32,12 +31,31 @@ namespace SandwichOrderSystem.ViewModels
                     foreach (IMenuItem item in itemList)
                     {
                         string command = string.Format(menuCommandFormat, item.MenuCommand, item.Name, item.Price);
-                        itemMenuCommands.Add(command);
+                        commandMenu.Add(command);
                     }
                 }
             }
 
-            return itemMenuCommands;
+            return commandMenu;
+        }
+
+        public IEnumerable<string> GetItemCommands<T>() where T : class, IItem
+        {
+            List<string> itemCommands = new List<string>();
+
+            if (menuItemsDict.ContainsKey(typeof(T)))
+            {
+                var itemList = menuItemsDict[typeof(T)];
+                if (itemList != null)
+                {
+                    foreach (IMenuItem item in itemList)
+                    {
+                        itemCommands.Add(item.MenuCommand);
+                    }
+                }
+            }
+
+            return itemCommands;
         }
     }
 }

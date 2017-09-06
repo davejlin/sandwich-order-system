@@ -8,6 +8,6 @@ namespace SandwichOrderSystem.Services
     public interface IMenuItemsFactory
     {
         IMenuItem CreateMenuItem(IItem item, string menuCommand);
-        Dictionary<Type, List<IMenuItem>> CreateMenuItems();
+        IDictionary<Type, List<IMenuItem>> CreateMenuItems();
     }
 }
