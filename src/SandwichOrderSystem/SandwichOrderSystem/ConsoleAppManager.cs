@@ -13,7 +13,7 @@ namespace SandwichOrderSystem
         public void start()
         {
             string command = "";
-            while (command != Constants.VIEW_STATE_COMMAND_QUIT)
+            while (command != Constants.QUIT_COMMAND)
             {
                 command = viewContext.MenuCommands();
                 viewContext.Action();

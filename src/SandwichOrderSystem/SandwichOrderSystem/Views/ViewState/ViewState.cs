@@ -43,7 +43,7 @@ namespace SandwichOrderSystem.Views.ViewState
         {
             console.ClearOutput();
             console.OutputLine(title, true);
-            console.OutputLine(VIEW_STATE_COMMANDS_TITLE, true);
+            console.OutputLine(COMMANDS_TITLE, true);
             console.OutputBlankLine();
 
             foreach (var command in menuCommands)
@@ -51,7 +51,7 @@ namespace SandwichOrderSystem.Views.ViewState
                 console.OutputLine(command, false);
             }
 
-            return console.ReadInput(VIEW_STATE_ENTER_COMMAND_TITLE, true);
+            return console.ReadInput(ENTER_COMMAND_TITLE, true);
         }
 
         private void returnToMain()
