@@ -59,5 +59,10 @@ namespace SandwichOrderSystem.ViewModels
 
             return itemCommands;
         }
+
+        public IEnumerable<IOrder> GetOrders()
+        {
+            return orderManager.Orders.OrderCollection;
+        }
     }
 }
