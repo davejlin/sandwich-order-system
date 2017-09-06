@@ -1,4 +1,5 @@
-﻿using SandwichOrderSystem.Views.ViewState;
+﻿using SandwichOrderSystem.ViewModels;
+using SandwichOrderSystem.Views.ViewState;
 using System.Collections.Generic;
 using static SandwichOrderSystem.Constants;
 
@@ -6,11 +7,14 @@ namespace SandwichOrderSystem.ViewControllers
 {
     public partial class ViewController : IViewController
     {
+        private IViewModel viewModel;
         private IViewContext context;
         private string command;
 
-        public ViewController()
+        public ViewController(IViewModel viewModel)
         {
+            this.viewModel = viewModel;
+
             initMenuCommandFunctions();
             initMenuCommands();
         }

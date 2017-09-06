@@ -37,15 +37,15 @@ namespace SandwichOrderSystem
         public const string CANCEL_STATE_TITLE = " Cancel Order ... ";
         public const string DISPLAY_STATE_TITLE = " Display Order ... ";
         public const string FINISH_STATE_TITLE = " Finish Order Checkout ... ";
-        public const string SIGNATURE_SANDWICH_STATE_TITLE = " Signature Sandwich Menu ... ";
+        public const string SIGNATURE_SANDWICH_STATE_TITLE = " Please choose a Signature Sandwich ... ";
         public const string CUSTOM_SANDWICH_STATE_TITLE = " Custom Sandwich Menu ... ";
-        public const string BREAD_STATE_TITLE = " Bread Menu ... ";
-        public const string FILLING_STATE_TITLE = " Filling Menu ... ";
-        public const string CHEESE_STATE_TITLE = " Cheese Menu ... ";
-        public const string VEGETABLE_STATE_TITLE = " Vegetable Menu ... ";
-        public const string CONDIMENT_STATE_TITLE = " Condiment Menu ... ";
-        public const string DRINK_STATE_TITLE = " Drink Menu ... ";
-        public const string CHIPS_STATE_TITLE = " Chips Menu ... ";
+        public const string BREAD_STATE_TITLE = " Please choose your Bread ... ";
+        public const string FILLING_STATE_TITLE = " Please choose your Filling ... ";
+        public const string CHEESE_STATE_TITLE = " Please choose your Cheese ... ";
+        public const string VEGETABLE_STATE_TITLE = " Please choose your Vegetable ... ";
+        public const string CONDIMENT_STATE_TITLE = " Please choose your Condiment ... ";
+        public const string DRINK_STATE_TITLE = " Please choose your Drink ... ";
+        public const string CHIPS_STATE_TITLE = " Please choose your Chips ... ";
 
         public const string MAIN_STATE_COMMAND_ADD = "a";
         public const string MAIN_STATE_COMMAND_CANCEL = "c";

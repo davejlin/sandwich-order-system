@@ -74,6 +74,7 @@
     <Compile Include="DataAccess\Db\DatabaseInitializerFactory.cs" />
     <Compile Include="DI\DISharedInstaller.cs" />
     <Compile Include="DataAccess\Db\IDatabaseInitializerFactory.cs" />
+    <Compile Include="Models\Items\Chips.cs" />
     <Compile Include="Models\Items\Bread.cs" />
     <Compile Include="Models\Items\Cheese.cs" />
     <Compile Include="Models\Items\Condiment.cs" />
@@ -84,8 +85,13 @@
     <Compile Include="Models\Items\SignatureSandwich.cs" />
     <Compile Include="Models\Items\Vegetable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ErrorHandler.cs" />
+    <Compile Include="Services\IErrorHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Chips.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\Bread.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

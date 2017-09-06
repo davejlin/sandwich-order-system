@@ -4,6 +4,8 @@ using Castle.Windsor;
 using SandwichOrderSystem.Views.ViewState;
 using SandwichOrderSystem.Views;
 using SandwichOrderSystem.ViewControllers;
+using SandwichOrderSystem.ViewModels;
+using SandwichOrderSystem.Services;
 
 namespace SandwichOrderSystem.DI
 {
@@ -16,6 +18,8 @@ namespace SandwichOrderSystem.DI
             container.Register(Component.For<IViewContext>().ImplementedBy<ViewContext>());
             container.Register(Component.For<IViewState>().ImplementedBy<ViewState>());
             container.Register(Component.For<IViewController>().ImplementedBy<ViewController>());
+            container.Register(Component.For<IViewModel>().ImplementedBy<ViewModel>());
+            container.Register(Component.For<IMenuItemsFactory>().ImplementedBy<MenuItemsFactory>());
         }
     }
 }

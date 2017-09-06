@@ -4,6 +4,7 @@ using Castle.Windsor;
 using SandwichOrderSystemShared.DataAccess;
 using SandwichOrderSystemShared.DataAccess.Db;
 using SandwichOrderSystemShared.DataAccess.Deserializer;
+using SandwichOrderSystemShared.Services;
 
 namespace SandwichOrderSystemShared.DI
 {
@@ -33,6 +34,7 @@ namespace SandwichOrderSystemShared.DI
             container.Register(Component.For<IDataParser>().ImplementedBy<DataParser>());
             container.Register(Component.For<IFileSystemManager>().ImplementedBy<FileSystemManager>());
             container.Register(Component.For<IItemFactory>().ImplementedBy<ItemFactory>());
+            container.Register(Component.For<IErrorHandler>().ImplementedBy<ErrorHandler>());
 
             container.Register(Component.For<IContextFactory>().ImplementedBy<ContextFactory>());
             container.Register(Component.For<IDatabaseInitializerFactory>().ImplementedBy<DatabaseInitializerFactory>());
