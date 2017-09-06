@@ -8,8 +8,8 @@ namespace SandwichOrderSystem
         {
             Main = 0,
             Add,
-            Display,
-            Cancel,
+            List,
+            Delete,
             Finish,
             Quit,
 
@@ -37,8 +37,8 @@ namespace SandwichOrderSystem
 
         public const string MAIN_STATE_TITLE = " Main Menu ... ";
         public const string ADD_MEAL_STATE_TITLE = " Add Meal Menu ... ";
-        public const string CANCEL_STATE_TITLE = " Cancel Order ... ";
-        public const string DISPLAY_STATE_TITLE = " Display Order ... ";
+        public const string DELETE_STATE_TITLE = " Delete Order ... ";
+        public const string LIST_STATE_TITLE = " List Order ... ";
         public const string FINISH_STATE_TITLE = " Please review your total order ... ";
         public const string REVIEW_STATE_TITLE = " Please review your order ... ";
         public const string SIGNATURE_SANDWICH_STATE_TITLE = " Please choose a Signature Sandwich ... ";
@@ -53,14 +53,13 @@ namespace SandwichOrderSystem
         public const string PAY_STATE_TITLE = " Thank you for your order! ... ";
 
         public const string MAIN_STATE_ADD_COMMAND = "a";
-        public const string MAIN_STATE_CANCEL_COMMAND = "c";
-        public const string MAIN_STATE_DISPLAY_COMMAND = "d";
+        public const string MAIN_STATE_LIST_COMMAND = "l";
         public const string MAIN_STATE_FINISH_COMMAND = "f";
 
         public const string ADD_MEAL_SIGNATURE_SANDWICH_COMMAND = "s";
         public const string ADD_MEAL_CUSTOM_SANDWICH_COMMAND = "c";
 
-        public const string CANCEL_COMMAND = "c";
+        public const string DELETE_COMMAND = "d";
         public const string FINISH_STATE_PAY_COMMAND = "p";
         public const string REVIEW_STATE_FINISH_COMMAND = "f";
 
@@ -71,29 +70,28 @@ namespace SandwichOrderSystem
         public const string ADD_MEAL_STATE_CUSTOM_SANDWICH_COMMAND_TITLE = "Add Custom Sandwich";
 
         public const string ADD_MEAL_STATE_COMMAND_TITLE = "Add new order";
-        public const string DISPLAY_STATE_COMMAND_TITLE = "Display orders";
-        public const string CANCEL_STATE_COMMAND_TITLE = "Cancel order";
+        public const string LIST_STATE_COMMAND_TITLE = "List orders";
+        public const string DELETE_STATE_COMMAND_TITLE = "Delete order";
 
         public const string FINISH_STATE_COMMAND_TITLE = "Finish orders";
         public const string FINISH_STATE_PAY_COMMAND_TITLE = "Pay and checkout";
 
-        public const string REVIEW_STATE_ADD_COMMAND_TITLE = "Finish this order";
+        public const string REVIEW_STATE_FINISH_COMMAND_TITLE = "Finish this order";
 
+        public const string VIEW_STATE_DELETE_COMMAND_TITLE = "Delete this order";
         public const string VIEW_STATE_RETURN_COMMAND_TITLE = "Return to Main Menu";
         public const string VIEW_STATE_QUIT_COMMAND_TITLE = "Quit";
 
-        public const string ADD_STATE_CANCEL_COMMAND_TITLE = "Cancel this order";
-
-        public const string CANCEL_ACTION_COMMAND_CONFIRM = "Y";
-        public const string CANCEL_ACTION_CONFIRM = " Enter Y to confirm cancelling your order ... ";
-        public const string CANCEL_ACTION_COMPLETE = " Your order was cancelled.";
-        public const string CANCEL_ACTION_INCOMPLETE = " Your order was not cancelled.";
+        public const string DELETE_ACTION_COMMAND_CONFIRM = "Y";
+        public const string DELETE_ACTION_CONFIRM = " Enter Y to confirm deleting your order ... ";
+        public const string DELETE_ACTION_COMPLETE = " Your order was deleted.";
+        public const string DELETE_ACTION_INCOMPLETE = " Your order was not deleted.";
 
         public static Dictionary<ViewStateNumber, string> MENU_TITLES = new Dictionary<ViewStateNumber, string> {
             { ViewStateNumber.Main, MAIN_STATE_TITLE },
             { ViewStateNumber.Add, ADD_MEAL_STATE_TITLE },
-            { ViewStateNumber.Cancel, CANCEL_STATE_TITLE },
-            { ViewStateNumber.Display, DISPLAY_STATE_TITLE },
+            { ViewStateNumber.Delete, DELETE_STATE_TITLE },
+            { ViewStateNumber.List, LIST_STATE_TITLE },
             { ViewStateNumber.Finish, FINISH_STATE_TITLE },
             { ViewStateNumber.Quit, ""},
             { ViewStateNumber.SignatureSandwich, SIGNATURE_SANDWICH_STATE_TITLE },

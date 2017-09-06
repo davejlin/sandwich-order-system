@@ -47,12 +47,11 @@ namespace SandwichOrderSystem.Services
 
         private void loadMenuItem<T>() where T : class, IItem
         {
-            List<IMenuItem> menuItems = new List<IMenuItem>();
-            int itemNumber = 1;
-
             IEnumerable<T> itemList = repository.GetItem<T>();
             if (itemList != null)
             {
+                List<IMenuItem> menuItems = new List<IMenuItem>();
+                int itemNumber = 1;
                 foreach (IItem item in itemList)
                 {
 

@@ -22,8 +22,8 @@ namespace SandwichOrderSystem.ViewControllers
             var commandList = new List<string>();
             commandList.Add(string.Format(menuCommandFormat, MAIN_STATE_ADD_COMMAND, ADD_MEAL_STATE_COMMAND_TITLE));
             commandList.Add(blank);
-            commandList.Add(string.Format(menuCommandFormat, MAIN_STATE_DISPLAY_COMMAND, DISPLAY_STATE_COMMAND_TITLE));
-            commandList.Add(string.Format(menuCommandFormat, MAIN_STATE_CANCEL_COMMAND, CANCEL_STATE_COMMAND_TITLE));
+            commandList.Add(string.Format(menuCommandFormat, MAIN_STATE_LIST_COMMAND, LIST_STATE_COMMAND_TITLE));
+            commandList.Add(string.Format(menuCommandFormat, DELETE_COMMAND, DELETE_STATE_COMMAND_TITLE));
             commandList.Add(string.Format(menuCommandFormat, MAIN_STATE_FINISH_COMMAND, FINISH_STATE_COMMAND_TITLE));
             commandList.Add(blank);
             commandList.Add(string.Format(menuCommandFormat, VIEW_STATE_COMMAND_QUIT, VIEW_STATE_QUIT_COMMAND_TITLE));
@@ -38,8 +38,8 @@ namespace SandwichOrderSystem.ViewControllers
             menuCommands.Add(ViewStateNumber.Add, commandList);
 
             commandList = new List<string>();
-            commandList.Add(string.Format(menuCommandFormat, REVIEW_STATE_FINISH_COMMAND, REVIEW_STATE_ADD_COMMAND_TITLE));
-            commandList.AddRange(returnQuitCommands);
+            commandList.Add(string.Format(menuCommandFormat, REVIEW_STATE_FINISH_COMMAND, REVIEW_STATE_FINISH_COMMAND_TITLE));
+            commandList.AddRange(createDeleteQuitCommands());
 
             menuCommands.Add(ViewStateNumber.Review, commandList);
 
@@ -52,8 +52,8 @@ namespace SandwichOrderSystem.ViewControllers
             commandList = new List<string>();
             commandList.AddRange(returnQuitCommands);
 
-            menuCommands.Add(ViewStateNumber.Display, commandList);
-            menuCommands.Add(ViewStateNumber.Cancel, commandList);
+            menuCommands.Add(ViewStateNumber.List, commandList);
+            menuCommands.Add(ViewStateNumber.Delete, commandList);
             menuCommands.Add(ViewStateNumber.CustomSandwich, commandList);
             menuCommands.Add(ViewStateNumber.Pay, commandList);
 
@@ -78,11 +78,12 @@ namespace SandwichOrderSystem.ViewControllers
             menuCommandFunctions = new Dictionary<ViewStateNumber, Dictionary<string, Action>>();
 
             var returnQuitCommandFunctions = createReturnQuitCommandFunctions();
+            var deleteQuitCommandFunctions = createDeleteQuitCommandFunctions();
 
             var commandFunctionDict = new Dictionary<string, Action>();
             commandFunctionDict.Add(MAIN_STATE_ADD_COMMAND, () => context.ViewNumber = ViewStateNumber.Add);
-            commandFunctionDict.Add(MAIN_STATE_CANCEL_COMMAND, () => context.ViewNumber = ViewStateNumber.Cancel);
-            commandFunctionDict.Add(MAIN_STATE_DISPLAY_COMMAND, () => context.ViewNumber = ViewStateNumber.Display);
+            commandFunctionDict.Add(DELETE_COMMAND, () => context.ViewNumber = ViewStateNumber.Delete);
+            commandFunctionDict.Add(MAIN_STATE_LIST_COMMAND, () => context.ViewNumber = ViewStateNumber.List);
             commandFunctionDict.Add(MAIN_STATE_FINISH_COMMAND, () => context.ViewNumber = ViewStateNumber.Finish);
             commandFunctionDict.Add(VIEW_STATE_COMMAND_QUIT, () => context.ViewNumber = ViewStateNumber.Quit);
 
@@ -103,23 +104,23 @@ namespace SandwichOrderSystem.ViewControllers
 
             commandFunctionDict = new Dictionary<string, Action>();
             commandFunctionDict.Add(REVIEW_STATE_FINISH_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
-            commandFunctionDict = commandFunctionDict.Concat(returnQuitCommandFunctions).ToDictionary(x => x.Key, x => x.Value);
+            commandFunctionDict = commandFunctionDict.Concat(deleteQuitCommandFunctions).ToDictionary(x => x.Key, x => x.Value);
 
             menuCommandFunctions.Add(ViewStateNumber.Review, commandFunctionDict);
 
             menuCommandFunctions.Add(ViewStateNumber.SignatureSandwich, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Drink));
-            menuCommandFunctions.Add(ViewStateNumber.CustomSandwich, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Bread));
-            menuCommandFunctions.Add(ViewStateNumber.Bread, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Filling));
-            menuCommandFunctions.Add(ViewStateNumber.Filling, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Cheese));
-            menuCommandFunctions.Add(ViewStateNumber.Cheese, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Vegetable));
-            menuCommandFunctions.Add(ViewStateNumber.Vegetable, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Condiment));
-            menuCommandFunctions.Add(ViewStateNumber.Condiment, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Drink));
-            menuCommandFunctions.Add(ViewStateNumber.Drink, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Chips));
-            menuCommandFunctions.Add(ViewStateNumber.Chips, createItemCommandFunction<SignatureSandwich>(ViewStateNumber.Review));
 
+            menuCommandFunctions.Add(ViewStateNumber.Bread, createItemCommandFunction<Bread>(ViewStateNumber.Filling));
+            menuCommandFunctions.Add(ViewStateNumber.Filling, createItemCommandFunction<Filling>(ViewStateNumber.Cheese));
+            menuCommandFunctions.Add(ViewStateNumber.Cheese, createItemCommandFunction<Cheese>(ViewStateNumber.Vegetable));
+            menuCommandFunctions.Add(ViewStateNumber.Vegetable, createItemCommandFunction<Vegetable>(ViewStateNumber.Condiment));
+            menuCommandFunctions.Add(ViewStateNumber.Condiment, createItemCommandFunction<Condiment>(ViewStateNumber.Drink));
+            menuCommandFunctions.Add(ViewStateNumber.Drink, createItemCommandFunction<Drink>(ViewStateNumber.Chips));
+            menuCommandFunctions.Add(ViewStateNumber.Chips, createItemCommandFunction<Chips>(ViewStateNumber.Review));
 
-            menuCommandFunctions.Add(ViewStateNumber.Display, returnQuitCommandFunctions);
-            menuCommandFunctions.Add(ViewStateNumber.Cancel, returnQuitCommandFunctions);
+            menuCommandFunctions.Add(ViewStateNumber.CustomSandwich, deleteQuitCommandFunctions);
+            menuCommandFunctions.Add(ViewStateNumber.List, returnQuitCommandFunctions);
+            menuCommandFunctions.Add(ViewStateNumber.Delete, returnQuitCommandFunctions);
             menuCommandFunctions.Add(ViewStateNumber.Pay, returnQuitCommandFunctions);
 
             commandFunctionDict = new Dictionary<string, Action>();
@@ -136,13 +137,20 @@ namespace SandwichOrderSystem.ViewControllers
             return commandList;
         }
 
+        private IEnumerable<string> createDeleteQuitCommands()
+        {
+            var commandList = new List<string>();
+            commandList.Add(blank);
+            commandList.Add(string.Format(menuCommandFormat, DELETE_COMMAND, VIEW_STATE_DELETE_COMMAND_TITLE));
+            commandList.Add(string.Format(menuCommandFormat, VIEW_STATE_COMMAND_QUIT, VIEW_STATE_QUIT_COMMAND_TITLE));
+            return commandList;
+        }
+
         private IEnumerable<string> createItemCommandList<T>() where T : class, IItem
         {
             var commandList = new List<string>();
             commandList.AddRange(viewModel.GetItemCommandMenu<T>());
-            commandList.Add(blank);
-            commandList.Add(string.Format(menuCommandFormat, CANCEL_COMMAND, ADD_STATE_CANCEL_COMMAND_TITLE));
-            commandList.Add(string.Format(menuCommandFormat, VIEW_STATE_COMMAND_QUIT, VIEW_STATE_QUIT_COMMAND_TITLE));
+            commandList.AddRange(createDeleteQuitCommands());
             return commandList;
         }
 
@@ -150,6 +158,14 @@ namespace SandwichOrderSystem.ViewControllers
         {
             var commandFunctionDict = new Dictionary<string, Action>();
             commandFunctionDict.Add(VIEW_STATE_COMMAND_RETURN, () => context.ViewNumber = ViewStateNumber.Main);
+            commandFunctionDict.Add(VIEW_STATE_COMMAND_QUIT, () => context.ViewNumber = ViewStateNumber.Quit);
+            return commandFunctionDict;
+        }
+
+        private Dictionary<string, Action> createDeleteQuitCommandFunctions()
+        {
+            var commandFunctionDict = new Dictionary<string, Action>();
+            commandFunctionDict.Add(DELETE_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
             commandFunctionDict.Add(VIEW_STATE_COMMAND_QUIT, () => context.ViewNumber = ViewStateNumber.Quit);
             return commandFunctionDict;
         }
@@ -164,8 +180,7 @@ namespace SandwichOrderSystem.ViewControllers
                 commandFunctionDict.Add(command, () => context.ViewNumber = nextState);
             }
 
-            commandFunctionDict.Add(CANCEL_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
-            commandFunctionDict.Add(VIEW_STATE_COMMAND_QUIT, () => context.ViewNumber = ViewStateNumber.Quit);
+            commandFunctionDict = commandFunctionDict.Concat(createDeleteQuitCommandFunctions()).ToDictionary(x => x.Key, x => x.Value);
 
             return commandFunctionDict;
         }
