@@ -20,6 +20,7 @@ namespace SandwichOrderSystem.ViewControllers
 
             viewState.SetViewController(this);
 
+            viewContext = ViewContext.Main;
             initMenuSegueActions();
             initMenuCommands();
         }
