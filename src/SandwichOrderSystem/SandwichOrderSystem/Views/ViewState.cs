@@ -7,30 +7,11 @@ namespace SandwichOrderSystem.Views
 {
     public class ViewState : IViewState
     {
-        private IViewController viewController;
         private IConsoleWrapper console;
 
         public ViewState(IConsoleWrapper console)
         {
             this.console = console;
-        }
-
-        public void SetViewController(IViewController viewController)
-        {
-            this.viewController = viewController;
-        }
-
-        public void Action()
-        {
-            var segueAction = viewController.GetSegueAction();
-            if (segueAction != null)
-            {
-                segueAction();
-            }
-            else
-            {
-                promptInvalidCommand();
-            }
         }
 
         public string GetMenuCommand(string menuTitle, IEnumerable<string> menuCommands)
@@ -48,17 +29,17 @@ namespace SandwichOrderSystem.Views
             return console.ReadInput(ENTER_COMMAND_TITLE, true);
         }
 
-        private void promptToContinue()
-        {
-            console.OutputBlankLine();
-            console.ReadInput(CONSOLE_PROMPT_TO_CONTINUE, false);
-        }
-
-        public void promptInvalidCommand()
+        public void PromptInvalidCommand()
         {
             console.ClearOutput();
             console.OutputLine(CONSOLE_INVALID_COMMAND, true);
-            promptToContinue();
+            PromptToContinue();
+        }
+
+        public void PromptToContinue()
+        {
+            console.OutputBlankLine();
+            console.ReadInput(CONSOLE_PROMPT_TO_CONTINUE, false);
         }
     }
 }

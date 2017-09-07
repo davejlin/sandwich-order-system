@@ -18,8 +18,6 @@ namespace SandwichOrderSystem.ViewControllers
             this.viewState = viewState;
             this.viewModel = viewModel;
 
-            viewState.SetViewController(this);
-
             viewContext = ViewContext.Main;
             initMenuSegueActions();
             initMenuCommands();
@@ -30,11 +28,25 @@ namespace SandwichOrderSystem.ViewControllers
             while (currentCommand != QUIT_COMMAND)
             {
                 currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext]);
-                viewState.Action();
+
+                segue();
             }
         }
 
-        public Action GetSegueAction()
+        private void segue()
+        {
+            var segueAction = getSegueAction();
+            if (segueAction != null)
+            {
+                segueAction();
+            }
+            else
+            {
+                viewState.PromptInvalidCommand();
+            }
+        }
+
+        private Action getSegueAction()
         {
             if (menuSegueActions[viewContext].ContainsKey(currentCommand))
             {
