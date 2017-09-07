@@ -1,4 +1,5 @@
 ﻿using SandwichOrderSystem.Views;
+using System;
 using System.Collections.Generic;
 
 namespace SandwichOrderSystem.ViewControllers
@@ -8,6 +9,6 @@ namespace SandwichOrderSystem.ViewControllers
         void SetContext(IViewContext context);
         string MenuTitle { get; }
         IEnumerable<string> MenuCommands { get; }
-        bool ExecuteUserCommand(string command);
+        Action GetSegueAction(string command);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SandwichOrderSystem.ViewControllers;
+using System;
 using System.Collections.Generic;
 using static SandwichOrderSystem.Constants;
 
@@ -6,8 +7,9 @@ namespace SandwichOrderSystem.Views
 {
     public class ViewState : IViewState
     {
-        private IConsoleWrapper console;
+        private string currentCommand = "";
 
+        private IConsoleWrapper console;
         private IViewController viewController;
         private IViewContext context;
 
@@ -19,18 +21,21 @@ namespace SandwichOrderSystem.Views
 
         public void Action()
         {
-
-        }
-        public string MenuCommands()
-        {
-            string command = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
-
-            if (!viewController.ExecuteUserCommand(command))
+            Action segueAction = viewController.GetSegueAction(currentCommand);
+            if (segueAction != null)
+            {
+                segueAction();
+            }
+            else
             {
                 PromptInvalidCommand();
             }
+        }
 
-            return command;
+        public string MenuCommands()
+        {
+            currentCommand = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
+            return currentCommand;
         }
 
         public void SetContext(IViewContext context)

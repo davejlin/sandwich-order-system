@@ -1,5 +1,6 @@
 ﻿using SandwichOrderSystem.ViewModels;
 using SandwichOrderSystem.Views;
+using System;
 using System.Collections.Generic;
 using static SandwichOrderSystem.Constants;
 
@@ -40,18 +41,16 @@ namespace SandwichOrderSystem.ViewControllers
             }
         }
 
-        public bool ExecuteUserCommand(string command)
+        public Action GetSegueAction(string command)
         {
             this.command = command;
 
             if (menuSegueActions[context.ViewNumber].ContainsKey(command))
             {
-                var segueFunction = menuSegueActions[context.ViewNumber][command];
-                segueFunction();
-                return true;
+                return menuSegueActions[context.ViewNumber][command];
             }
 
-            return false;
+            return null;
         }
     }
 }
