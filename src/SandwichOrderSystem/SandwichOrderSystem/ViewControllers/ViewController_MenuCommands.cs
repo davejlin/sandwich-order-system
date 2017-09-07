@@ -87,15 +87,15 @@ namespace SandwichOrderSystem.ViewControllers
             return commandList;
         }
 
-        private IEnumerable<string> createItemCommandList<T>(bool addSkipForOptionalItem = false) where T : class, IItem
+        private IEnumerable<string> createItemCommandList<T>(bool addNextForOptionalItem = false) where T : class, IItem
         {
             var commandList = new List<string>();
             commandList.AddRange(viewModel.GetItemCommandMenu<T>());
 
-            if (addSkipForOptionalItem)
+            if (addNextForOptionalItem)
             {
                 commandList.Add(SEPARATOR);
-                commandList.Add(string.Format(ITEM_LIST_FORMAT, SKIP_COMMAND, SKIP_COMMAND_TITLE));
+                commandList.Add(string.Format(ITEM_LIST_FORMAT, NEXT_COMMAND, NEXT_COMMAND_TITLE));
             }
 
             commandList.AddRange(createDeleteQuitCommands());

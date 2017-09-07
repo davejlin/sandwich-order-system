@@ -49,11 +49,11 @@ namespace SandwichOrderSystem
         public const string CUSTOM_SANDWICH_TITLE = " Custom Sandwich Menu ... ";
         public const string BREAD_TITLE = " Please choose your Bread ... ";
         public const string FILLING_TITLE = " Please choose your Filling ... ";
-        public const string CHEESE_TITLE = " Please choose your Cheese ... ";
-        public const string VEGETABLE_TITLE = " Please choose your Vegetable ... ";
-        public const string CONDIMENT_TITLE = " Please choose your Condiment ... ";
-        public const string DRINK_TITLE = " Please choose your Drink ... ";
-        public const string CHIPS_TITLE = " Please choose your Chips ... ";
+        public const string CHEESE_TITLE = " Please choose your Cheese (optional, multiple allowed) ... ";
+        public const string VEGETABLE_TITLE = " Please choose your Vegetables (optional, multiple allowed) ... ";
+        public const string CONDIMENT_TITLE = " Please choose your Condiments (optional, multiple allowed) ... ";
+        public const string DRINK_TITLE = " Please choose your Drink (optional, multiple allowed) ... ";
+        public const string CHIPS_TITLE = " Please choose your Chips (optional, multiple allowed) ... ";
         public const string PAY_TITLE = " Thank you for your order! ... ";
 
         public const string ADD_COMMAND = "a";
@@ -63,7 +63,7 @@ namespace SandwichOrderSystem
         public const string CUSTOM_SANDWICH_COMMAND = "c";
 
         public const string DELETE_COMMAND = "d";
-        public const string SKIP_COMMAND = "s";
+        public const string NEXT_COMMAND = "n";
 
         public const string PAY_COMMAND = "p";
         public const string FINISH_COMMAND = "f";
@@ -84,7 +84,7 @@ namespace SandwichOrderSystem
         public const string REVIEW_FINISH_COMMAND_TITLE = "Finish this order";
         public const string REVIEW_DELETE_COMMAND_TITLE = "Delete this order";
 
-        public const string SKIP_COMMAND_TITLE = "Skip this extra item";
+        public const string NEXT_COMMAND_TITLE = "Next item";
 
         public const string RETURN_COMMAND_TITLE = "Return to Main Menu";
         public const string QUIT_COMMAND_TITLE = "Quit";

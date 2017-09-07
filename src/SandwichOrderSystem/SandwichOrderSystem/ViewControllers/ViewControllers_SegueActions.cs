@@ -50,11 +50,11 @@ namespace SandwichOrderSystem.ViewControllers
             menuSegueActions.Add(ViewContext.Bread, createItemSegueActions<Bread>(ViewContext.Filling));
             menuSegueActions.Add(ViewContext.Filling, createItemSegueActions<Filling>(ViewContext.Cheese));
 
-            menuSegueActions.Add(ViewContext.Cheese, createItemSegueActions<Cheese>(ViewContext.Vegetable, true));
-            menuSegueActions.Add(ViewContext.Vegetable, createItemSegueActions<Vegetable>(ViewContext.Condiment, true));
-            menuSegueActions.Add(ViewContext.Condiment, createItemSegueActions<Condiment>(ViewContext.Drink, true));
-            menuSegueActions.Add(ViewContext.Drink, createItemSegueActions<Drink>(ViewContext.Chips, true));
-            menuSegueActions.Add(ViewContext.Chips, createItemSegueActions<Chips>(ViewContext.Review, true));
+            menuSegueActions.Add(ViewContext.Cheese, createItemSegueActions<Cheese>(ViewContext.Vegetable, true, false));
+            menuSegueActions.Add(ViewContext.Vegetable, createItemSegueActions<Vegetable>(ViewContext.Condiment, true, false));
+            menuSegueActions.Add(ViewContext.Condiment, createItemSegueActions<Condiment>(ViewContext.Drink, true, false));
+            menuSegueActions.Add(ViewContext.Drink, createItemSegueActions<Drink>(ViewContext.Chips, true, false));
+            menuSegueActions.Add(ViewContext.Chips, createItemSegueActions<Chips>(ViewContext.Review, true, false));
 
             menuSegueActions.Add(ViewContext.CustomSandwich, deleteQuitSegueActions);
 
@@ -83,19 +83,29 @@ namespace SandwichOrderSystem.ViewControllers
             return segueActionDict;
         }
 
-        private Dictionary<string, Action> createItemSegueActions<T>(ViewContext nextState, bool shouldSkipForOptionalItem = false) where T : class, IItem
+        private Dictionary<string, Action> createItemSegueActions<T>(ViewContext nextState, bool shouldNextForOptionalItem = false, bool shouldSegueToNextState = true) where T : class, IItem
         {
             var commandActionDict = new Dictionary<string, Action>();
             var itemMenuCommands = viewModel.GetItemCommands<T>();
 
-            foreach (string command in itemMenuCommands)
+            if (shouldSegueToNextState)
             {
-                commandActionDict.Add(command, () => viewContext = nextState);
+                foreach (string command in itemMenuCommands)
+                {
+                    commandActionDict.Add(command, () => viewContext = nextState);
+                }
+            }
+            else
+            {
+                foreach (string command in itemMenuCommands)
+                {
+                    commandActionDict.Add(command, () => { });
+                }
             }
 
-            if (shouldSkipForOptionalItem)
+            if (shouldNextForOptionalItem)
             {
-                commandActionDict.Add(SKIP_COMMAND, () => viewContext = nextState);
+                commandActionDict.Add(NEXT_COMMAND, () => viewContext = nextState);
             }
 
             commandActionDict = commandActionDict.Concat(createDeleteQuitSegueActions()).ToDictionary(x => x.Key, x => x.Value);

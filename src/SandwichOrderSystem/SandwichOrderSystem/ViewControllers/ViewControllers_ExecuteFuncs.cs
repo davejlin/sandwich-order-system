@@ -80,7 +80,7 @@ namespace SandwichOrderSystem.ViewControllers
             addItemExecuteFuncDict<Vegetable>(ViewContext.Vegetable);
             addItemExecuteFuncDict<Condiment>(ViewContext.Condiment);
             addItemExecuteFuncDict<Drink>(ViewContext.Drink);
-            addItemExecuteFuncDict<Chips>(ViewContext.Chips, true);
+            addItemExecuteFuncDict<Chips>(ViewContext.Chips);
         }
 
         private IEnumerable<string> showOrders()
@@ -109,33 +109,28 @@ namespace SandwichOrderSystem.ViewControllers
             }
         }
 
-        private void addItemExecuteFuncDict<T>(ViewContext context, bool shouldShowPendingOrder = false) where T : class, IItem
+        private void addItemExecuteFuncDict<T>(ViewContext context) where T : class, IItem
         {
             var funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
             var itemMenuCommands = viewModel.GetItemCommands<T>();
 
             foreach (string command in itemMenuCommands)
             {
-                funcsDict.Add(command, createItemExecuteFunc<T>(shouldShowPendingOrder));
+                funcsDict.Add(command, createItemExecuteFunc<T>());
             }
+
+            funcsDict.Add(NEXT_COMMAND, c => showPendingOrder());
+            funcsDict.Add(DELETE_COMMAND, c => { viewModel.ResetOrder(); return null; });
 
             executeFuncs.Add(context, funcsDict);
         }
 
-        private Func<string, IEnumerable<string>> createItemExecuteFunc<T>(bool shouldShowPendingOrder = false) where T : class, IItem
+        private Func<string, IEnumerable<string>> createItemExecuteFunc<T>() where T : class, IItem
         {
             Func<string, IEnumerable<string>> func = c =>
             {
                 viewModel.AddItem<T>(c);
-
-                if (shouldShowPendingOrder)
-                {
-                    return showPendingOrder();
-                }
-                else
-                {
-                    return null;
-                }
+                return showPendingOrder();
             };
 
             return func;
