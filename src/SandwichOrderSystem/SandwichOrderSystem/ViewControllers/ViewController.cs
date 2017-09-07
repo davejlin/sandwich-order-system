@@ -18,8 +18,9 @@ namespace SandwichOrderSystem.ViewControllers
             this.viewModel = viewModel;
 
             viewContext = ViewContext.Main;
-            initMenuSegueActions();
             initMenuCommands();
+            initMenuSegueActions();
+            initExecuteFuncs();
         }
 
         public void Start()
@@ -29,26 +30,24 @@ namespace SandwichOrderSystem.ViewControllers
             while (currentCommand != QUIT_COMMAND)
             {
                 currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext], funcResponse);
-                funcResponse = executeFunc(currentCommand);
                 segue(currentCommand);
+                funcResponse = executeFunc(currentCommand);
             }
         }
 
         private IEnumerable<string> executeFunc(string command)
         {
-            var response = getExectueFunc()?.Invoke();
-            
-            if (response != null)
-            {
-                return response;
-            } else
-            {
-                return null;
-            }
+            return getExectueFunc(command)?
+                .Invoke(command);
         }
 
-        private Func<IEnumerable<string>> getExectueFunc()
+        private Func<string, IEnumerable<string>> getExectueFunc(string command)
         {
+            if (executeFuncs.ContainsKey(viewContext))
+            {
+                return executeFuncs[viewContext];
+            }
+
             return null;
         }
 

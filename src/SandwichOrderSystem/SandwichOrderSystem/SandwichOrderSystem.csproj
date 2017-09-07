@@ -70,7 +70,9 @@
     <Compile Include="Services\IMenuItemsFactory.cs" />
     <Compile Include="Services\MenuItemsFactory.cs" />
     <Compile Include="ViewControllers\IViewController.cs" />
-    <Compile Include="ViewControllers\ViewController_Initializers.cs" />
+    <Compile Include="ViewControllers\ViewControllers_ExecuteFuncs.cs" />
+    <Compile Include="ViewControllers\ViewControllers_SegueActions.cs" />
+    <Compile Include="ViewControllers\ViewController_MenuCommands.cs" />
     <Compile Include="ViewControllers\ViewController.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
