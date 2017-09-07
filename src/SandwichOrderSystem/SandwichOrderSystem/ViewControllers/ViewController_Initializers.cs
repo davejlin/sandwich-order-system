@@ -72,63 +72,63 @@ namespace SandwichOrderSystem.ViewControllers
             menuCommands.Add(ViewStateNumber.Quit, commandList);
         }
 
-        private Dictionary<ViewStateNumber, Dictionary<string, Action>> menuCommandFunctions;
+        private Dictionary<ViewStateNumber, Dictionary<string, Action>> menuSegueActions;
 
-        private void initMenuSegueFunctions()
+        private void initMenuSegueActions()
         {
-            menuCommandFunctions = new Dictionary<ViewStateNumber, Dictionary<string, Action>>();
+            menuSegueActions = new Dictionary<ViewStateNumber, Dictionary<string, Action>>();
 
-            var returnQuitSegueFunctions = createReturnQuitSegueFunctions();
-            var deleteQuitSegueFunctions = createDeleteQuitSegueFunctions();
+            var returnQuitSegueActions = createReturnQuitSegueActions();
+            var deleteQuitSegueActions = createDeleteQuitSegueActions();
 
-            var segueFunctionDict = new Dictionary<string, Action>();
-            segueFunctionDict.Add(ADD_COMMAND, () => context.ViewNumber = ViewStateNumber.Add);
-            segueFunctionDict.Add(DELETE_COMMAND, () => context.ViewNumber = ViewStateNumber.Delete);
-            segueFunctionDict.Add(LIST_COMMAND, () => context.ViewNumber = ViewStateNumber.List);
-            segueFunctionDict.Add(FINISH_COMMAND, () => context.ViewNumber = ViewStateNumber.Finish);
-            segueFunctionDict.Add(QUIT_COMMAND, () => context.ViewNumber = ViewStateNumber.Quit);
+            var segueActionDict = new Dictionary<string, Action>();
+            segueActionDict.Add(ADD_COMMAND, () => context.ViewNumber = ViewStateNumber.Add);
+            segueActionDict.Add(DELETE_COMMAND, () => context.ViewNumber = ViewStateNumber.Delete);
+            segueActionDict.Add(LIST_COMMAND, () => context.ViewNumber = ViewStateNumber.List);
+            segueActionDict.Add(FINISH_COMMAND, () => context.ViewNumber = ViewStateNumber.Finish);
+            segueActionDict.Add(QUIT_COMMAND, () => context.ViewNumber = ViewStateNumber.Quit);
 
-            menuCommandFunctions.Add(ViewStateNumber.Main, segueFunctionDict);
+            menuSegueActions.Add(ViewStateNumber.Main, segueActionDict);
 
-            segueFunctionDict = new Dictionary<string, Action>();
-            segueFunctionDict.Add(SIGNATURE_SANDWICH_COMMAND, () => context.ViewNumber = ViewStateNumber.SignatureSandwich);
-            segueFunctionDict.Add(CUSTOM_SANDWICH_COMMAND, () => context.ViewNumber = ViewStateNumber.Bread);
-            segueFunctionDict = segueFunctionDict.Concat(returnQuitSegueFunctions).ToDictionary(x => x.Key, x => x.Value);
+            segueActionDict = new Dictionary<string, Action>();
+            segueActionDict.Add(SIGNATURE_SANDWICH_COMMAND, () => context.ViewNumber = ViewStateNumber.SignatureSandwich);
+            segueActionDict.Add(CUSTOM_SANDWICH_COMMAND, () => context.ViewNumber = ViewStateNumber.Bread);
+            segueActionDict = segueActionDict.Concat(returnQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
 
-            menuCommandFunctions.Add(ViewStateNumber.Add, segueFunctionDict);
+            menuSegueActions.Add(ViewStateNumber.Add, segueActionDict);
 
-            segueFunctionDict = new Dictionary<string, Action>();
-            segueFunctionDict.Add(PAY_COMMAND, () => context.ViewNumber = ViewStateNumber.Pay);
-            segueFunctionDict = segueFunctionDict.Concat(returnQuitSegueFunctions).ToDictionary(x => x.Key, x => x.Value);
+            segueActionDict = new Dictionary<string, Action>();
+            segueActionDict.Add(PAY_COMMAND, () => context.ViewNumber = ViewStateNumber.Pay);
+            segueActionDict = segueActionDict.Concat(returnQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
 
-            menuCommandFunctions.Add(ViewStateNumber.Finish, segueFunctionDict);
+            menuSegueActions.Add(ViewStateNumber.Finish, segueActionDict);
 
-            segueFunctionDict = new Dictionary<string, Action>();
-            segueFunctionDict.Add(FINISH_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
-            segueFunctionDict = segueFunctionDict.Concat(deleteQuitSegueFunctions).ToDictionary(x => x.Key, x => x.Value);
+            segueActionDict = new Dictionary<string, Action>();
+            segueActionDict.Add(FINISH_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
+            segueActionDict = segueActionDict.Concat(deleteQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
 
-            menuCommandFunctions.Add(ViewStateNumber.Review, segueFunctionDict);
+            menuSegueActions.Add(ViewStateNumber.Review, segueActionDict);
 
-            menuCommandFunctions.Add(ViewStateNumber.SignatureSandwich, createItemCommandFunctions<SignatureSandwich>(ViewStateNumber.Drink));
+            menuSegueActions.Add(ViewStateNumber.SignatureSandwich, createItemSegueActions<SignatureSandwich>(ViewStateNumber.Drink));
 
-            menuCommandFunctions.Add(ViewStateNumber.Bread, createItemCommandFunctions<Bread>(ViewStateNumber.Filling));
-            menuCommandFunctions.Add(ViewStateNumber.Filling, createItemCommandFunctions<Filling>(ViewStateNumber.Cheese));
+            menuSegueActions.Add(ViewStateNumber.Bread, createItemSegueActions<Bread>(ViewStateNumber.Filling));
+            menuSegueActions.Add(ViewStateNumber.Filling, createItemSegueActions<Filling>(ViewStateNumber.Cheese));
 
-            menuCommandFunctions.Add(ViewStateNumber.Cheese, createItemCommandFunctions<Cheese>(ViewStateNumber.Vegetable, true));
-            menuCommandFunctions.Add(ViewStateNumber.Vegetable, createItemCommandFunctions<Vegetable>(ViewStateNumber.Condiment, true));
-            menuCommandFunctions.Add(ViewStateNumber.Condiment, createItemCommandFunctions<Condiment>(ViewStateNumber.Drink, true));
-            menuCommandFunctions.Add(ViewStateNumber.Drink, createItemCommandFunctions<Drink>(ViewStateNumber.Chips, true));
-            menuCommandFunctions.Add(ViewStateNumber.Chips, createItemCommandFunctions<Chips>(ViewStateNumber.Review, true));
+            menuSegueActions.Add(ViewStateNumber.Cheese, createItemSegueActions<Cheese>(ViewStateNumber.Vegetable, true));
+            menuSegueActions.Add(ViewStateNumber.Vegetable, createItemSegueActions<Vegetable>(ViewStateNumber.Condiment, true));
+            menuSegueActions.Add(ViewStateNumber.Condiment, createItemSegueActions<Condiment>(ViewStateNumber.Drink, true));
+            menuSegueActions.Add(ViewStateNumber.Drink, createItemSegueActions<Drink>(ViewStateNumber.Chips, true));
+            menuSegueActions.Add(ViewStateNumber.Chips, createItemSegueActions<Chips>(ViewStateNumber.Review, true));
 
-            menuCommandFunctions.Add(ViewStateNumber.CustomSandwich, deleteQuitSegueFunctions);
+            menuSegueActions.Add(ViewStateNumber.CustomSandwich, deleteQuitSegueActions);
 
-            menuCommandFunctions.Add(ViewStateNumber.List, returnQuitSegueFunctions);
-            menuCommandFunctions.Add(ViewStateNumber.Delete, returnQuitSegueFunctions);
-            menuCommandFunctions.Add(ViewStateNumber.Pay, returnQuitSegueFunctions);
+            menuSegueActions.Add(ViewStateNumber.List, returnQuitSegueActions);
+            menuSegueActions.Add(ViewStateNumber.Delete, returnQuitSegueActions);
+            menuSegueActions.Add(ViewStateNumber.Pay, returnQuitSegueActions);
 
-            segueFunctionDict = new Dictionary<string, Action>();
+            segueActionDict = new Dictionary<string, Action>();
 
-            menuCommandFunctions.Add(ViewStateNumber.Quit, segueFunctionDict);
+            menuSegueActions.Add(ViewStateNumber.Quit, segueActionDict);
         }
 
         private IEnumerable<string> createReturnQuitCommands()
@@ -164,40 +164,40 @@ namespace SandwichOrderSystem.ViewControllers
             return commandList;
         }
 
-        private Dictionary<string, Action> createReturnQuitSegueFunctions()
+        private Dictionary<string, Action> createReturnQuitSegueActions()
         {
-            var segueFunctionDict = new Dictionary<string, Action>();
-            segueFunctionDict.Add(RETURN_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
-            segueFunctionDict.Add(QUIT_COMMAND, () => context.ViewNumber = ViewStateNumber.Quit);
-            return segueFunctionDict;
+            var segueActionDict = new Dictionary<string, Action>();
+            segueActionDict.Add(RETURN_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
+            segueActionDict.Add(QUIT_COMMAND, () => context.ViewNumber = ViewStateNumber.Quit);
+            return segueActionDict;
         }
 
-        private Dictionary<string, Action> createDeleteQuitSegueFunctions()
+        private Dictionary<string, Action> createDeleteQuitSegueActions()
         {
-            var segueFunctionDict = new Dictionary<string, Action>();
-            segueFunctionDict.Add(DELETE_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
-            segueFunctionDict.Add(QUIT_COMMAND, () => context.ViewNumber = ViewStateNumber.Quit);
-            return segueFunctionDict;
+            var segueActionDict = new Dictionary<string, Action>();
+            segueActionDict.Add(DELETE_COMMAND, () => context.ViewNumber = ViewStateNumber.Main);
+            segueActionDict.Add(QUIT_COMMAND, () => context.ViewNumber = ViewStateNumber.Quit);
+            return segueActionDict;
         }
 
-        private Dictionary<string, Action> createItemCommandFunctions<T>(ViewStateNumber nextState, bool addSkipForOptionalItem = false) where T : class, IItem
+        private Dictionary<string, Action> createItemSegueActions<T>(ViewStateNumber nextState, bool addSkipForOptionalItem = false) where T : class, IItem
         {
-            var commandFunctionDict = new Dictionary<string, Action>();
+            var commandActionDict = new Dictionary<string, Action>();
             var itemMenuCommands = viewModel.GetItemCommands<T>();
 
             foreach (string command in itemMenuCommands)
             {
-                commandFunctionDict.Add(command, () => context.ViewNumber = nextState);
+                commandActionDict.Add(command, () => context.ViewNumber = nextState);
             }
 
             if (addSkipForOptionalItem)
             {
-                commandFunctionDict.Add(SKIP_COMMAND, () => context.ViewNumber = nextState);
+                commandActionDict.Add(SKIP_COMMAND, () => context.ViewNumber = nextState);
             }
 
-            commandFunctionDict = commandFunctionDict.Concat(createDeleteQuitSegueFunctions()).ToDictionary(x => x.Key, x => x.Value);
+            commandActionDict = commandActionDict.Concat(createDeleteQuitSegueActions()).ToDictionary(x => x.Key, x => x.Value);
 
-            return commandFunctionDict;
+            return commandActionDict;
         }
     }
 }

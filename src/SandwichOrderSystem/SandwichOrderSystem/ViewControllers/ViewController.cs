@@ -15,7 +15,7 @@ namespace SandwichOrderSystem.ViewControllers
         {
             this.viewModel = viewModel;
 
-            initMenuSegueFunctions();
+            initMenuSegueActions();
             initMenuCommands();
         }
 
@@ -44,9 +44,9 @@ namespace SandwichOrderSystem.ViewControllers
         {
             this.command = command;
 
-            if (menuCommandFunctions[context.ViewNumber].ContainsKey(command))
+            if (menuSegueActions[context.ViewNumber].ContainsKey(command))
             {
-                var segueFunction = menuCommandFunctions[context.ViewNumber][command];
+                var segueFunction = menuSegueActions[context.ViewNumber][command];
                 segueFunction();
                 return true;
             }
