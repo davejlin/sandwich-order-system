@@ -33,6 +33,8 @@ namespace SandwichOrderSystem
             Review
         }
 
+        public const string GREETING_MESSAGE = "\n\n Welcome to the Sandwich Order System\n\n System initiliaizing ...";
+
         public const string CONSOLE_PROMPT_TO_CONTINUE = " Press Enter to continue:  ";
         public const string CONSOLE_INVALID_COMMAND = " Please enter a valid command ...";
 

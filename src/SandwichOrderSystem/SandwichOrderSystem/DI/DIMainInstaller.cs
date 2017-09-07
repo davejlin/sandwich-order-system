@@ -13,6 +13,8 @@ namespace SandwichOrderSystem.DI
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Component.For<IConsoleWrapper>().ImplementedBy<ConsoleWrapper>());
+            container.Resolve<IConsoleWrapper>().OutputLine(Constants.GREETING_MESSAGE);
+
             container.Register(Component.For<IMenuItemsFactory>().ImplementedBy<MenuItemsFactory>());
 
             container.Register(Component.For<IViewState>().ImplementedBy<ViewState>());
