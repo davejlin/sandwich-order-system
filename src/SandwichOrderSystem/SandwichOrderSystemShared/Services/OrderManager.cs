@@ -6,9 +6,29 @@ namespace SandwichOrderSystemShared.Services
 {
     public class OrderManager : IOrderManager
     {
-        public IOrders Orders { get; set; }
+        public IOrders Orders { get; }
 
         private IOrder currentOrder;
+        public IOrder CurrentOrder
+        {
+            get
+            {
+                if (currentOrder == null)
+                {
+                    currentOrder = new Order();
+                    return currentOrder;
+                }
+                else
+                {
+                    return currentOrder;
+                }
+            }
+
+            private set
+            {
+                currentOrder = value;
+            }
+        }
 
         public OrderManager()
         {
@@ -34,41 +54,34 @@ namespace SandwichOrderSystemShared.Services
         {
             if (item != null)
             {
-                var order = getCurrentOrder();
-                order.Items.Add(item);
-                setCurrentOrder(order);
+                CurrentOrder.Items.Add(item);
             }
         }
 
-        public void AddOrder()
+        public void AddOrderToOrders()
         {
-            if (currentOrder != null)
+            if (CurrentOrder != null)
             {
-                Orders.Add(currentOrder);
-                ResetOrder();
+                Orders.Add(CurrentOrder);
+                ResetCurrentOrder();
             }
         }
 
-        public void ResetOrder()
+        public void ResetCurrentOrder()
         {
-            currentOrder = null;
+            CurrentOrder = null;
         }
 
-        private IOrder getCurrentOrder()
+        public void ResetOrders()
         {
-            if (currentOrder == null)
-            {
-                return new Order();
-            }
-            else
-            {
-                return currentOrder;
-            }
+            ResetCurrentOrder();
+            Orders.Reset();
         }
 
-        private void setCurrentOrder(IOrder order)
+        public void FinishOrders()
         {
-            currentOrder = order;
+            // TODO: Pass order along to payment and repository services
+            ResetOrders();
         }
     }
 }

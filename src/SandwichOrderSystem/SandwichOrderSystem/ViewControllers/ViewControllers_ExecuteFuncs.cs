@@ -16,7 +16,17 @@ namespace SandwichOrderSystem.ViewControllers
 
             var funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
 
+            // Main
+
             Func<string, IEnumerable<string>> func = c =>
+            {
+                viewModel.ResetOrders();
+                return null;
+            };
+
+            funcsDict.Add(DELETE_COMMAND, func);
+
+            func = c =>
             {
                 return showOrders();
             };
@@ -48,31 +58,29 @@ namespace SandwichOrderSystem.ViewControllers
 
             executeFuncs.Add(ViewContext.Review, funcsDict);
 
+            // Finish
+
+            funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
+
+            func = c =>
+            {
+                viewModel.FinishOrders();
+                return new List<string> { FINISH_COMPLETE_TITLE };
+            };
+
+            funcsDict.Add(PAY_COMMAND, func);
+            executeFuncs.Add(ViewContext.Finish, funcsDict);
+
             // Items
 
-            funcsDict = createItemExecuteFuncDict<SignatureSandwich>();
-            executeFuncs.Add(ViewContext.SignatureSandwich, funcsDict);
-
-            funcsDict = createItemExecuteFuncDict<Bread>();
-            executeFuncs.Add(ViewContext.Bread, funcsDict);
-
-            funcsDict = createItemExecuteFuncDict<Filling>();
-            executeFuncs.Add(ViewContext.Filling, funcsDict);
-
-            funcsDict = createItemExecuteFuncDict<Cheese>();
-            executeFuncs.Add(ViewContext.Cheese, funcsDict);
-
-            funcsDict = createItemExecuteFuncDict<Vegetable>();
-            executeFuncs.Add(ViewContext.Vegetable, funcsDict);
-
-            funcsDict = createItemExecuteFuncDict<Condiment>();
-            executeFuncs.Add(ViewContext.Condiment, funcsDict);
-
-            funcsDict = createItemExecuteFuncDict<Drink>();
-            executeFuncs.Add(ViewContext.Drink, funcsDict);
-
-            funcsDict = createItemExecuteFuncDict<Chips>();
-            executeFuncs.Add(ViewContext.Chips, funcsDict);
+            addItemExecuteFuncDict<SignatureSandwich>(ViewContext.SignatureSandwich);
+            addItemExecuteFuncDict<Bread>(ViewContext.Bread);
+            addItemExecuteFuncDict<Filling>(ViewContext.Filling);
+            addItemExecuteFuncDict<Cheese>(ViewContext.Cheese);
+            addItemExecuteFuncDict<Vegetable>(ViewContext.Vegetable);
+            addItemExecuteFuncDict<Condiment>(ViewContext.Condiment);
+            addItemExecuteFuncDict<Drink>(ViewContext.Drink);
+            addItemExecuteFuncDict<Chips>(ViewContext.Chips, true);
         }
 
         private IEnumerable<string> showOrders()
@@ -88,25 +96,46 @@ namespace SandwichOrderSystem.ViewControllers
             }
         }
 
-        private Dictionary<string, Func<string, IEnumerable<string>>> createItemExecuteFuncDict<T>() where T : class, IItem
+        private IEnumerable<string> showPendingOrder()
+        {
+            var order = viewModel.GetCurrentOrder();
+            if (order.Items.Count > 0)
+            {
+                return new List<string>() { order.ToString() };
+            }
+            else
+            {
+                return new List<string>() { SHOW_NO_ORDERS_TITLE };
+            }
+        }
+
+        private void addItemExecuteFuncDict<T>(ViewContext context, bool shouldShowPendingOrder = false) where T : class, IItem
         {
             var funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
             var itemMenuCommands = viewModel.GetItemCommands<T>();
 
             foreach (string command in itemMenuCommands)
             {
-                funcsDict.Add(command, createItemExecuteFunc<T>());
+                funcsDict.Add(command, createItemExecuteFunc<T>(shouldShowPendingOrder));
             }
 
-            return funcsDict;
+            executeFuncs.Add(context, funcsDict);
         }
 
-        private Func<string, IEnumerable<string>> createItemExecuteFunc<T>() where T : class, IItem
+        private Func<string, IEnumerable<string>> createItemExecuteFunc<T>(bool shouldShowPendingOrder = false) where T : class, IItem
         {
             Func<string, IEnumerable<string>> func = c =>
             {
                 viewModel.AddItem<T>(c);
-                return null;
+
+                if (shouldShowPendingOrder)
+                {
+                    return showPendingOrder();
+                }
+                else
+                {
+                    return null;
+                }
             };
 
             return func;

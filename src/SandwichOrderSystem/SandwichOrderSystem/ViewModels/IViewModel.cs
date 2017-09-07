@@ -8,9 +8,12 @@ namespace SandwichOrderSystem.ViewModels
         IEnumerable<string> GetItemCommandMenu<T>() where T : class, IItem;
         IEnumerable<string> GetItemCommands<T>() where T : class, IItem;
         IOrders GetOrders();
+        IOrder GetCurrentOrder();
         int GetOrdersCount();
         void AddItem<T>(string c) where T : class, IItem;
         void AddOrder();
         void ResetOrder();
+        void ResetOrders();
+        void FinishOrders();
     }
 }

@@ -6,10 +6,13 @@ namespace SandwichOrderSystemShared.Services
     public interface IOrderManager
     {
         IOrders Orders { get; }
+        IOrder CurrentOrder { get; }
         int Count { get; }
 
         void AddItemToOrder(IItem item);
-        void AddOrder();
-        void ResetOrder();
+        void AddOrderToOrders();
+        void ResetCurrentOrder();
+        void ResetOrders();
+        void FinishOrders();
     }
 }

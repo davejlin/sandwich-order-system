@@ -90,6 +90,7 @@ namespace SandwichOrderSystem
         public const string QUIT_COMMAND_TITLE = "Quit";
 
         public const string SHOW_NO_ORDERS_TITLE = "\n\n You have not ordered anything yet ...\n\n";
+        public const string FINISH_COMPLETE_TITLE = "\n\n Your meal is being prepared and will be ready soon ...\n\n";
 
         public const string DELETE_ACTION_COMMAND_CONFIRM = "Y";
         public const string DELETE_ACTION_CONFIRM = " Enter Y to confirm deleting your order ... ";

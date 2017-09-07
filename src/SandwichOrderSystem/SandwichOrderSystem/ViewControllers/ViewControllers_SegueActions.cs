@@ -83,7 +83,7 @@ namespace SandwichOrderSystem.ViewControllers
             return segueActionDict;
         }
 
-        private Dictionary<string, Action> createItemSegueActions<T>(ViewContext nextState, bool addSkipForOptionalItem = false) where T : class, IItem
+        private Dictionary<string, Action> createItemSegueActions<T>(ViewContext nextState, bool shouldSkipForOptionalItem = false) where T : class, IItem
         {
             var commandActionDict = new Dictionary<string, Action>();
             var itemMenuCommands = viewModel.GetItemCommands<T>();
@@ -93,7 +93,7 @@ namespace SandwichOrderSystem.ViewControllers
                 commandActionDict.Add(command, () => viewContext = nextState);
             }
 
-            if (addSkipForOptionalItem)
+            if (shouldSkipForOptionalItem)
             {
                 commandActionDict.Add(SKIP_COMMAND, () => viewContext = nextState);
             }

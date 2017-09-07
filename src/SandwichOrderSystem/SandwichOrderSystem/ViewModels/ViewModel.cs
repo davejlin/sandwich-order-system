@@ -65,6 +65,11 @@ namespace SandwichOrderSystem.ViewModels
             return orderManager.Orders;
         }
 
+        public IOrder GetCurrentOrder()
+        {
+            return orderManager.CurrentOrder;
+        }
+
         public void AddItem<T>(string c) where T : class, IItem
         {
             var itemList = getItemList<T>();
@@ -77,12 +82,22 @@ namespace SandwichOrderSystem.ViewModels
 
         public void AddOrder()
         {
-            orderManager.AddOrder();
+            orderManager.AddOrderToOrders();
         }
 
         public void ResetOrder()
         {
-            orderManager.ResetOrder();
+            orderManager.ResetCurrentOrder();
+        }
+
+        public void ResetOrders()
+        {
+            orderManager.ResetOrders();
+        }
+
+        public void FinishOrders()
+        {
+            orderManager.FinishOrders();
         }
 
         private List<IMenuItem> getItemList<T>() where T : class, IItem
