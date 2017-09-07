@@ -14,10 +14,20 @@ namespace SandwichOrderSystem.Views
             this.console = console;
         }
 
-        public string GetMenuCommand(string menuTitle, IEnumerable<string> menuCommands)
+        public string GetMenuCommand(string menuTitle, IEnumerable<string> menuCommands, IEnumerable<string> output)
         {
             console.ClearOutput();
             console.OutputLine(menuTitle, true);
+            console.OutputBlankLine();
+
+            if (output != null)
+            {
+                foreach (var line in output)
+                {
+                    console.OutputLine(line);
+                }
+            }
+
             console.OutputLine(COMMANDS_TITLE, true);
             console.OutputBlankLine();
 
