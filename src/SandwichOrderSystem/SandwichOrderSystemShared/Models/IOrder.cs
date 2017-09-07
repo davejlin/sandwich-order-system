@@ -4,6 +4,6 @@ namespace SandwichOrderSystemShared.Models
 {
     public interface IOrder
     {
-        IEnumerable<IItem> Items { get; set; }
+        ICollection<IItem> Items { get; set; }
     }
 }

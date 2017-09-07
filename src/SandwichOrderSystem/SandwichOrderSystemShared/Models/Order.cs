@@ -5,7 +5,12 @@ namespace SandwichOrderSystemShared.Models
 {
     public class Order : IOrder
     {
-        public IEnumerable<IItem> Items { get; set; }
+        public ICollection<IItem> Items { get; set; }
+
+        public Order()
+        {
+            Items = new List<IItem>();
+        }
 
         public override string ToString()
         {

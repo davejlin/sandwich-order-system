@@ -30,8 +30,8 @@ namespace SandwichOrderSystem.ViewControllers
             while (currentCommand != QUIT_COMMAND)
             {
                 currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext], funcResponse);
-                segue(currentCommand);
                 funcResponse = executeFunc(currentCommand);
+                segue(currentCommand);
             }
         }
 

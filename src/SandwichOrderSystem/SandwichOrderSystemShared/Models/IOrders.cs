@@ -4,6 +4,10 @@ namespace SandwichOrderSystemShared.Models
 {
     public interface IOrders
     {
-        IEnumerable<IOrder> OrderCollection { get; set; }
+        ICollection<IOrder> OrderCollection { get; set; }
+        int Count { get; }
+
+        void Reset();
+        void Add(IOrder order);
     }
 }

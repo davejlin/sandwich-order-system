@@ -7,5 +7,9 @@ namespace SandwichOrderSystemShared.Services
     {
         IOrders Orders { get; }
         int Count { get; }
+
+        void AddItemToOrder(IItem item);
+        void AddOrder();
+        void ResetOrder();
     }
 }

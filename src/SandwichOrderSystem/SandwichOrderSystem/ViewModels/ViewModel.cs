@@ -2,8 +2,10 @@
 using SandwichOrderSystem.Services;
 using SandwichOrderSystemShared.Models;
 using SandwichOrderSystemShared.Services;
+using static SandwichOrderSystem.Constants;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SandwichOrderSystem.ViewModels
 {
@@ -20,21 +22,17 @@ namespace SandwichOrderSystem.ViewModels
             menuItemsDict = menuItemsFactory.CreateMenuItems();
         }
 
-        string menuCommandFormat = " {0} - {1,-20} {2}";
         public IEnumerable<string> GetItemCommandMenu<T>() where T : class, IItem
         {
             List<string> commandMenu = new List<string>();
 
-            if (menuItemsDict.ContainsKey(typeof(T)))
+            var itemList = getItemList<T>();
+            if (itemList != null)
             {
-                var itemList = menuItemsDict[typeof(T)];
-                if (itemList != null)
+                foreach (IMenuItem item in itemList)
                 {
-                    foreach (IMenuItem item in itemList)
-                    {
-                        string command = string.Format(menuCommandFormat, item.MenuCommand, item.Name, item.Price);
-                        commandMenu.Add(command);
-                    }
+                    string command = string.Format(MENU_COMMAND_FORMAT, item.MenuCommand, item.Name, item.Price);
+                    commandMenu.Add(command);
                 }
             }
 
@@ -45,15 +43,12 @@ namespace SandwichOrderSystem.ViewModels
         {
             List<string> itemCommands = new List<string>();
 
-            if (menuItemsDict.ContainsKey(typeof(T)))
+            var itemList = getItemList<T>();
+            if (itemList != null)
             {
-                var itemList = menuItemsDict[typeof(T)];
-                if (itemList != null)
+                foreach (IMenuItem item in itemList)
                 {
-                    foreach (IMenuItem item in itemList)
-                    {
-                        itemCommands.Add(item.MenuCommand);
-                    }
+                    itemCommands.Add(item.MenuCommand);
                 }
             }
 
@@ -65,9 +60,41 @@ namespace SandwichOrderSystem.ViewModels
             return orderManager.Count;
         }
 
-        public IEnumerable<IOrder> GetOrders()
+        public IOrders GetOrders()
         {
-            return orderManager.Orders?.OrderCollection;
+            return orderManager.Orders;
+        }
+
+        public void AddItem<T>(string c) where T : class, IItem
+        {
+            var itemList = getItemList<T>();
+            if (itemList != null)
+            {
+                var menuItem = itemList.Find(i => i.MenuCommand == c);
+                orderManager.AddItemToOrder(menuItem);
+            }
+        }
+
+        public void AddOrder()
+        {
+            orderManager.AddOrder();
+        }
+
+        public void ResetOrder()
+        {
+            orderManager.ResetOrder();
+        }
+
+        private List<IMenuItem> getItemList<T>() where T : class, IItem
+        {
+            if (menuItemsDict.ContainsKey(typeof(T)))
+            {
+                return menuItemsDict[typeof(T)];
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

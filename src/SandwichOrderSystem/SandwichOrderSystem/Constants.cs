@@ -4,6 +4,7 @@ namespace SandwichOrderSystem
 {
     public struct Constants
     {
+        public const string MENU_COMMAND_FORMAT = " {0} - {1,-20} {2}";
         public const string ITEM_LIST_FORMAT = " {0} - {1} ";
         public const string SEPARATOR = "";
 
@@ -14,6 +15,7 @@ namespace SandwichOrderSystem
             Show,
             Delete,
             Finish,
+            Pay,
             Quit,
 
             SignatureSandwich,
@@ -28,8 +30,7 @@ namespace SandwichOrderSystem
             Drink,
             Chips,
 
-            Review,
-            Pay,
+            Review
         }
 
         public const string CONSOLE_PROMPT_TO_CONTINUE = " Press Enter to continue:  ";
