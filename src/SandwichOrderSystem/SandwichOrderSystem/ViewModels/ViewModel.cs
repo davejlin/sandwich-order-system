@@ -60,9 +60,14 @@ namespace SandwichOrderSystem.ViewModels
             return itemCommands;
         }
 
+        public int GetOrdersCount()
+        {
+            return orderManager.Count;
+        }
+
         public IEnumerable<IOrder> GetOrders()
         {
-            return orderManager.Orders.OrderCollection;
+            return orderManager.Orders?.OrderCollection;
         }
     }
 }

@@ -6,5 +6,6 @@ namespace SandwichOrderSystemShared.Services
     public interface IOrderManager
     {
         IOrders Orders { get; }
+        int Count { get; }
     }
 }

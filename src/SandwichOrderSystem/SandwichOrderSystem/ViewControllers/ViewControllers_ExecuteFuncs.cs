@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SandwichOrderSystemShared.Models;
 using static SandwichOrderSystem.Constants;
 using System.Linq;
 
@@ -16,12 +15,24 @@ namespace SandwichOrderSystem.ViewControllers
 
             Func<string, IEnumerable<string>> func = c =>
             {
-                return new List<string>() { string.Format(" You typed in {0}", c) };
+                return showOrders();
             };
 
-            executeFuncs.Add(ViewContext.Add, func);
             executeFuncs.Add(ViewContext.Show, func);
             executeFuncs.Add(ViewContext.Finish, func);
+        }
+
+        private IEnumerable<string> showOrders()
+        {
+            if (viewModel.GetOrdersCount() > 0)
+            {
+                var orders = viewModel.GetOrders();
+                return orders.Select(i => i?.ToString());
+            }
+            else
+            {
+                return new List<string>() { SHOW_NO_ORDERS_TITLE };
+            }
         }
     }
 }

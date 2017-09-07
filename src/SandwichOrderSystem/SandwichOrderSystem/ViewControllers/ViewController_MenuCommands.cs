@@ -8,9 +8,6 @@ namespace SandwichOrderSystem.ViewControllers
 {
     public partial class ViewController
     {
-        string menuCommandFormat = " {0} - {1} ";
-        string blank = "";
-
         private Dictionary<ViewContext, IEnumerable<string>> menuCommands;
 
         private void initMenuCommands()
@@ -20,31 +17,31 @@ namespace SandwichOrderSystem.ViewControllers
             var returnQuitCommands = createReturnQuitCommands();
 
             var commandList = new List<string>();
-            commandList.Add(string.Format(menuCommandFormat, ADD_COMMAND, ADD_COMMAND_TITLE));
-            commandList.Add(blank);
-            commandList.Add(string.Format(menuCommandFormat, SHOW_COMMAND, SHOW_COMMAND_TITLE));
-            commandList.Add(string.Format(menuCommandFormat, DELETE_COMMAND, DELETE_COMMAND_TITLE));
-            commandList.Add(string.Format(menuCommandFormat, FINISH_COMMAND, FINISH_COMMAND_TITLE));
-            commandList.Add(blank);
-            commandList.Add(string.Format(menuCommandFormat, QUIT_COMMAND, QUIT_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, ADD_COMMAND, ADD_COMMAND_TITLE));
+            commandList.Add(SEPARATOR);
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, SHOW_COMMAND, SHOW_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, DELETE_COMMAND, DELETE_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, FINISH_COMMAND, FINISH_COMMAND_TITLE));
+            commandList.Add(SEPARATOR);
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, QUIT_COMMAND, QUIT_COMMAND_TITLE));
 
             menuCommands.Add(ViewContext.Main, commandList);
 
             commandList = new List<string>();
-            commandList.Add(string.Format(menuCommandFormat, SIGNATURE_SANDWICH_COMMAND, SIGNATURE_SANDWICH_COMMAND_TITLE));
-            commandList.Add(string.Format(menuCommandFormat, CUSTOM_SANDWICH_COMMAND, CUSTOM_SANDWICH_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, SIGNATURE_SANDWICH_COMMAND, SIGNATURE_SANDWICH_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, CUSTOM_SANDWICH_COMMAND, CUSTOM_SANDWICH_COMMAND_TITLE));
             commandList.AddRange(returnQuitCommands);
 
             menuCommands.Add(ViewContext.Add, commandList);
 
             commandList = new List<string>();
-            commandList.Add(string.Format(menuCommandFormat, FINISH_COMMAND, REVIEW_FINISH_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, FINISH_COMMAND, REVIEW_FINISH_COMMAND_TITLE));
             commandList.AddRange(createDeleteQuitCommands());
 
             menuCommands.Add(ViewContext.Review, commandList);
 
             commandList = new List<string>();
-            commandList.Add(string.Format(menuCommandFormat, PAY_COMMAND, FINISH_PAY_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, PAY_COMMAND, FINISH_PAY_COMMAND_TITLE));
             commandList.AddRange(returnQuitCommands);
 
             menuCommands.Add(ViewContext.Finish, commandList);
@@ -75,18 +72,18 @@ namespace SandwichOrderSystem.ViewControllers
         private IEnumerable<string> createReturnQuitCommands()
         {
             var commandList = new List<string>();
-            commandList.Add(blank);
-            commandList.Add(string.Format(menuCommandFormat, RETURN_COMMAND, RETURN_COMMAND_TITLE));
-            commandList.Add(string.Format(menuCommandFormat, QUIT_COMMAND, QUIT_COMMAND_TITLE));
+            commandList.Add(SEPARATOR);
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, RETURN_COMMAND, RETURN_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, QUIT_COMMAND, QUIT_COMMAND_TITLE));
             return commandList;
         }
 
         private IEnumerable<string> createDeleteQuitCommands()
         {
             var commandList = new List<string>();
-            commandList.Add(blank);
-            commandList.Add(string.Format(menuCommandFormat, DELETE_COMMAND, REVIEW_DELETE_COMMAND_TITLE));
-            commandList.Add(string.Format(menuCommandFormat, QUIT_COMMAND, QUIT_COMMAND_TITLE));
+            commandList.Add(SEPARATOR);
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, DELETE_COMMAND, REVIEW_DELETE_COMMAND_TITLE));
+            commandList.Add(string.Format(ITEM_LIST_FORMAT, QUIT_COMMAND, QUIT_COMMAND_TITLE));
             return commandList;
         }
 
@@ -97,8 +94,8 @@ namespace SandwichOrderSystem.ViewControllers
 
             if (addSkipForOptionalItem)
             {
-                commandList.Add(blank);
-                commandList.Add(string.Format(menuCommandFormat, SKIP_COMMAND, SKIP_COMMAND_TITLE));
+                commandList.Add(SEPARATOR);
+                commandList.Add(string.Format(ITEM_LIST_FORMAT, SKIP_COMMAND, SKIP_COMMAND_TITLE));
             }
 
             commandList.AddRange(createDeleteQuitCommands());

@@ -4,6 +4,9 @@ namespace SandwichOrderSystem
 {
     public struct Constants
     {
+        public const string ITEM_LIST_FORMAT = " {0} - {1} ";
+        public const string SEPARATOR = "";
+
         public enum ViewContext
         {
             Main = 0,
@@ -84,6 +87,8 @@ namespace SandwichOrderSystem
 
         public const string RETURN_COMMAND_TITLE = "Return to Main Menu";
         public const string QUIT_COMMAND_TITLE = "Quit";
+
+        public const string SHOW_NO_ORDERS_TITLE = "\n\n You have not ordered anything yet ...\n\n";
 
         public const string DELETE_ACTION_COMMAND_CONFIRM = "Y";
         public const string DELETE_ACTION_CONFIRM = " Enter Y to confirm deleting your order ... ";
