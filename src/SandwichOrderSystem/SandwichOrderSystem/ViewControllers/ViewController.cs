@@ -12,6 +12,10 @@ namespace SandwichOrderSystem.ViewControllers
         private IViewModel viewModel;
         private ViewContext viewContext;
 
+        private string currentCommand = "";
+        private IEnumerable<string> currentFuncResponse = new List<string>();
+        private IEnumerable<string> previousFuncResponse = new List<string>();
+
         public ViewController(IViewState viewState, IViewModel viewModel)
         {
             this.viewState = viewState;
@@ -23,16 +27,16 @@ namespace SandwichOrderSystem.ViewControllers
             initExecuteFuncs();
         }
 
-        public void Start()
+        public string AdvanceViewCycle()
         {
-            string currentCommand = "";
-            IEnumerable<string> funcResponse = null;
-            while (currentCommand != QUIT_COMMAND)
-            {
-                currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext], funcResponse);
-                funcResponse = executeFunc(currentCommand);
-                segue(currentCommand);
-            }
+            currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext], currentFuncResponse);
+
+            previousFuncResponse = currentFuncResponse;
+            currentFuncResponse = executeFunc(currentCommand);
+
+            segue(currentCommand);
+
+            return currentCommand;
         }
 
         private IEnumerable<string> executeFunc(string command)
@@ -61,6 +65,7 @@ namespace SandwichOrderSystem.ViewControllers
             else
             {
                 viewState.PromptInvalidCommand();
+                currentFuncResponse = previousFuncResponse;
             }
         }
 

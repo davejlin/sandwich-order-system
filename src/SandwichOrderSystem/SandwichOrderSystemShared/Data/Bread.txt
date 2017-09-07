@@ -5,3 +5,4 @@ Rye Bread, 1.5
 Italian Bread, 1.5
 French Bread, 1.5
 Sour Dough Bread, 1.5
+Seven Grain Bread, 1.5

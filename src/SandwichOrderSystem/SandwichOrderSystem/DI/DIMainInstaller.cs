@@ -18,6 +18,8 @@ namespace SandwichOrderSystem.DI
             container.Register(Component.For<IViewState>().ImplementedBy<ViewState>());
             container.Register(Component.For<IViewModel>().ImplementedBy<ViewModel>());
             container.Register(Component.For<IViewController>().ImplementedBy<ViewController>());
+
+            container.Register(Component.For<ISandwichOrderSystem>().ImplementedBy<SandwichOrderSystem>());
         }
     }
 }

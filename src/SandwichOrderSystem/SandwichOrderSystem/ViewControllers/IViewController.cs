@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace SandwichOrderSystem.ViewControllers
+﻿namespace SandwichOrderSystem.ViewControllers
 {
     public interface IViewController
     {
-        void Start();
+        string AdvanceViewCycle();
     }
 }

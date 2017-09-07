@@ -63,10 +63,12 @@
     <Compile Include="Constants.cs" />
     <Compile Include="DI\DIContainer.cs" />
     <Compile Include="DI\DIMainInstaller.cs" />
+    <Compile Include="ISandwichOrderSystem.cs" />
     <Compile Include="Models\IMenuItem.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SandwichOrderSystem.cs" />
     <Compile Include="Services\IMenuItemsFactory.cs" />
     <Compile Include="Services\MenuItemsFactory.cs" />
     <Compile Include="ViewControllers\IViewController.cs" />

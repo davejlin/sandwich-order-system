@@ -8,8 +8,8 @@ namespace SandwichOrderSystem
         static void Main(string[] args)
         {
             var container = DIContainer.Container.InitContainer();
-            var viewController = container.Resolve<IViewController>();
-            viewController.Start();
+            var system = container.Resolve<ISandwichOrderSystem>();
+            system.Start();
             container.Dispose();
         }
     }
