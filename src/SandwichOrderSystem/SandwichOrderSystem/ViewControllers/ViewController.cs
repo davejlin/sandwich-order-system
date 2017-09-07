@@ -25,22 +25,22 @@ namespace SandwichOrderSystem.ViewControllers
         public void Start()
         {
             string currentCommand = "";
-            IEnumerable<string> output = null;
+            IEnumerable<string> funcResponse = null;
             while (currentCommand != QUIT_COMMAND)
             {
-                currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext], output);
-                output = getOutputLines(currentCommand);
+                currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext], funcResponse);
+                funcResponse = executeFunc(currentCommand);
                 segue(currentCommand);
             }
         }
 
-        private IEnumerable<string> getOutputLines(string command)
+        private IEnumerable<string> executeFunc(string command)
         {
-            var lines = getExectueFunc()?.Invoke();
+            var response = getExectueFunc()?.Invoke();
             
-            if (lines != null)
+            if (response != null)
             {
-                return lines;
+                return response;
             } else
             {
                 return null;

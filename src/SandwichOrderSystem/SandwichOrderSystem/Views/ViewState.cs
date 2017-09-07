@@ -20,21 +20,12 @@ namespace SandwichOrderSystem.Views
             console.OutputLine(menuTitle, true);
             console.OutputBlankLine();
 
-            if (output != null)
-            {
-                foreach (var line in output)
-                {
-                    console.OutputLine(line);
-                }
-            }
+            outputEnumerable(output);
 
             console.OutputLine(COMMANDS_TITLE, true);
             console.OutputBlankLine();
 
-            foreach (var command in menuCommands)
-            {
-                console.OutputLine(command, false);
-            }
+            outputEnumerable(menuCommands);
 
             return console.ReadInput(ENTER_COMMAND_TITLE, true);
         }
@@ -50,6 +41,17 @@ namespace SandwichOrderSystem.Views
         {
             console.OutputBlankLine();
             console.ReadInput(CONSOLE_PROMPT_TO_CONTINUE, false);
+        }
+
+        private void outputEnumerable(IEnumerable<string> output)
+        {
+            if (output != null)
+            {
+                foreach (var line in output)
+                {
+                    console.OutputLine(line, false);
+                }
+            }
         }
     }
 }
