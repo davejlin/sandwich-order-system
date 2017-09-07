@@ -8,43 +8,71 @@ namespace SandwichOrderSystem.ViewControllers
 {
     public partial class ViewController
     {
-        Dictionary<ViewContext, Func<string, IEnumerable<string>>> executeFuncs;
+        private Dictionary<ViewContext, Dictionary<string, Func<string, IEnumerable<string>>>> executeFuncs;
 
         private void initExecuteFuncs()
         {
-            executeFuncs = new Dictionary<ViewContext, Func<string, IEnumerable<string>>>();
+            executeFuncs = new Dictionary<ViewContext, Dictionary<string, Func<string, IEnumerable<string>>>>();
+
+            var funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
 
             Func<string, IEnumerable<string>> func = c =>
             {
                 return showOrders();
             };
 
-            executeFuncs.Add(ViewContext.Show, func);
-            executeFuncs.Add(ViewContext.Finish, func);
+            funcsDict.Add(SHOW_COMMAND, func);
+            funcsDict.Add(FINISH_COMMAND, func);
+
+            executeFuncs.Add(ViewContext.Main, funcsDict);
+
+            // Review
+
+            funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
 
             func = c =>
             {
-                viewModel.AddItem<SignatureSandwich>(c);
+                viewModel.AddOrder();
                 return null;
             };
 
-            executeFuncs.Add(ViewContext.SignatureSandwich, func);
+            funcsDict.Add(FINISH_COMMAND, func);
 
             func = c =>
             {
-                if (c == FINISH_COMMAND)
-                {
-                    viewModel.AddOrder();
-                }
-                else
-                {
-                    viewModel.ResetOrder();
-                }
-
+                viewModel.ResetOrder();
                 return null;
             };
 
-            executeFuncs.Add(ViewContext.Review, func);
+            funcsDict.Add(DELETE_COMMAND, func);
+
+            executeFuncs.Add(ViewContext.Review, funcsDict);
+
+            // Items
+
+            funcsDict = createItemExecuteFuncDict<SignatureSandwich>();
+            executeFuncs.Add(ViewContext.SignatureSandwich, funcsDict);
+
+            funcsDict = createItemExecuteFuncDict<Bread>();
+            executeFuncs.Add(ViewContext.Bread, funcsDict);
+
+            funcsDict = createItemExecuteFuncDict<Filling>();
+            executeFuncs.Add(ViewContext.Filling, funcsDict);
+
+            funcsDict = createItemExecuteFuncDict<Cheese>();
+            executeFuncs.Add(ViewContext.Cheese, funcsDict);
+
+            funcsDict = createItemExecuteFuncDict<Vegetable>();
+            executeFuncs.Add(ViewContext.Vegetable, funcsDict);
+
+            funcsDict = createItemExecuteFuncDict<Condiment>();
+            executeFuncs.Add(ViewContext.Condiment, funcsDict);
+
+            funcsDict = createItemExecuteFuncDict<Drink>();
+            executeFuncs.Add(ViewContext.Drink, funcsDict);
+
+            funcsDict = createItemExecuteFuncDict<Chips>();
+            executeFuncs.Add(ViewContext.Chips, funcsDict);
         }
 
         private IEnumerable<string> showOrders()
@@ -58,6 +86,30 @@ namespace SandwichOrderSystem.ViewControllers
             {
                 return new List<string>() { SHOW_NO_ORDERS_TITLE };
             }
+        }
+
+        private Dictionary<string, Func<string, IEnumerable<string>>> createItemExecuteFuncDict<T>() where T : class, IItem
+        {
+            var funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
+            var itemMenuCommands = viewModel.GetItemCommands<T>();
+
+            foreach (string command in itemMenuCommands)
+            {
+                funcsDict.Add(command, createItemExecuteFunc<T>());
+            }
+
+            return funcsDict;
+        }
+
+        private Func<string, IEnumerable<string>> createItemExecuteFunc<T>() where T : class, IItem
+        {
+            Func<string, IEnumerable<string>> func = c =>
+            {
+                viewModel.AddItem<T>(c);
+                return null;
+            };
+
+            return func;
         }
     }
 }

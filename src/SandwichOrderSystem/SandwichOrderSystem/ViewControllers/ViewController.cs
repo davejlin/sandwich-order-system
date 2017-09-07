@@ -43,9 +43,9 @@ namespace SandwichOrderSystem.ViewControllers
 
         private Func<string, IEnumerable<string>> getExectueFunc(string command)
         {
-            if (executeFuncs.ContainsKey(viewContext))
+            if (executeFuncs.ContainsKey(viewContext) && executeFuncs[viewContext].ContainsKey(command))
             {
-                return executeFuncs[viewContext];
+                return executeFuncs[viewContext][command];
             }
 
             return null;
@@ -66,7 +66,7 @@ namespace SandwichOrderSystem.ViewControllers
 
         private Action getSegueAction(string command)
         {
-            if (menuSegueActions[viewContext].ContainsKey(command))
+            if (menuSegueActions.ContainsKey(viewContext) && menuSegueActions[viewContext].ContainsKey(command))
             {
                 return menuSegueActions[viewContext][command];
             }
