@@ -1,5 +1,5 @@
-﻿using SandwichOrderSystem.ViewControllers;
-using System;
+﻿using SandwichOrderSystem.Services;
+using SandwichOrderSystem.ViewControllers;
 using System.Collections.Generic;
 using static SandwichOrderSystem.Constants;
 
@@ -7,47 +7,37 @@ namespace SandwichOrderSystem.Views
 {
     public class ViewState : IViewState
     {
+        private IViewController viewController;
+        private IConsoleWrapper console;
         private string currentCommand = "";
 
-        private IConsoleWrapper console;
-        private IViewController viewController;
-        private IViewContext context;
-
-        public ViewState(IViewController viewController, IConsoleWrapper console)
+        public ViewState(IConsoleWrapper console)
         {
             this.console = console;
+        }
+
+        public void SetViewController(IViewController viewController)
+        {
             this.viewController = viewController;
         }
 
         public void Action()
         {
-            Action segueAction = viewController.GetSegueAction(currentCommand);
+            var segueAction = viewController.GetSegueAction();
             if (segueAction != null)
             {
                 segueAction();
             }
             else
             {
-                PromptInvalidCommand();
+                promptInvalidCommand();
             }
         }
 
-        public string MenuCommands()
-        {
-            currentCommand = menuPrompt(viewController.MenuTitle, viewController.MenuCommands);
-            return currentCommand;
-        }
-
-        public void SetContext(IViewContext context)
-        {
-            this.context = context;
-            viewController.SetContext(context);
-        }
-
-        private string menuPrompt(string title, IEnumerable<string> menuCommands)
+        public string GetMenuCommand(string menuTitle, IEnumerable<string> menuCommands)
         {
             console.ClearOutput();
-            console.OutputLine(title, true);
+            console.OutputLine(menuTitle, true);
             console.OutputLine(COMMANDS_TITLE, true);
             console.OutputBlankLine();
 
@@ -59,22 +49,17 @@ namespace SandwichOrderSystem.Views
             return console.ReadInput(ENTER_COMMAND_TITLE, true);
         }
 
-        private void returnToMain()
-        {
-            context.ViewNumber = ViewStateNumber.Main;
-        }
-
-        public void PromptToContinue()
+        private void promptToContinue()
         {
             console.OutputBlankLine();
             console.ReadInput(CONSOLE_PROMPT_TO_CONTINUE, false);
         }
 
-        public void PromptInvalidCommand()
+        public void promptInvalidCommand()
         {
             console.ClearOutput();
             console.OutputLine(CONSOLE_INVALID_COMMAND, true);
-            PromptToContinue();
+            promptToContinue();
         }
     }
 }

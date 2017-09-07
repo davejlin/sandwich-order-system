@@ -1,4 +1,4 @@
-﻿namespace SandwichOrderSystem.Views
+﻿namespace SandwichOrderSystem.Services
 {
     public interface IConsoleWrapper
     {

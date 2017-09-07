@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SandwichOrderSystem.Views
+namespace SandwichOrderSystem.Services
 {
     public class ConsoleWrapper : IConsoleWrapper
     {

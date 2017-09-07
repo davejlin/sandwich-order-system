@@ -4,7 +4,7 @@ namespace SandwichOrderSystem
 {
     public struct Constants
     {
-        public enum ViewStateNumber
+        public enum ViewContext
         {
             Main = 0,
             Add,
@@ -90,24 +90,24 @@ namespace SandwichOrderSystem
         public const string DELETE_ACTION_COMPLETE = " Your order was deleted.";
         public const string DELETE_ACTION_INCOMPLETE = " Your order was not deleted.";
 
-        public static Dictionary<ViewStateNumber, string> MENU_TITLES = new Dictionary<ViewStateNumber, string> {
-            { ViewStateNumber.Main, MAIN_TITLE },
-            { ViewStateNumber.Add, ADD_TITLE },
-            { ViewStateNumber.Delete, DELETE_TITLE },
-            { ViewStateNumber.List, LIST_TITLE },
-            { ViewStateNumber.Finish, FINISH_TITLE },
-            { ViewStateNumber.Quit, ""},
-            { ViewStateNumber.SignatureSandwich, SIGNATURE_SANDWICH_TITLE },
-            { ViewStateNumber.CustomSandwich, CUSTOM_SANDWICH_TITLE },
-            { ViewStateNumber.Bread, BREAD_TITLE },
-            { ViewStateNumber.Filling, FILLING_TITLE },
-            { ViewStateNumber.Cheese, CHEESE_TITLE },
-            { ViewStateNumber.Vegetable, VEGETABLE_TITLE },
-            { ViewStateNumber.Condiment, CONDIMENT_TITLE },
-            { ViewStateNumber.Drink, DRINK_TITLE },
-            { ViewStateNumber.Chips, CHIPS_TITLE },
-            { ViewStateNumber.Review, REVIEW_TITLE },
-            { ViewStateNumber.Pay, PAY_TITLE }
+        public static Dictionary<ViewContext, string> MENU_TITLES = new Dictionary<ViewContext, string> {
+            { ViewContext.Main, MAIN_TITLE },
+            { ViewContext.Add, ADD_TITLE },
+            { ViewContext.Delete, DELETE_TITLE },
+            { ViewContext.List, LIST_TITLE },
+            { ViewContext.Finish, FINISH_TITLE },
+            { ViewContext.Quit, ""},
+            { ViewContext.SignatureSandwich, SIGNATURE_SANDWICH_TITLE },
+            { ViewContext.CustomSandwich, CUSTOM_SANDWICH_TITLE },
+            { ViewContext.Bread, BREAD_TITLE },
+            { ViewContext.Filling, FILLING_TITLE },
+            { ViewContext.Cheese, CHEESE_TITLE },
+            { ViewContext.Vegetable, VEGETABLE_TITLE },
+            { ViewContext.Condiment, CONDIMENT_TITLE },
+            { ViewContext.Drink, DRINK_TITLE },
+            { ViewContext.Chips, CHIPS_TITLE },
+            { ViewContext.Review, REVIEW_TITLE },
+            { ViewContext.Pay, PAY_TITLE }
         };
     }
 }

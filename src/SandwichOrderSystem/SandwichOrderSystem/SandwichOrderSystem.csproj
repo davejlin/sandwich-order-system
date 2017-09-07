@@ -63,8 +63,6 @@
     <Compile Include="Constants.cs" />
     <Compile Include="DI\DIContainer.cs" />
     <Compile Include="DI\DIMainInstaller.cs" />
-    <Compile Include="IConsoleAppManager.cs" />
-    <Compile Include="ConsoleAppManager.cs" />
     <Compile Include="Models\IMenuItem.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Program.cs" />
@@ -76,12 +74,10 @@
     <Compile Include="ViewControllers\ViewController.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
-    <Compile Include="Views\IViewContext.cs" />
-    <Compile Include="Views\ViewContext.cs" />
     <Compile Include="Views\ViewState.cs" />
     <Compile Include="Views\IViewState.cs" />
-    <Compile Include="Views\ConsoleWrapper.cs" />
-    <Compile Include="Views\IConsoleWrapper.cs" />
+    <Compile Include="Services\ConsoleWrapper.cs" />
+    <Compile Include="Services\IConsoleWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

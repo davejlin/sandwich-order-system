@@ -1,4 +1,5 @@
 ﻿using SandwichOrderSystem.DI;
+using SandwichOrderSystem.ViewControllers;
 
 namespace SandwichOrderSystem
 {
@@ -7,8 +8,8 @@ namespace SandwichOrderSystem
         static void Main(string[] args)
         {
             var container = DIContainer.Container.InitContainer();
-            var consoleAppManager = container.Resolve<IConsoleAppManager>();
-            consoleAppManager.start();
+            var viewController = container.Resolve<IViewController>();
+            viewController.Start();
             container.Dispose();
         }
     }

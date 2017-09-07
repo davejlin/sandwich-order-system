@@ -1,9 +1,12 @@
-﻿namespace SandwichOrderSystem.Views
+﻿using SandwichOrderSystem.ViewControllers;
+using System.Collections.Generic;
+
+namespace SandwichOrderSystem.Views
 {
     public interface IViewState
     {
         void Action();
-        string MenuCommands();
-        void SetContext(IViewContext context);
+        string GetMenuCommand(string menuTitle, IEnumerable<string> menuCommands);
+        void SetViewController(IViewController viewController);
     }
 }

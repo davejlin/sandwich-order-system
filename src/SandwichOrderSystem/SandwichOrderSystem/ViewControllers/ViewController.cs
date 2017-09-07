@@ -8,46 +8,37 @@ namespace SandwichOrderSystem.ViewControllers
 {
     public partial class ViewController : IViewController
     {
+        private IViewState viewState;
         private IViewModel viewModel;
-        private IViewContext context;
-        private string command;
+        private ViewContext viewContext;
 
-        public ViewController(IViewModel viewModel)
+        private string currentCommand = "";
+
+        public ViewController(IViewState viewState, IViewModel viewModel)
         {
+            this.viewState = viewState;
             this.viewModel = viewModel;
+
+            viewState.SetViewController(this);
 
             initMenuSegueActions();
             initMenuCommands();
         }
 
-        public void SetContext(IViewContext context)
+        public void Start()
         {
-            this.context = context;
-        }
-
-        public string MenuTitle
-        {
-            get
+            while (currentCommand != QUIT_COMMAND)
             {
-                return MENU_TITLES[context.ViewNumber];
+                currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext]);
+                viewState.Action();
             }
         }
 
-        public IEnumerable<string> MenuCommands
+        public Action GetSegueAction()
         {
-            get
+            if (menuSegueActions[viewContext].ContainsKey(currentCommand))
             {
-                return menuCommands[context.ViewNumber];
-            }
-        }
-
-        public Action GetSegueAction(string command)
-        {
-            this.command = command;
-
-            if (menuSegueActions[context.ViewNumber].ContainsKey(command))
-            {
-                return menuSegueActions[context.ViewNumber][command];
+                return menuSegueActions[viewContext][currentCommand];
             }
 
             return null;

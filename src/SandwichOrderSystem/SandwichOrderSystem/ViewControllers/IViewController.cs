@@ -6,9 +6,7 @@ namespace SandwichOrderSystem.ViewControllers
 {
     public interface IViewController
     {
-        void SetContext(IViewContext context);
-        string MenuTitle { get; }
-        IEnumerable<string> MenuCommands { get; }
-        Action GetSegueAction(string command);
+        void Start();
+        Action GetSegueAction();
     }
 }
