@@ -12,12 +12,12 @@ namespace SandwichOrderSystem.DI
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<IViewState>().ImplementedBy<ViewState>());
-            container.Register(Component.For<IViewController>().ImplementedBy<ViewController>());
-            container.Register(Component.For<IViewModel>().ImplementedBy<ViewModel>());
-
             container.Register(Component.For<IConsoleWrapper>().ImplementedBy<ConsoleWrapper>());
             container.Register(Component.For<IMenuItemsFactory>().ImplementedBy<MenuItemsFactory>());
+
+            container.Register(Component.For<IViewState>().ImplementedBy<ViewState>());
+            container.Register(Component.For<IViewModel>().ImplementedBy<ViewModel>());
+            container.Register(Component.For<IViewController>().ImplementedBy<ViewController>());
         }
     }
 }

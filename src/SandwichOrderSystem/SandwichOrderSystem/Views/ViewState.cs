@@ -9,7 +9,6 @@ namespace SandwichOrderSystem.Views
     {
         private IViewController viewController;
         private IConsoleWrapper console;
-        private string currentCommand = "";
 
         public ViewState(IConsoleWrapper console)
         {

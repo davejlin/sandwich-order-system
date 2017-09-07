@@ -1,7 +1,6 @@
 ﻿using SandwichOrderSystem.ViewModels;
 using SandwichOrderSystem.Views;
 using System;
-using System.Collections.Generic;
 using static SandwichOrderSystem.Constants;
 
 namespace SandwichOrderSystem.ViewControllers

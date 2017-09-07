@@ -1,6 +1,4 @@
-﻿using SandwichOrderSystem.Views;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace SandwichOrderSystem.ViewControllers
 {
