@@ -22,7 +22,7 @@ namespace SandwichOrderSystem.ViewControllers
             var commandList = new List<string>();
             commandList.Add(string.Format(menuCommandFormat, ADD_COMMAND, ADD_COMMAND_TITLE));
             commandList.Add(blank);
-            commandList.Add(string.Format(menuCommandFormat, LIST_COMMAND, LIST_COMMAND_TITLE));
+            commandList.Add(string.Format(menuCommandFormat, SHOW_COMMAND, SHOW_COMMAND_TITLE));
             commandList.Add(string.Format(menuCommandFormat, DELETE_COMMAND, DELETE_COMMAND_TITLE));
             commandList.Add(string.Format(menuCommandFormat, FINISH_COMMAND, FINISH_COMMAND_TITLE));
             commandList.Add(blank);
@@ -52,7 +52,7 @@ namespace SandwichOrderSystem.ViewControllers
             commandList = new List<string>();
             commandList.AddRange(returnQuitCommands);
 
-            menuCommands.Add(ViewContext.List, commandList);
+            menuCommands.Add(ViewContext.Show, commandList);
             menuCommands.Add(ViewContext.Delete, commandList);
             menuCommands.Add(ViewContext.CustomSandwich, commandList);
             menuCommands.Add(ViewContext.Pay, commandList);
@@ -84,7 +84,7 @@ namespace SandwichOrderSystem.ViewControllers
             var segueActionDict = new Dictionary<string, Action>();
             segueActionDict.Add(ADD_COMMAND, () => viewContext = ViewContext.Add);
             segueActionDict.Add(DELETE_COMMAND, () => viewContext = ViewContext.Delete);
-            segueActionDict.Add(LIST_COMMAND, () => viewContext = ViewContext.List);
+            segueActionDict.Add(SHOW_COMMAND, () => viewContext = ViewContext.Show);
             segueActionDict.Add(FINISH_COMMAND, () => viewContext = ViewContext.Finish);
             segueActionDict.Add(QUIT_COMMAND, () => viewContext = ViewContext.Quit);
 
@@ -122,7 +122,7 @@ namespace SandwichOrderSystem.ViewControllers
 
             menuSegueActions.Add(ViewContext.CustomSandwich, deleteQuitSegueActions);
 
-            menuSegueActions.Add(ViewContext.List, returnQuitSegueActions);
+            menuSegueActions.Add(ViewContext.Show, returnQuitSegueActions);
             menuSegueActions.Add(ViewContext.Delete, returnQuitSegueActions);
             menuSegueActions.Add(ViewContext.Pay, returnQuitSegueActions);
 

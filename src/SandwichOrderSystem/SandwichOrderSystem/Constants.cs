@@ -8,7 +8,7 @@ namespace SandwichOrderSystem
         {
             Main = 0,
             Add,
-            List,
+            Show,
             Delete,
             Finish,
             Quit,
@@ -29,8 +29,8 @@ namespace SandwichOrderSystem
             Pay,
         }
 
-        public const string CONSOLE_PROMPT_TO_CONTINUE = " Press Enter to return to Main Menu: ";
-        public const string CONSOLE_INVALID_COMMAND = " Please enter valid command.";
+        public const string CONSOLE_PROMPT_TO_CONTINUE = " Press Enter to continue:  ";
+        public const string CONSOLE_INVALID_COMMAND = " Please enter a valid command ...";
 
         public const string COMMANDS_TITLE = " Commands:";
         public const string ENTER_COMMAND_TITLE = " Enter a Command: ";
@@ -38,7 +38,7 @@ namespace SandwichOrderSystem
         public const string MAIN_TITLE = " Main Menu ... ";
         public const string ADD_TITLE = " Please choose a Signature or Custom Sandwich ... ";
         public const string DELETE_TITLE = " Deleted your orders ... ";
-        public const string LIST_TITLE = " Here are your orders ... ";
+        public const string SHOW_TITLE = " Here are your orders ... ";
         public const string FINISH_TITLE = " Please review your total order ... ";
         public const string REVIEW_TITLE = " Please review your order ... ";
         public const string SIGNATURE_SANDWICH_TITLE = " Please choose a Signature Sandwich ... ";
@@ -53,7 +53,7 @@ namespace SandwichOrderSystem
         public const string PAY_TITLE = " Thank you for your order! ... ";
 
         public const string ADD_COMMAND = "a";
-        public const string LIST_COMMAND = "l";
+        public const string SHOW_COMMAND = "s";
 
         public const string SIGNATURE_SANDWICH_COMMAND = "s";
         public const string CUSTOM_SANDWICH_COMMAND = "c";
@@ -71,7 +71,7 @@ namespace SandwichOrderSystem
         public const string CUSTOM_SANDWICH_COMMAND_TITLE = "Add Custom Sandwich";
 
         public const string ADD_COMMAND_TITLE = "Add new order";
-        public const string LIST_COMMAND_TITLE = "List orders";
+        public const string SHOW_COMMAND_TITLE = "Show orders";
         public const string DELETE_COMMAND_TITLE = "Delete order";
 
         public const string FINISH_COMMAND_TITLE = "Finish orders";
@@ -94,7 +94,7 @@ namespace SandwichOrderSystem
             { ViewContext.Main, MAIN_TITLE },
             { ViewContext.Add, ADD_TITLE },
             { ViewContext.Delete, DELETE_TITLE },
-            { ViewContext.List, LIST_TITLE },
+            { ViewContext.Show, SHOW_TITLE },
             { ViewContext.Finish, FINISH_TITLE },
             { ViewContext.Quit, ""},
             { ViewContext.SignatureSandwich, SIGNATURE_SANDWICH_TITLE },
