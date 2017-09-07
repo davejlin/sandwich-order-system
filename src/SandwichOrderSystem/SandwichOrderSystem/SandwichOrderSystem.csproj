@@ -76,10 +76,10 @@
     <Compile Include="ViewControllers\ViewController.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
-    <Compile Include="Views\ViewState\IViewContext.cs" />
-    <Compile Include="Views\ViewState\ViewContext.cs" />
-    <Compile Include="Views\ViewState\ViewState.cs" />
-    <Compile Include="Views\ViewState\IViewState.cs" />
+    <Compile Include="Views\IViewContext.cs" />
+    <Compile Include="Views\ViewContext.cs" />
+    <Compile Include="Views\ViewState.cs" />
+    <Compile Include="Views\IViewState.cs" />
     <Compile Include="Views\ConsoleWrapper.cs" />
     <Compile Include="Views\IConsoleWrapper.cs" />
   </ItemGroup>

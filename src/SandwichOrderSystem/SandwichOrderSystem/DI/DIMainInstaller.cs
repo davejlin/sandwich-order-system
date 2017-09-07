@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using SandwichOrderSystem.Views.ViewState;
+using SandwichOrderSystem.Views;
 using SandwichOrderSystem.Views;
 using SandwichOrderSystem.ViewControllers;
 using SandwichOrderSystem.ViewModels;

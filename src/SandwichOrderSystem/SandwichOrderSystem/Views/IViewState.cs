@@ -1,4 +1,4 @@
-﻿namespace SandwichOrderSystem.Views.ViewState
+﻿namespace SandwichOrderSystem.Views
 {
     public interface IViewState
     {

@@ -1,6 +1,6 @@
 ﻿using static SandwichOrderSystem.Constants;
 
-namespace SandwichOrderSystem.Views.ViewState
+namespace SandwichOrderSystem.Views
 {
     public interface IViewContext
     {
