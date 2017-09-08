@@ -40,7 +40,7 @@ namespace SandwichOrderSystemShared.Models
             }
         }
 
-        private string FORMAT = " Order {0}:\n{1}\n\n";
+        private string FORMAT = "  Order {0}:\n{1}\n\n";
         public override string ToString()
         {
             string ordersString = "";

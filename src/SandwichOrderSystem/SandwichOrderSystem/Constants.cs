@@ -6,6 +6,7 @@ namespace SandwichOrderSystem
     {
         public const string MENU_COMMAND_FORMAT = " {0} - {1,-20} {2}";
         public const string ITEM_LIST_FORMAT = " {0} - {1} ";
+        public const string TOTAL_PRICE_FORMAT = " {0,-20} {1}";
         public const string SEPARATOR = "";
 
         public enum ViewContext
@@ -94,10 +95,10 @@ namespace SandwichOrderSystem
         public const string SHOW_NO_ORDERS_TITLE = "\n\n You have not ordered anything yet ...\n\n";
         public const string FINISH_COMPLETE_TITLE = "\n\n Your meal is being prepared and will be ready soon ...\n\n";
 
-        public const string DELETE_ACTION_COMMAND_CONFIRM = "Y";
-        public const string DELETE_ACTION_CONFIRM = " Enter Y to confirm deleting your order ... ";
-        public const string DELETE_ACTION_COMPLETE = " Your order was deleted.";
-        public const string DELETE_ACTION_INCOMPLETE = " Your order was not deleted.";
+        public const string TOTAL_PRICE_TITLE = " Total Price:";
+
+        public const int CONSOLE_WIDTH = 85;
+        public const int CONSOLE_HEIGHT = 85;
 
         public static Dictionary<ViewContext, string> MENU_TITLES = new Dictionary<ViewContext, string> {
             { ViewContext.Main, MAIN_TITLE },

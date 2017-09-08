@@ -8,6 +8,8 @@ namespace SandwichOrderSystemShared.Services
         IOrders Orders { get; }
         IOrder CurrentOrder { get; }
         int Count { get; }
+        decimal TotalOrdersPrice { get; }
+        decimal CurrentOrderTotalPrice { get; }
 
         void AddItemToOrder(IItem item);
         void AddOrderToOrders();

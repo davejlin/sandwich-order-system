@@ -1,9 +1,15 @@
 ﻿using System;
+using static SandwichOrderSystem.Constants;
 
 namespace SandwichOrderSystem.Services
 {
     public class ConsoleWrapper : IConsoleWrapper
     {
+        public ConsoleWrapper()
+        {
+            Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
+        }
+
         public string ReadInput(string prompt, bool forceToLowercase = false)
         {
             Console.WriteLine();

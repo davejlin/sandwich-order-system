@@ -1,6 +1,7 @@
 ﻿using SandwichOrderSystemShared.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace SandwichOrderSystemShared.Services
 {
@@ -47,6 +48,25 @@ namespace SandwichOrderSystemShared.Services
                 {
                     return 0;
                 }
+            }
+        }
+
+        public decimal TotalOrdersPrice
+        {
+            get
+            {
+                return Orders.OrderCollection
+                    .Sum(o => o.Items
+                    .Sum(i => i.Price));
+            }
+        }
+
+        public decimal CurrentOrderTotalPrice
+        {
+            get
+            {
+                return currentOrder.Items
+                    .Sum(i => i.Price);
             }
         }
 

@@ -15,5 +15,7 @@ namespace SandwichOrderSystem.ViewModels
         void ResetOrder();
         void ResetOrders();
         void FinishOrders();
+        decimal GetOrdersPrice();
+        decimal GetCurrentOrderPrice();
     }
 }

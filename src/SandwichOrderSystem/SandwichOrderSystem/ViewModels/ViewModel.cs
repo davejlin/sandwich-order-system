@@ -111,5 +111,15 @@ namespace SandwichOrderSystem.ViewModels
                 return null;
             }
         }
+
+        public decimal GetOrdersPrice()
+        {
+            return orderManager.TotalOrdersPrice;
+        }
+
+        public decimal GetCurrentOrderPrice()
+        {
+            return orderManager.CurrentOrderTotalPrice;
+        }
     }
 }
