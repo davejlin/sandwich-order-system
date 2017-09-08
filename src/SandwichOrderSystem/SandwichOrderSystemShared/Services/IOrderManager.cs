@@ -10,8 +10,9 @@ namespace SandwichOrderSystemShared.Services
         int Count { get; }
         decimal TotalOrdersPrice { get; }
         decimal CurrentOrderTotalPrice { get; }
+        bool IsCurrentOrderComboMeal { get; }
 
-        void AddItemToOrder(IItem item);
+        void AddItemToOrder<T>(IItem item);
         void AddOrderToOrders();
         void ResetCurrentOrder();
         void ResetOrders();
