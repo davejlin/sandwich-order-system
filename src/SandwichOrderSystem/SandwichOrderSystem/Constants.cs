@@ -86,7 +86,7 @@ namespace SandwichOrderSystem
         public const string REVIEW_FINISH_COMMAND_TITLE = "Finish this order";
         public const string REVIEW_DELETE_COMMAND_TITLE = "Delete this order";
 
-        public const string NEXT_COMMAND_TITLE = "Next item";
+        public const string NEXT_COMMAND_TITLE = "Next";
 
         public const string RETURN_COMMAND_TITLE = "Return to Main Menu";
         public const string QUIT_COMMAND_TITLE = "Quit";

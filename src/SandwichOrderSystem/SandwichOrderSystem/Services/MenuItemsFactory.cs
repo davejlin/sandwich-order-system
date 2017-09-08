@@ -22,7 +22,7 @@ namespace SandwichOrderSystem.Services
             return menuItem;
         }
 
-        public IDictionary<Type, List<IMenuItem>> CreateMenuItems()
+        public IDictionary<Type, List<IMenuItem>> GetMenuItems()
         {
             menuItemsDict = new Dictionary<Type, List<IMenuItem>>();
 

@@ -19,7 +19,7 @@ namespace SandwichOrderSystem.ViewModels
         {
             this.orderManager = orderManager;
 
-            menuItemsDict = menuItemsFactory.CreateMenuItems();
+            menuItemsDict = menuItemsFactory.GetMenuItems();
         }
 
         public IEnumerable<string> GetItemCommandMenu<T>() where T : class, IItem

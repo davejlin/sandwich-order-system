@@ -58,14 +58,14 @@ namespace SandwichOrderSystem.ViewControllers
         private void segue(string command)
         {
             var segueAction = getSegueAction(command);
-            if (segueAction != null)
-            {
-                segueAction();
-            }
-            else
+            if (segueAction == null)
             {
                 viewState.PromptInvalidCommand();
                 currentFuncResponse = previousFuncResponse;
+            }
+            else
+            {
+                segueAction();
             }
         }
 
