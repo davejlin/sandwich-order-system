@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystemShared.DataAccess.Deserializer
 {
@@ -14,17 +15,17 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 
                 Type t = item.GetType();
 
-                PropertyInfo prop = t.GetProperty("Name");
+                PropertyInfo prop = t.GetProperty(ITEM_NAME);
                 if (prop != null)
                     prop.SetValue(item, properties[0]);
 
-                prop = t.GetProperty("Price");
+                prop = t.GetProperty(ITEM_PRICE);
                 if (prop != null)
                     prop.SetValue(item, Convert.ToDecimal(properties[1]));
 
             } catch (Exception ex)
             {
-                Console.WriteLine("Error creating item: {0}", ex.ToString());
+                Console.WriteLine(ITEM_CREATION_ERROR_MESSAGE, ex.ToString());
             }
 
             return item;

@@ -14,7 +14,7 @@ namespace SandwichOrderSystem
 
         public void Start()
         {
-            string currentCommand = "";
+            string currentCommand = EMPTY_STRING;
             while (currentCommand != QUIT_COMMAND)
             {
                 currentCommand = viewController.AdvanceViewCycle();

@@ -1,4 +1,6 @@
-﻿namespace SandwichOrderSystemShared.Models
+﻿using static SandwichOrderSystemShared.Constants;
+
+namespace SandwichOrderSystemShared.Models
 {
     public abstract class Item : IItem
     {
@@ -6,10 +8,9 @@
         public string Name { get; set; }
         public decimal Price { get; set; }
 
-        private string FORMAT = " {0,-20} {1}";
         public override string ToString()
         {
-            return string.Format(FORMAT, Name.ToString(), Price.ToString()); 
+            return string.Format(ITEM_FORMAT, Name.ToString(), Price.ToString()); 
         }
     }
 }

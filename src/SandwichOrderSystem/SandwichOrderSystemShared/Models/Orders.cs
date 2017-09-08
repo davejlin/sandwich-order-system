@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystemShared.Models
 {
@@ -40,14 +41,13 @@ namespace SandwichOrderSystemShared.Models
             }
         }
 
-        private string FORMAT = "  Order {0}:\n\n{1}\n\n";
         public override string ToString()
         {
-            string ordersString = "";
+            string ordersString = EMPTY_STRING;
             int orderNumber = 1;
             foreach (IOrder order in OrderCollection)
             {
-                ordersString += string.Format(FORMAT, orderNumber, order.ToString());
+                ordersString += string.Format(ORDERS_FORMAT, ORDERS_TITLE, orderNumber, order.ToString());
                 orderNumber += 1;
             }
             return ordersString;

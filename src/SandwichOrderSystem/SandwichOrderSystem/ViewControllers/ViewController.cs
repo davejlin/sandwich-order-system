@@ -12,7 +12,7 @@ namespace SandwichOrderSystem.ViewControllers
         private IViewModel viewModel;
         private ViewContext viewContext;
 
-        private string currentCommand = "";
+        private string currentCommand = EMPTY_STRING;
         private IEnumerable<string> currentFuncResponse = new List<string>();
         private IEnumerable<string> previousFuncResponse = new List<string>();
 

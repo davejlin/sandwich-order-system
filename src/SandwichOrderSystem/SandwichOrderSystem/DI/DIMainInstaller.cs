@@ -16,7 +16,6 @@ namespace SandwichOrderSystem.DI
             container.Resolve<IConsoleWrapper>().OutputLine(Constants.GREETING_MESSAGE);
 
             container.Register(Component.For<IMenuItemsFactory>().ImplementedBy<MenuItemsFactory>());
-            container.Register(Component.For<IOrderManager>().ImplementedBy<OrderManager>());
 
             container.Register(Component.For<IViewState>().ImplementedBy<ViewState>());
             container.Register(Component.For<IViewModel>().ImplementedBy<ViewModel>());

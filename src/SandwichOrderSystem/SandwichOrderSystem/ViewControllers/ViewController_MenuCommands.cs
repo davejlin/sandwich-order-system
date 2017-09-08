@@ -18,11 +18,11 @@ namespace SandwichOrderSystem.ViewControllers
 
             var commandList = new List<string>();
             commandList.Add(string.Format(ITEM_LIST_FORMAT, ADD_COMMAND, ADD_COMMAND_TITLE));
-            commandList.Add(SEPARATOR);
+            commandList.Add(EMPTY_STRING);
             commandList.Add(string.Format(ITEM_LIST_FORMAT, SHOW_COMMAND, SHOW_COMMAND_TITLE));
             commandList.Add(string.Format(ITEM_LIST_FORMAT, DELETE_COMMAND, DELETE_COMMAND_TITLE));
             commandList.Add(string.Format(ITEM_LIST_FORMAT, FINISH_COMMAND, FINISH_COMMAND_TITLE));
-            commandList.Add(SEPARATOR);
+            commandList.Add(EMPTY_STRING);
             commandList.Add(string.Format(ITEM_LIST_FORMAT, QUIT_COMMAND, QUIT_COMMAND_TITLE));
 
             menuCommands.Add(ViewContext.Main, commandList);
@@ -72,7 +72,7 @@ namespace SandwichOrderSystem.ViewControllers
         private IEnumerable<string> createReturnQuitCommands()
         {
             var commandList = new List<string>();
-            commandList.Add(SEPARATOR);
+            commandList.Add(EMPTY_STRING);
             commandList.Add(string.Format(ITEM_LIST_FORMAT, RETURN_COMMAND, RETURN_COMMAND_TITLE));
             commandList.Add(string.Format(ITEM_LIST_FORMAT, QUIT_COMMAND, QUIT_COMMAND_TITLE));
             return commandList;
@@ -81,7 +81,7 @@ namespace SandwichOrderSystem.ViewControllers
         private IEnumerable<string> createDeleteQuitCommands()
         {
             var commandList = new List<string>();
-            commandList.Add(SEPARATOR);
+            commandList.Add(EMPTY_STRING);
             commandList.Add(string.Format(ITEM_LIST_FORMAT, DELETE_COMMAND, REVIEW_DELETE_COMMAND_TITLE));
             commandList.Add(string.Format(ITEM_LIST_FORMAT, QUIT_COMMAND, QUIT_COMMAND_TITLE));
             return commandList;
@@ -94,7 +94,7 @@ namespace SandwichOrderSystem.ViewControllers
 
             if (addNextForOptionalItem)
             {
-                commandList.Add(SEPARATOR);
+                commandList.Add(EMPTY_STRING);
                 commandList.Add(string.Format(ITEM_LIST_FORMAT, NEXT_COMMAND, NEXT_COMMAND_TITLE));
             }
 

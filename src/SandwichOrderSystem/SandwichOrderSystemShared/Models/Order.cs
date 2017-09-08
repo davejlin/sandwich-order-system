@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystemShared.Models
 {
@@ -15,7 +16,7 @@ namespace SandwichOrderSystemShared.Models
         public override string ToString()
         {
             var itemsStrings = Items.Select(i => i.ToString());
-            return string.Join("\n", itemsStrings);
+            return string.Join(NEW_LINE1, itemsStrings);
         }
     }
 }

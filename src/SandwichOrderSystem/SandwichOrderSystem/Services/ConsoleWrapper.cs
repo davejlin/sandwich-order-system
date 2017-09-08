@@ -7,7 +7,9 @@ namespace SandwichOrderSystem.Services
     {
         public ConsoleWrapper()
         {
-            Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
+            int width = (int)(0.01 * CONSOLE_WIDTH_PERCENTAGE_OF_MAX * Console.LargestWindowWidth);
+            int height = (int) (0.01 * CONSOLE_HEIGHT_PERCENTAGE_OF_MAX * Console.LargestWindowHeight);
+            Console.SetWindowSize(width, height);
         }
 
         public string ReadInput(string prompt, bool forceToLowercase = false)

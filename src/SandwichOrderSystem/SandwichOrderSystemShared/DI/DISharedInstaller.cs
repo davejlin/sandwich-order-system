@@ -28,19 +28,20 @@ namespace SandwichOrderSystemShared.DI
         {
             Container = container;
 
-            container.Register(Component.For<IRepository>().ImplementedBy<Repository>());
-
             container.Register(Component.For<IDataInitializer>().ImplementedBy<DataInitializer>());
             container.Register(Component.For<IDataParser>().ImplementedBy<DataParser>());
             container.Register(Component.For<IFileSystemManager>().ImplementedBy<FileSystemManager>());
             container.Register(Component.For<IItemFactory>().ImplementedBy<ItemFactory>());
             container.Register(Component.For<IErrorHandler>().ImplementedBy<ErrorHandler>());
+            container.Register(Component.For<IOrderManager>().ImplementedBy<OrderManager>());
 
             container.Register(Component.For<IContextFactory>().ImplementedBy<ContextFactory>());
             container.Register(Component.For<IDatabaseInitializerFactory>().ImplementedBy<DatabaseInitializerFactory>());
 
             container.Register(Component.For<Context>().LifeStyle.Transient);
             container.Register(Component.For<DatabaseInitializer>().LifeStyle.Transient);
+
+            container.Register(Component.For<IRepository>().ImplementedBy<Repository>());
         }
     }
 }

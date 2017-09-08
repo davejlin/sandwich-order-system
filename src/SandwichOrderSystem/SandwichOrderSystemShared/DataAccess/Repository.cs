@@ -1,6 +1,7 @@
 ﻿using SandwichOrderSystemShared.DataAccess.Db;
 using SandwichOrderSystemShared.Models;
 using SandwichOrderSystemShared.Services;
+using static SandwichOrderSystemShared.Constants;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -21,7 +22,7 @@ namespace SandwichOrderSystemShared.DataAccess
 
         public IEnumerable<T> GetItem<T>() where T : class, IItem
         {
-            string dBSetName = typeof(T).Name + "Set";
+            string dBSetName = typeof(T).Name + DBSET_SUFFIX;
             using (Context context = GetContext())
             {
                 try
@@ -33,7 +34,7 @@ namespace SandwichOrderSystemShared.DataAccess
                         .ToList();
                 } catch (Exception ex)
                 {
-                    errorHandler.HandleError(string.Format("Exception thrown when trying to get {0}: {1}", dBSetName, ex.Message));
+                    errorHandler.HandleError(string.Format(EXCEPTION_FORMAT, EXCEPTION_MESSAGE, dBSetName, ex.Message));
                     return null;
                 }
 

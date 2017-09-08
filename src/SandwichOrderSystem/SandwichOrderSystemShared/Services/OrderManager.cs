@@ -1,9 +1,9 @@
 ﻿using SandwichOrderSystemShared.Models;
-using static SandwichOrderSystem.Constants;
+using static SandwichOrderSystemShared.Constants;
 using System.Linq;
 using System;
 
-namespace SandwichOrderSystem.Services
+namespace SandwichOrderSystemShared.Services
 {
     public class OrderManager : IOrderManager
     {

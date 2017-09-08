@@ -87,7 +87,7 @@ namespace SandwichOrderSystem.ViewControllers
             if (viewModel.GetOrdersCount() > 0)
             {
                 var orders = viewModel.GetOrders();
-                return new List<string>() { orders.ToString(), string.Format(TOTAL_PRICE_FORMAT, TOTAL_PRICE_TITLE, viewModel.GetOrdersPrice()), SEPARATOR };
+                return new List<string>() { orders.ToString(), string.Format(TOTAL_PRICE_FORMAT, TOTAL_PRICE_TITLE, viewModel.GetOrdersPrice()), EMPTY_STRING };
             }
             else
             {
@@ -100,7 +100,7 @@ namespace SandwichOrderSystem.ViewControllers
             var order = viewModel.GetCurrentOrder();
             if (order.Items.Count > 0)
             {
-                return new List<string>() { order.ToString(), SEPARATOR, string.Format(TOTAL_PRICE_FORMAT, TOTAL_PRICE_TITLE, viewModel.GetCurrentOrderPrice()), SEPARATOR };
+                return new List<string>() { order.ToString(), EMPTY_STRING, string.Format(TOTAL_PRICE_FORMAT, TOTAL_PRICE_TITLE, viewModel.GetCurrentOrderPrice()), EMPTY_STRING };
             }
             else
             {

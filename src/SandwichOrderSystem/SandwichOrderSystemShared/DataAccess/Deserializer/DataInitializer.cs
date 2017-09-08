@@ -1,4 +1,5 @@
 ﻿using SandwichOrderSystemShared.DataAccess.Db;
+using static SandwichOrderSystemShared.Constants;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,8 +13,6 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
         IDataParser dataParser;
         IItemFactory itemFactory;
 
-        private const string modelsNameSpace = "SandwichOrderSystemShared.Models";
-
         public DataInitializer(IFileSystemManager fileSystemManager, IDataParser dataParser, IItemFactory itemFactory)
         {
             this.fileSystemManager = fileSystemManager;
@@ -25,12 +24,12 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
         {
             var typeDict = getItemsDict();
 
-            MethodInfo genericCreateItem = itemFactory.GetType().GetMethod("CreateItem");
-            MethodInfo genericAddToContextDBSet = this.GetType().GetMethod("addToContextDBSet");
+            MethodInfo genericCreateItem = itemFactory.GetType().GetMethod(CREATE_ITEM_METHOD);
+            MethodInfo genericAddToContextDBSet = GetType().GetMethod(ADD_TO_CONTEXT_DBSET_METHOD);
 
             foreach (var entry in typeDict)
             {
-                var typeName = modelsNameSpace + "." + entry.Key;
+                var typeName = MODELS_NAMESPACE + entry.Key;
                 var type = Type.GetType(typeName);
 
                 if (type != null)
@@ -66,7 +65,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 
         public void addToContextDBSet<T>(T instance, Context context) where T : class
         {
-            string dbSetName = typeof(T).Name + "Set";
+            string dbSetName = typeof(T).Name + DBSET_SUFFIX;
             var contextDBSet = context.GetType().GetProperty(dbSetName).GetValue(context) as DbSet<T>;
             contextDBSet.Add(instance);
         }

@@ -4,11 +4,6 @@ namespace SandwichOrderSystem
 {
     public struct Constants
     {
-        public const string MENU_COMMAND_FORMAT = " {0} - {1,-20} {2}";
-        public const string ITEM_LIST_FORMAT = " {0} - {1} ";
-        public const string TOTAL_PRICE_FORMAT = " {0,-20} {1}";
-        public const string SEPARATOR = "";
-
         public enum ViewContext
         {
             Main = 0,
@@ -97,12 +92,13 @@ namespace SandwichOrderSystem
 
         public const string TOTAL_PRICE_TITLE = " Total Price:";
 
-        public const int COMBO_MEAL_ID = -1;
-        public const string COMBO_MEAL_NAME = "ComboMeal Discount";
-        public const decimal COMBO_MEAL_PRICE = -1.00m;
+        public const string MENU_COMMAND_FORMAT = " {0} - {1,-20} {2}";
+        public const string ITEM_LIST_FORMAT = " {0} - {1} ";
+        public const string TOTAL_PRICE_FORMAT = " {0,-20} {1}";
+        public const string EMPTY_STRING = "";
 
-        public const int CONSOLE_WIDTH = 85;
-        public const int CONSOLE_HEIGHT = 85;
+        public const int CONSOLE_WIDTH_PERCENTAGE_OF_MAX = 40;
+        public const int CONSOLE_HEIGHT_PERCENTAGE_OF_MAX = 70;
 
         public static Dictionary<ViewContext, string> MENU_TITLES = new Dictionary<ViewContext, string> {
             { ViewContext.Main, MAIN_TITLE },
@@ -110,7 +106,7 @@ namespace SandwichOrderSystem
             { ViewContext.Delete, DELETE_TITLE },
             { ViewContext.Show, SHOW_TITLE },
             { ViewContext.Finish, FINISH_TITLE },
-            { ViewContext.Quit, ""},
+            { ViewContext.Quit, EMPTY_STRING},
             { ViewContext.SignatureSandwich, SIGNATURE_SANDWICH_TITLE },
             { ViewContext.CustomSandwich, CUSTOM_SANDWICH_TITLE },
             { ViewContext.Bread, BREAD_TITLE },
