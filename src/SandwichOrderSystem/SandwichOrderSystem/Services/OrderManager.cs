@@ -1,9 +1,9 @@
 ﻿using SandwichOrderSystemShared.Models;
-using System.Collections.Generic;
+using static SandwichOrderSystem.Constants;
 using System.Linq;
 using System;
 
-namespace SandwichOrderSystemShared.Services
+namespace SandwichOrderSystem.Services
 {
     public class OrderManager : IOrderManager
     {
@@ -146,9 +146,9 @@ namespace SandwichOrderSystemShared.Services
         {
             internal ComboMealItem()
             {
-                Id = -1;
-                Name = "ComboMeal Discount";
-                Price = -1.00m;
+                Id = COMBO_MEAL_ID;
+                Name = COMBO_MEAL_NAME;
+                Price = COMBO_MEAL_PRICE;
             }
         }
 

@@ -97,6 +97,10 @@ namespace SandwichOrderSystem
 
         public const string TOTAL_PRICE_TITLE = " Total Price:";
 
+        public const int COMBO_MEAL_ID = -1;
+        public const string COMBO_MEAL_NAME = "ComboMeal Discount";
+        public const decimal COMBO_MEAL_PRICE = -1.00m;
+
         public const int CONSOLE_WIDTH = 85;
         public const int CONSOLE_HEIGHT = 85;
 

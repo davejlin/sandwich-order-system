@@ -38,7 +38,6 @@ namespace SandwichOrderSystemShared.DI
 
             container.Register(Component.For<IContextFactory>().ImplementedBy<ContextFactory>());
             container.Register(Component.For<IDatabaseInitializerFactory>().ImplementedBy<DatabaseInitializerFactory>());
-            container.Register(Component.For<IOrderManager>().ImplementedBy<OrderManager>());
 
             container.Register(Component.For<Context>().LifeStyle.Transient);
             container.Register(Component.For<DatabaseInitializer>().LifeStyle.Transient);

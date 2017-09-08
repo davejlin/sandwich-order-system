@@ -1,7 +1,6 @@
 ﻿using SandwichOrderSystemShared.Models;
-using System.Collections.Generic;
 
-namespace SandwichOrderSystemShared.Services
+namespace SandwichOrderSystem.Services
 {
     public interface IOrderManager
     {
