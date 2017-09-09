@@ -23,11 +23,13 @@ namespace SandwichOrderSystem.ViewControllers
             {
                 var segueActionDict = new Dictionary<string, Action>();
                 segueActionDict.Add(ADD_COMMAND, () => viewContext = ViewContext.Add);
-                segueActionDict.Add(SHOW_COMMAND, () => viewContext = ViewContext.Show);
-                segueActionDict.Add(FINISH_COMMAND, () => viewContext = ViewContext.Finish);
-                segueActionDict.Add(DELETE_COMMAND, () => viewContext = ViewContext.Delete);
+                if (viewModel.GetOrdersCount() > 0)
+                {
+                    segueActionDict.Add(SHOW_COMMAND, () => viewContext = ViewContext.Show);
+                    segueActionDict.Add(FINISH_COMMAND, () => viewContext = ViewContext.Finish);
+                    segueActionDict.Add(DELETE_COMMAND, () => viewContext = ViewContext.Delete);
+                }
                 segueActionDict.Add(QUIT_COMMAND, () => viewContext = ViewContext.Quit);
-
                 return segueActionDict;
             };
 
@@ -39,11 +41,9 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var segueActionDict = new Dictionary<string, Action>();
-
                 segueActionDict.Add(SIGNATURE_SANDWICH_COMMAND, () => viewContext = ViewContext.SignatureSandwich);
                 segueActionDict.Add(CUSTOM_SANDWICH_COMMAND, () => viewContext = ViewContext.Bread);
                 segueActionDict = segueActionDict.Concat(returnQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
-
                 return segueActionDict;
             };
 
@@ -54,10 +54,8 @@ namespace SandwichOrderSystem.ViewControllers
             func = () => 
             {
                 var segueActionDict = new Dictionary<string, Action>();
-
                 segueActionDict.Add(FINISH_COMMAND, () => viewContext = ViewContext.Main);
                 segueActionDict = segueActionDict.Concat(deleteQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
-
                 return segueActionDict;
             };
 
@@ -68,14 +66,8 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var segueActionDict = new Dictionary<string, Action>();
-
-                if (viewModel.GetOrdersCount() > 0)
-                {
-                    segueActionDict.Add(PAY_COMMAND, () => viewContext = ViewContext.Pay);
-                }
-
+                segueActionDict.Add(PAY_COMMAND, () => viewContext = ViewContext.Pay);
                 segueActionDict = segueActionDict.Concat(returnQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
-
                 return segueActionDict;
             };
 
@@ -86,10 +78,8 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var segueActionDict = new Dictionary<string, Action>();
-
-                segueActionDict.Add(CONFIRM_COMMAND, () => viewContext = ViewContext.Main);
+                segueActionDict.Add(DELETE_COMMAND, () => viewContext = ViewContext.Main);
                 segueActionDict = segueActionDict.Concat(returnQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
-
                 return segueActionDict;
             };
 

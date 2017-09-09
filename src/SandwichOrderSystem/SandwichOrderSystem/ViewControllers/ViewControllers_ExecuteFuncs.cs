@@ -16,7 +16,6 @@ namespace SandwichOrderSystem.ViewControllers
             var funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
 
             // Main
-
             Func<string, IEnumerable<string>> func = c =>
             {
                 return showOrders();
@@ -29,6 +28,7 @@ namespace SandwichOrderSystem.ViewControllers
             executeFuncs.Add(ViewContext.Main, funcsDict);
 
             // Delete
+            funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
 
             func = c =>
             {
@@ -36,12 +36,11 @@ namespace SandwichOrderSystem.ViewControllers
                 return null;
             };
 
-            funcsDict.Add(CONFIRM_COMMAND, func);
+            funcsDict.Add(DELETE_COMMAND, func);
 
             executeFuncs.Add(ViewContext.Delete, funcsDict);
 
             // Review
-
             funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
 
             func = c =>
@@ -63,7 +62,6 @@ namespace SandwichOrderSystem.ViewControllers
             executeFuncs.Add(ViewContext.Review, funcsDict);
 
             // Finish
-
             funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
 
             func = c =>
@@ -76,7 +74,6 @@ namespace SandwichOrderSystem.ViewControllers
             executeFuncs.Add(ViewContext.Finish, funcsDict);
 
             // Items
-
             addItemExecuteFuncDict<SignatureSandwich>(ViewContext.SignatureSandwich);
             addItemExecuteFuncDict<Bread>(ViewContext.Bread);
             addItemExecuteFuncDict<Filling>(ViewContext.Filling);

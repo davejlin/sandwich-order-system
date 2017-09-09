@@ -15,6 +15,7 @@ namespace SandwichOrderSystem.ViewControllers
         private string currentCommand = EMPTY_STRING;
         private IEnumerable<string> currentOutputList = new List<string>();
         private IEnumerable<string> previousOutputList = new List<string>();
+        private Action segue;
 
         public ViewController(IViewState viewState, IViewModel viewModel)
         {
@@ -34,10 +35,12 @@ namespace SandwichOrderSystem.ViewControllers
 
             currentCommand = viewState.GetMenuCommand(menuTitle, menuCommandsList, currentOutputList);
 
+            getSegue(currentCommand);
+
             previousOutputList = currentOutputList;
             currentOutputList = invokeExecuteFunc(currentCommand);
 
-            segue(currentCommand);
+            invokeSegue();
 
             return currentCommand;
         }
@@ -78,21 +81,7 @@ namespace SandwichOrderSystem.ViewControllers
             }
         }
 
-        private void segue(string command)
-        {
-            var segueAction = getSegueAction(command);
-            if (segueAction == null)
-            {
-                viewState.PromptInvalidCommand();
-                currentOutputList = previousOutputList;
-            }
-            else
-            {
-                segueAction();
-            }
-        }
-
-        private Action getSegueAction(string command)
+        private void getSegue(string command)
         {
             if (menuSegueFuncs.ContainsKey(viewContext))
             {
@@ -100,11 +89,26 @@ namespace SandwichOrderSystem.ViewControllers
                 var segueActions = segueFunc();
                 if (segueActions.ContainsKey(command))
                 {
-                    return segueActions[command];
+                    segue = segueActions[command];
+                }
+                else
+                {
+                    segue = null;
                 }
             }
+        }
 
-            return null;
+        private void invokeSegue()
+        {
+            if (segue == null)
+            {
+                viewState.PromptInvalidCommand();
+                currentOutputList = previousOutputList;
+            }
+            else
+            {
+                segue();
+            }
         }
     }
 }

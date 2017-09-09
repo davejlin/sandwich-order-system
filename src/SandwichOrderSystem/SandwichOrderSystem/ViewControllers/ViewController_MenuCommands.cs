@@ -20,15 +20,16 @@ namespace SandwichOrderSystem.ViewControllers
             Func<IEnumerable<string>> func = () =>
             {
                 var commandList = new List<string>();
-
                 commandList.Add(string.Format(ITEM_LIST_FORMAT, ADD_COMMAND, ADD_COMMAND_TITLE));
-                commandList.Add(EMPTY_STRING);
-                commandList.Add(string.Format(ITEM_LIST_FORMAT, SHOW_COMMAND, SHOW_COMMAND_TITLE));
-                commandList.Add(string.Format(ITEM_LIST_FORMAT, DELETE_COMMAND, DELETE_COMMAND_TITLE));
-                commandList.Add(string.Format(ITEM_LIST_FORMAT, FINISH_COMMAND, FINISH_COMMAND_TITLE));
+                if (viewModel.GetOrdersCount() > 0)
+                {
+                    commandList.Add(EMPTY_STRING);
+                    commandList.Add(string.Format(ITEM_LIST_FORMAT, SHOW_COMMAND, SHOW_COMMAND_TITLE));
+                    commandList.Add(string.Format(ITEM_LIST_FORMAT, DELETE_COMMAND, DELETE_COMMAND_TITLE));
+                    commandList.Add(string.Format(ITEM_LIST_FORMAT, FINISH_COMMAND, FINISH_COMMAND_TITLE));
+                }
                 commandList.Add(EMPTY_STRING);
                 commandList.Add(string.Format(ITEM_LIST_FORMAT, QUIT_COMMAND, QUIT_COMMAND_TITLE));
-
                 return commandList;
             };
 
@@ -39,11 +40,9 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var commandList = new List<string>();
-
                 commandList.Add(string.Format(ITEM_LIST_FORMAT, SIGNATURE_SANDWICH_COMMAND, SIGNATURE_SANDWICH_COMMAND_TITLE));
                 commandList.Add(string.Format(ITEM_LIST_FORMAT, CUSTOM_SANDWICH_COMMAND, CUSTOM_SANDWICH_COMMAND_TITLE));
                 commandList.AddRange(returnQuitCommands);
-
                 return commandList;
             };
 
@@ -54,10 +53,8 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var commandList = new List<string>();
-
                 commandList.Add(string.Format(ITEM_LIST_FORMAT, FINISH_COMMAND, REVIEW_FINISH_COMMAND_TITLE));
                 commandList.AddRange(createDeleteQuitCommands());
-
                 return commandList;
             };
 
@@ -68,12 +65,7 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var commandList = new List<string>();
-
-                if (viewModel.GetOrdersCount() > 0)
-                {
-                    commandList.Add(string.Format(ITEM_LIST_FORMAT, PAY_COMMAND, FINISH_PAY_COMMAND_TITLE));
-                }
-
+                commandList.Add(string.Format(ITEM_LIST_FORMAT, PAY_COMMAND, FINISH_PAY_COMMAND_TITLE));
                 commandList.AddRange(returnQuitCommands);
 
                 return commandList;
@@ -86,14 +78,8 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var commandList = new List<string>();
-
-                if (viewModel.GetOrdersCount() > 0)
-                {
-                    commandList.Add(string.Format(ITEM_LIST_FORMAT, CONFIRM_COMMAND, DELETE_CONFIRM_COMMAND_TITLE));
-                }
-
+                commandList.Add(string.Format(ITEM_LIST_FORMAT, DELETE_COMMAND, DELETE_COMMAND_TITLE));
                 commandList.AddRange(returnQuitCommands);
-
                 return commandList;
             };
 
@@ -104,9 +90,7 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var commandList = new List<string>();
-
                 commandList.AddRange(returnQuitCommands);
-
                 return commandList;
             };
 

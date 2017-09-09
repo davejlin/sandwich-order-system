@@ -39,8 +39,8 @@ namespace SandwichOrderSystem
 
         public const string MAIN_TITLE = " Main Menu ... ";
         public const string ADD_TITLE = " Please choose a Signature or Custom Sandwich ... ";
-        public const string DELETE_TITLE = " Delete Menu ";
-        public const string SHOW_TITLE = " Order List ";
+        public const string DELETE_TITLE = " Please confirm delete all orders ...";
+        public const string SHOW_TITLE = " Here are your orders ... ";
         public const string FINISH_TITLE = " Please review your total order ... ";
         public const string REVIEW_TITLE = " Please review your order ... ";
         public const string SIGNATURE_SANDWICH_TITLE = " Please choose a Signature Sandwich ... ";
@@ -62,7 +62,6 @@ namespace SandwichOrderSystem
 
         public const string DELETE_COMMAND = "d";
         public const string NEXT_COMMAND = "n";
-        public const string CONFIRM_COMMAND = "y";
         public const string PAY_COMMAND = "p";
         public const string FINISH_COMMAND = "f";
 
@@ -75,7 +74,6 @@ namespace SandwichOrderSystem
         public const string ADD_COMMAND_TITLE = "Add new order";
         public const string SHOW_COMMAND_TITLE = "Show orders";
         public const string DELETE_COMMAND_TITLE = "Delete orders";
-        public const string DELETE_CONFIRM_COMMAND_TITLE = "Confirm delete all orders";
 
         public const string FINISH_COMMAND_TITLE = "Finish orders";
         public const string FINISH_PAY_COMMAND_TITLE = "Pay and checkout";
