@@ -16,6 +16,8 @@ namespace SandwichOrderSystem.ViewControllers
 
             var returnQuitCommands = createReturnQuitCommands();
 
+            // Main
+
             var commandList = new List<string>();
             commandList.Add(string.Format(ITEM_LIST_FORMAT, ADD_COMMAND, ADD_COMMAND_TITLE));
             commandList.Add(EMPTY_STRING);
@@ -27,6 +29,8 @@ namespace SandwichOrderSystem.ViewControllers
 
             menuCommands.Add(ViewContext.Main, commandList);
 
+            // Add
+
             commandList = new List<string>();
             commandList.Add(string.Format(ITEM_LIST_FORMAT, SIGNATURE_SANDWICH_COMMAND, SIGNATURE_SANDWICH_COMMAND_TITLE));
             commandList.Add(string.Format(ITEM_LIST_FORMAT, CUSTOM_SANDWICH_COMMAND, CUSTOM_SANDWICH_COMMAND_TITLE));
@@ -34,11 +38,15 @@ namespace SandwichOrderSystem.ViewControllers
 
             menuCommands.Add(ViewContext.Add, commandList);
 
+            // Review
+
             commandList = new List<string>();
             commandList.Add(string.Format(ITEM_LIST_FORMAT, FINISH_COMMAND, REVIEW_FINISH_COMMAND_TITLE));
             commandList.AddRange(createDeleteQuitCommands());
 
             menuCommands.Add(ViewContext.Review, commandList);
+
+            // Finish
 
             commandList = new List<string>();
             commandList.Add(string.Format(ITEM_LIST_FORMAT, PAY_COMMAND, FINISH_PAY_COMMAND_TITLE));
@@ -46,13 +54,17 @@ namespace SandwichOrderSystem.ViewControllers
 
             menuCommands.Add(ViewContext.Finish, commandList);
 
+            // Show, Delete, Pay, Custom Sandwich
+
             commandList = new List<string>();
             commandList.AddRange(returnQuitCommands);
 
             menuCommands.Add(ViewContext.Show, commandList);
             menuCommands.Add(ViewContext.Delete, commandList);
-            menuCommands.Add(ViewContext.CustomSandwich, commandList);
             menuCommands.Add(ViewContext.Pay, commandList);
+            menuCommands.Add(ViewContext.CustomSandwich, commandList);
+
+            // Items
 
             menuCommands.Add(ViewContext.SignatureSandwich, createItemCommandList<SignatureSandwich>());
             menuCommands.Add(ViewContext.Bread, createItemCommandList<Bread>());

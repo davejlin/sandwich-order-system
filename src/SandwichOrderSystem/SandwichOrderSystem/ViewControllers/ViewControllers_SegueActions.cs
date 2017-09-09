@@ -17,6 +17,8 @@ namespace SandwichOrderSystem.ViewControllers
             var returnQuitSegueActions = createReturnQuitSegueActions();
             var deleteQuitSegueActions = createDeleteQuitSegueActions();
 
+            // Main
+
             var segueActionDict = new Dictionary<string, Action>();
             segueActionDict.Add(ADD_COMMAND, () => viewContext = ViewContext.Add);
             segueActionDict.Add(DELETE_COMMAND, () => viewContext = ViewContext.Delete);
@@ -26,6 +28,8 @@ namespace SandwichOrderSystem.ViewControllers
 
             menuSegueActions.Add(ViewContext.Main, segueActionDict);
 
+            // Add
+
             segueActionDict = new Dictionary<string, Action>();
             segueActionDict.Add(SIGNATURE_SANDWICH_COMMAND, () => viewContext = ViewContext.SignatureSandwich);
             segueActionDict.Add(CUSTOM_SANDWICH_COMMAND, () => viewContext = ViewContext.Bread);
@@ -33,11 +37,7 @@ namespace SandwichOrderSystem.ViewControllers
 
             menuSegueActions.Add(ViewContext.Add, segueActionDict);
 
-            segueActionDict = new Dictionary<string, Action>();
-            segueActionDict.Add(PAY_COMMAND, () => viewContext = ViewContext.Pay);
-            segueActionDict = segueActionDict.Concat(returnQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
-
-            menuSegueActions.Add(ViewContext.Finish, segueActionDict);
+            // Review
 
             segueActionDict = new Dictionary<string, Action>();
             segueActionDict.Add(FINISH_COMMAND, () => viewContext = ViewContext.Main);
@@ -45,22 +45,36 @@ namespace SandwichOrderSystem.ViewControllers
 
             menuSegueActions.Add(ViewContext.Review, segueActionDict);
 
+            // Finish
+
+            segueActionDict = new Dictionary<string, Action>();
+            segueActionDict.Add(PAY_COMMAND, () => viewContext = ViewContext.Pay);
+            segueActionDict = segueActionDict.Concat(returnQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
+
+            menuSegueActions.Add(ViewContext.Finish, segueActionDict);
+
+            // Items
+
             menuSegueActions.Add(ViewContext.SignatureSandwich, createItemSegueActions<SignatureSandwich>(ViewContext.Drink));
 
             menuSegueActions.Add(ViewContext.Bread, createItemSegueActions<Bread>(ViewContext.Filling));
             menuSegueActions.Add(ViewContext.Filling, createItemSegueActions<Filling>(ViewContext.Cheese));
 
-            menuSegueActions.Add(ViewContext.Cheese, createItemSegueActions<Cheese>(ViewContext.Vegetable, true, false));
+            menuSegueActions.Add(ViewContext.Cheese, createItemSegueActions<Cheese>(ViewContext.Vegetable, true));
             menuSegueActions.Add(ViewContext.Vegetable, createItemSegueActions<Vegetable>(ViewContext.Condiment, true, false));
             menuSegueActions.Add(ViewContext.Condiment, createItemSegueActions<Condiment>(ViewContext.Drink, true, false));
-            menuSegueActions.Add(ViewContext.Drink, createItemSegueActions<Drink>(ViewContext.Chips, true, false));
-            menuSegueActions.Add(ViewContext.Chips, createItemSegueActions<Chips>(ViewContext.Review, true, false));
+            menuSegueActions.Add(ViewContext.Drink, createItemSegueActions<Drink>(ViewContext.Chips, true));
+            menuSegueActions.Add(ViewContext.Chips, createItemSegueActions<Chips>(ViewContext.Review, true));
 
             menuSegueActions.Add(ViewContext.CustomSandwich, deleteQuitSegueActions);
+
+            // Show, Delete, Pay
 
             menuSegueActions.Add(ViewContext.Show, returnQuitSegueActions);
             menuSegueActions.Add(ViewContext.Delete, returnQuitSegueActions);
             menuSegueActions.Add(ViewContext.Pay, returnQuitSegueActions);
+
+            // Quit
 
             segueActionDict = new Dictionary<string, Action>();
 

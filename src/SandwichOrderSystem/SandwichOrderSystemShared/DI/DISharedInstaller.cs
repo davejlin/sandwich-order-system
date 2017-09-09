@@ -33,6 +33,7 @@ namespace SandwichOrderSystemShared.DI
             container.Register(Component.For<IFileSystemManager>().ImplementedBy<FileSystemManager>());
             container.Register(Component.For<IItemFactory>().ImplementedBy<ItemFactory>());
             container.Register(Component.For<IErrorHandler>().ImplementedBy<ErrorHandler>());
+            container.Register(Component.For<IDiscounter>().ImplementedBy<Discounter>());
             container.Register(Component.For<IOrderManager>().ImplementedBy<OrderManager>());
 
             container.Register(Component.For<IContextFactory>().ImplementedBy<ContextFactory>());

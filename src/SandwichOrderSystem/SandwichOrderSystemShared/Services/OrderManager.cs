@@ -1,7 +1,5 @@
 ﻿using SandwichOrderSystemShared.Models;
-using static SandwichOrderSystemShared.Constants;
 using System.Linq;
-using System;
 
 namespace SandwichOrderSystemShared.Services
 {
@@ -9,17 +7,15 @@ namespace SandwichOrderSystemShared.Services
     {
         public IOrders Orders { get; }
 
-        public bool IsCurrentOrderComboMeal
-        {
-            get
-            {
-                return isCurrentOrderHaveDrink && isCurrentOrderHaveChips;
-            }
-        }
+        private IDiscounter discounter;
 
-        private bool isCurrentOrderHaveDrink;
-        private bool isCurrentOrderHaveChips;
-        private bool isComboMealApplied;
+        public OrderManager(IDiscounter discounter)
+        {
+            this.discounter = discounter;
+
+            Orders = new Orders();
+            ResetCurrentOrder();
+        }
 
         private IOrder currentOrder;
         public IOrder CurrentOrder
@@ -41,12 +37,6 @@ namespace SandwichOrderSystemShared.Services
             {
                 currentOrder = value;
             }
-        }
-
-        public OrderManager()
-        {
-            Orders = new Orders();
-            ResetCurrentOrder();
         }
 
         public int Count
@@ -88,25 +78,6 @@ namespace SandwichOrderSystemShared.Services
             if (item != null)
             {
                 CurrentOrder.Items.Add(item);
-                checkComboMeal<T>(item);
-            }
-        }
-
-        private void checkComboMeal<T>(IItem item)
-        {
-            Type itemType = typeof(T);
-            if (itemType == typeof(Drink))
-            {
-                isCurrentOrderHaveDrink = true;
-            }
-            else if (itemType == typeof(Chips))
-            {
-                isCurrentOrderHaveChips = true;
-            }
-
-            if (!isComboMealApplied)
-            {
-                addComboMeal();
             }
         }
 
@@ -122,34 +93,12 @@ namespace SandwichOrderSystemShared.Services
         public void ResetCurrentOrder()
         {
             CurrentOrder = new Order();
-            isCurrentOrderHaveDrink = false;
-            isCurrentOrderHaveChips = false;
-            isComboMealApplied = false;
-    }
+        }
 
         public void ResetOrders()
         {
             ResetCurrentOrder();
             Orders.Reset();
-        }
-
-        private void addComboMeal()
-        {
-            if (IsCurrentOrderComboMeal)
-            {
-                CurrentOrder.Items.Add(new ComboMealItem());
-                isComboMealApplied = true;
-            }
-        }
-
-        private class ComboMealItem : Item
-        {
-            internal ComboMealItem()
-            {
-                Id = COMBO_MEAL_ID;
-                Name = COMBO_MEAL_NAME;
-                Price = COMBO_MEAL_PRICE;
-            }
         }
 
         public void FinishOrders()

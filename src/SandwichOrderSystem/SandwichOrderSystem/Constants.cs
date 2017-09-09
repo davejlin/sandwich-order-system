@@ -47,11 +47,11 @@ namespace SandwichOrderSystem
         public const string CUSTOM_SANDWICH_TITLE = " Custom Sandwich Menu ... ";
         public const string BREAD_TITLE = " Please choose your Bread ... ";
         public const string FILLING_TITLE = " Please choose your Filling ... ";
-        public const string CHEESE_TITLE = " Please choose your Cheese (optional, multiple allowed) ... ";
+        public const string CHEESE_TITLE = " Please choose your Cheese (optional) ... ";
         public const string VEGETABLE_TITLE = " Please choose your Vegetables (optional, multiple allowed) ... ";
         public const string CONDIMENT_TITLE = " Please choose your Condiments (optional, multiple allowed) ... ";
-        public const string DRINK_TITLE = " Please choose your Drink (optional, multiple allowed) ... ";
-        public const string CHIPS_TITLE = " Please choose your Chips (optional, multiple allowed) ... ";
+        public const string DRINK_TITLE = " Please choose your Drink (optional) ... ";
+        public const string CHIPS_TITLE = " Please choose your Chips (optional) ... ";
         public const string PAY_TITLE = " Thank you for your order! ... ";
 
         public const string ADD_COMMAND = "a";
