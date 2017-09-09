@@ -29,17 +29,38 @@ namespace SandwichOrderSystem.ViewControllers
 
         public string AdvanceViewCycle()
         {
-            currentCommand = viewState.GetMenuCommand(MENU_TITLES[viewContext], menuCommands[viewContext], currentFuncResponse);
+            var menuTitle = MENU_TITLES[viewContext];
+            var menuCommandsList = invokeMenuCommandsFunc();
+
+            currentCommand = viewState.GetMenuCommand(menuTitle, menuCommandsList, currentFuncResponse);
 
             previousFuncResponse = currentFuncResponse;
-            currentFuncResponse = executeFunc(currentCommand);
+            currentFuncResponse = invokeExecuteFunc(currentCommand);
 
             segue(currentCommand);
 
             return currentCommand;
         }
 
-        private IEnumerable<string> executeFunc(string command)
+        private IEnumerable<string> invokeMenuCommandsFunc()
+        {
+            return getMenuCommandsFunc()?
+                .Invoke();
+        }
+
+        private Func<IEnumerable<string>> getMenuCommandsFunc()
+        {
+            if (menuCommandsFuncs.ContainsKey(viewContext))
+            {
+                return menuCommandsFuncs[viewContext];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private IEnumerable<string> invokeExecuteFunc(string command)
         {
             return getExectueFunc(command)?
                 .Invoke(command);
@@ -51,8 +72,10 @@ namespace SandwichOrderSystem.ViewControllers
             {
                 return executeFuncs[viewContext][command];
             }
-
-            return null;
+            else
+            {
+                return null;
+            }
         }
 
         private void segue(string command)
@@ -75,8 +98,10 @@ namespace SandwichOrderSystem.ViewControllers
             {
                 return menuSegueActions[viewContext][command];
             }
-
-            return null;
+            else
+            {
+                return null;
+            }
         }
     }
 }
