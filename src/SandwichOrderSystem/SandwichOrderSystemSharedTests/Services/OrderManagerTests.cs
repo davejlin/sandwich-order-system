@@ -1,50 +1,146 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SandwichOrderSystemShared.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Moq;
+using SandwichOrderSystemShared.DataAccess.Deserializer;
+using SandwichOrderSystemShared.Models;
+using SandwichOrderSystemShared.Models.Items;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystemShared.Services.Tests
 {
     [TestClass()]
     public class OrderManagerTests
     {
-        [TestMethod()]
-        public void OrderManagerTest()
-        {
+        IOrderManager orderManager;
+        Mock<IDiscounter> mockDiscounter;
+        IItemFactory itemFactory;
 
+        [TestInitialize()]
+        public void Setup()
+        {
+            mockDiscounter = new Mock<IDiscounter>();
+            orderManager = new OrderManager(mockDiscounter.Object);
+
+            itemFactory = new ItemFactory();
+
+            assertOrdersAndCurrentOrdersAreEmpty();
         }
 
         [TestMethod()]
-        public void AddItemToOrderTest()
+        public void OrderManagerTest_PropertiesInitialized()
         {
-
+            Assert.AreEqual(0, orderManager.Orders.Count, "should have no orders");
+            Assert.AreEqual(orderManager.Orders.Count, orderManager.Count, "should have the same count");
+            Assert.AreEqual(0, orderManager.CurrentOrder.Count, "should have no items in current order");
         }
 
         [TestMethod()]
-        public void AddOrderToOrdersTest()
+        public void AddItemToCurrentOrderTest()
         {
+            var sandwich = itemFactory.CreateItem<SignatureSandwich>(new string[] { "sandwich", "1.0" });
+            orderManager.AddItemToCurrentOrder(sandwich);
 
+            Assert.AreEqual(1, orderManager.CurrentOrder.Count, "should have added an item");
+            Assert.IsTrue(orderManager.CurrentOrder.Items.Contains(sandwich));
+
+            var drink = itemFactory.CreateItem<Drink>(new string[] { "drink", "1.0" });
+            orderManager.AddItemToCurrentOrder(drink);
+
+            Assert.AreEqual(2, orderManager.CurrentOrder.Count, "should have added another item");
+            Assert.IsTrue(orderManager.CurrentOrder.Items.Contains(drink));
         }
+
+        [TestMethod()]
+        public void AddCurrentOrderToOrdersTest()
+        {
+            var expectedName = "sandwich";
+            var expectedPrice = "1.0";
+            var sandwich = itemFactory.CreateItem<SignatureSandwich>(new string[] { expectedName, expectedPrice });
+            orderManager.AddItemToCurrentOrder(sandwich);
+
+            Assert.AreEqual(1, orderManager.CurrentOrder.Count, "should have an item in current order");
+
+            orderManager.AddCurrentOrderToOrders();
+
+            Assert.AreEqual(1, orderManager.Count, "should have added an order");
+            Assert.IsTrue(orderManager.Orders.ToString().Contains(expectedName), "should have added item name");
+            Assert.IsTrue(orderManager.Orders.ToString().Contains(expectedPrice), "should have added item price");
+            Assert.AreEqual(0, orderManager.CurrentOrder.Count, "shoud have no items in current order after adding to orders");
+        }
+
+        [TestMethod()]
+        public void AddCurrentOrderToOrdersTest_ShouldNotAddIfNoItemsInCurrentOrder()
+        {
+            orderManager.AddCurrentOrderToOrders();
+            assertOrdersAndCurrentOrdersAreEmpty();
+        }
+
 
         [TestMethod()]
         public void ResetCurrentOrderTest()
         {
+            var sandwich = itemFactory.CreateItem<SignatureSandwich>(new string[] { "sandwich", "1.0" });
+            orderManager.AddItemToCurrentOrder(sandwich);
 
+            Assert.AreEqual(1, orderManager.CurrentOrder.Count, "should have an item in current order");
+
+            orderManager.ResetCurrentOrder();
+
+            assertOrdersAndCurrentOrdersAreEmpty();
         }
 
         [TestMethod()]
         public void ResetOrdersTest()
         {
+            var sandwich = itemFactory.CreateItem<SignatureSandwich>(new string[] { "sandwich", "1.0" });
+            orderManager.AddItemToCurrentOrder(sandwich);
 
+            Assert.AreEqual(1, orderManager.CurrentOrder.Count, "should have an item in current order");
+
+            orderManager.AddCurrentOrderToOrders();
+
+            Assert.AreEqual(1, orderManager.Count, "should have added an order");
+
+            orderManager.ResetOrders();
+
+            assertOrdersAndCurrentOrdersAreEmpty();
         }
 
         [TestMethod()]
         public void FinishOrdersTest()
         {
+            // TODO: add test when finish sequence is further developed
+            // currently just tests that orders are reset upon calling FinishOrders()
 
+            var sandwich = itemFactory.CreateItem<SignatureSandwich>(new string[] { "sandwich", "1.0" });
+            orderManager.AddItemToCurrentOrder(sandwich);
+
+            Assert.AreEqual(1, orderManager.CurrentOrder.Count, "should have an item in current order");
+
+            orderManager.AddCurrentOrderToOrders();
+
+            Assert.AreEqual(1, orderManager.Count, "should have added an order");
+
+            orderManager.FinishOrders();
+
+            assertOrdersAndCurrentOrdersAreEmpty();
+        }
+
+        [TestMethod()]
+        public void DiscountItemAddedToCurentOrdersTest()
+        {
+            mockDiscounter.Setup(d => d.GetDiscountItemConditionally(It.IsAny<IOrder>())).Returns(new DiscountItem());
+
+            var sandwich = itemFactory.CreateItem<SignatureSandwich>(new string[] { "sandwich", "1.0" });
+            orderManager.AddItemToCurrentOrder(sandwich);
+
+            Assert.AreEqual(2, orderManager.CurrentOrder.Count, "should have added both an item and a discount item in current order");
+            Assert.IsTrue(orderManager.CurrentOrder.ToString().Contains(DISCOUNT_ITEM_NAME));
+        }
+
+        private void assertOrdersAndCurrentOrdersAreEmpty()
+        {
+            Assert.AreEqual(0, orderManager.Count, "should have no orders");
+            Assert.AreEqual(0, orderManager.CurrentOrder.Count, "shoud have no items in current order");
         }
     }
 }

@@ -13,6 +13,14 @@ namespace SandwichOrderSystemShared.Models
             Items = new List<IItem>();
         }
 
+        public int Count
+        {
+            get
+            {
+                return Items.Count;
+            }
+        } 
+
         public override string ToString()
         {
             var itemsStrings = Items.Select(i => i.ToString());

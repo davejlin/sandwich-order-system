@@ -75,13 +75,13 @@ namespace SandwichOrderSystem.ViewModels
             if (itemList != null)
             {
                 var menuItem = itemList.Find(i => i.MenuCommand == c);
-                orderManager.AddItemToOrder(menuItem);
+                orderManager.AddItemToCurrentOrder(menuItem);
             }
         }
 
         public void AddOrder()
         {
-            orderManager.AddOrderToOrders();
+            orderManager.AddCurrentOrderToOrders();
         }
 
         public void ResetOrder()

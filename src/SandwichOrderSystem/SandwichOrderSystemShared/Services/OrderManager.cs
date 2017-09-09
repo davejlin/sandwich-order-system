@@ -73,15 +73,15 @@ namespace SandwichOrderSystemShared.Services
             }
         }
 
-        public void AddItemToOrder(IItem item)
+        public void AddItemToCurrentOrder(IItem item)
         {
             addItemToOrder(item);
             addDiscountConditionally();
         }
 
-        public void AddOrderToOrders()
+        public void AddCurrentOrderToOrders()
         {
-            if (CurrentOrder != null)
+            if (CurrentOrder != null && CurrentOrder.Items.Count > 0)
             {
                 Orders.Add(CurrentOrder);
                 ResetCurrentOrder();
