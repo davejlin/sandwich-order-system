@@ -59,6 +59,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Models\OrdersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DiscounterTests.cs" />
     <Compile Include="Services\OrderManagerTests.cs" />

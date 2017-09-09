@@ -5,7 +5,7 @@ namespace SandwichOrderSystemShared.Models
 {
     public class Orders : IOrders
     {
-        public ICollection<IOrder> OrderCollection { get; set; }
+        public ICollection<IOrder> OrderCollection { get; private set; }
 
         public Orders()
         {
@@ -29,13 +29,13 @@ namespace SandwichOrderSystemShared.Models
         {
             get
             {
-                if (OrderCollection != null)
+                if (OrderCollection == null)
                 {
-                    return OrderCollection.Count;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    return OrderCollection.Count;
                 }
 
             }

@@ -4,7 +4,7 @@ namespace SandwichOrderSystemShared.Models
 {
     public interface IOrders
     {
-        ICollection<IOrder> OrderCollection { get; set; }
+        ICollection<IOrder> OrderCollection { get; }
         int Count { get; }
 
         void Reset();
