@@ -11,8 +11,8 @@ namespace SandwichOrderSystemShared.Services
 
         public IItem GetDiscountItemConditionally(IOrder order)
         {
-            var hasDrink = order.Items.Any<IItem>(i => i.Type == drinkType);
-            var hasChips = order.Items.Any<IItem>(i => i.Type == chipsType);
+            var hasDrink = order.Items.Any(i => i.Type == drinkType);
+            var hasChips = order.Items.Any(i => i.Type == chipsType);
 
             if (hasDrink && hasChips)
             {
