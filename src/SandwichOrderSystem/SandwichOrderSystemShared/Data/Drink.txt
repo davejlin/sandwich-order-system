@@ -1,7 +1,7 @@
-﻿Coke, 2
-Pepsi, 2
-Sprite, 2
-Mountain Dew, 2
-Root Beer, 2
-Dr. Pepper, 2
-Bottled Water, 2
+﻿Coke, 2.50
+Pepsi, 2.50
+Sprite, 2.50
+Mountain Dew, 2.50
+Root Beer, 2.50
+Dr. Pepper, 2.50
+Bottled Water, 2.50

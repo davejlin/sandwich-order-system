@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace SandwichOrderSystemShared
+﻿namespace SandwichOrderSystemShared
 {
     public struct Constants
     {
         public const string ORDERS_FORMAT = "  {0} {1}:\n\n{2}\n\n";
-        public const string ITEM_FORMAT = " {0,-20} {1}";
+        public const string ITEM_FORMAT = " {0,-20} {1,10}";
 
         public const string ORDERS_TITLE = "Order";
 
@@ -32,6 +30,7 @@ namespace SandwichOrderSystemShared
 
         public const string ITEM_NAME = "Name";
         public const string ITEM_PRICE = "Price";
+        public const string ITEM_TYPE = "Type";
         public const string ITEM_CREATION_ERROR_MESSAGE = "Error creating item: {0}";
 
         // Repository
@@ -41,8 +40,8 @@ namespace SandwichOrderSystemShared
 
         // Discounter
 
-        public const int COMBO_MEAL_ID = -1;
-        public const string COMBO_MEAL_NAME = "ComboMeal Discount";
-        public const decimal COMBO_MEAL_PRICE = -1.00m;
+        public const int DISCOUNT_ITEM_ID = -1;
+        public const string DISCOUNT_ITEM_NAME = "ComboMeal Discount";
+        public const decimal DISCOUNT_ITEM_PRICE = -1.00m;
     }
 }

@@ -13,15 +13,19 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
             {
                 item = Activator.CreateInstance<T>();
 
-                Type t = item.GetType();
+                Type type = item.GetType();
 
-                PropertyInfo prop = t.GetProperty(ITEM_NAME);
+                PropertyInfo prop = type.GetProperty(ITEM_NAME);
                 if (prop != null)
                     prop.SetValue(item, properties[0]);
 
-                prop = t.GetProperty(ITEM_PRICE);
+                prop = type.GetProperty(ITEM_PRICE);
                 if (prop != null)
                     prop.SetValue(item, Convert.ToDecimal(properties[1]));
+
+                prop = type.GetProperty(ITEM_TYPE);
+                if (prop != null)
+                    prop.SetValue(item, type.ToString());
 
             } catch (Exception ex)
             {

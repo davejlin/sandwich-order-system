@@ -11,6 +11,7 @@ namespace SandwichOrderSystem.Models
             Id = item.Id;
             Name = item.Name;
             Price = item.Price;
+            Type = item.Type; 
             MenuCommand = menuCommand;
         }
     }

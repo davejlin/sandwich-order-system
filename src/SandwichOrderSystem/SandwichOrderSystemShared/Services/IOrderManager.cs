@@ -10,7 +10,7 @@ namespace SandwichOrderSystemShared.Services
         decimal TotalOrdersPrice { get; }
         decimal CurrentOrderTotalPrice { get; }
 
-        void AddItemToOrder<T>(IItem item);
+        void AddItemToOrder(IItem item);
         void AddOrderToOrders();
         void ResetCurrentOrder();
         void ResetOrders();

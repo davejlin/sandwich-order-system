@@ -92,9 +92,9 @@ namespace SandwichOrderSystem
 
         public const string TOTAL_PRICE_TITLE = " Total Price:";
 
-        public const string MENU_COMMAND_FORMAT = " {0} - {1,-20} {2}";
+        public const string MENU_COMMAND_FORMAT = " {0} - {1,-20} {2,6}";
         public const string ITEM_LIST_FORMAT = " {0} - {1} ";
-        public const string TOTAL_PRICE_FORMAT = " {0,-20} {1}";
+        public const string TOTAL_PRICE_FORMAT = " {0,-20} {1,10}";
         public const string EMPTY_STRING = "";
 
         public const int CONSOLE_WIDTH_PERCENTAGE_OF_MAX = 40;

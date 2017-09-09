@@ -1,4 +1,5 @@
-﻿using static SandwichOrderSystemShared.Constants;
+﻿using System;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystemShared.Models
 {
@@ -7,6 +8,7 @@ namespace SandwichOrderSystemShared.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+        public string Type { get; set; }
 
         public override string ToString()
         {

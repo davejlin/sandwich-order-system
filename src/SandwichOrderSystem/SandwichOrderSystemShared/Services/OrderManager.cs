@@ -73,12 +73,10 @@ namespace SandwichOrderSystemShared.Services
             }
         }
 
-        public void AddItemToOrder<T>(IItem item)
+        public void AddItemToOrder(IItem item)
         {
-            if (item != null)
-            {
-                CurrentOrder.Items.Add(item);
-            }
+            addItemToOrder(item);
+            addDiscountConditionally();
         }
 
         public void AddOrderToOrders()
@@ -105,6 +103,23 @@ namespace SandwichOrderSystemShared.Services
         {
             // TODO: Pass order along to payment and repository services
             ResetOrders();
+        }
+
+        private void addItemToOrder(IItem item)
+        {
+            if (item != null)
+            {
+                CurrentOrder.Items.Add(item);
+            }
+        }
+
+        private void addDiscountConditionally()
+        {
+            var discountItem = discounter.GetDiscountItemConditionally(CurrentOrder);
+            if (discountItem != null)
+            {
+                addItemToOrder(discountItem);
+            }
         }
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="Models\Items\Bread.cs" />
     <Compile Include="Models\Items\Cheese.cs" />
     <Compile Include="Models\Items\Condiment.cs" />
+    <Compile Include="Models\Items\DiscountItem.cs" />
     <Compile Include="Models\Items\Drink.cs" />
     <Compile Include="Models\Items\Filling.cs" />
     <Compile Include="Models\Items\IItem.cs" />

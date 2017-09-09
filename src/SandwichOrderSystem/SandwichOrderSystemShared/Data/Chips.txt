@@ -1,3 +1,3 @@
-﻿Potato Chips, 1
-Tortilla Chips, 1
-Popcorn, 1
+﻿Potato Chips, 1.75
+Tortilla Chips, 1.75
+Popcorn, 1.75

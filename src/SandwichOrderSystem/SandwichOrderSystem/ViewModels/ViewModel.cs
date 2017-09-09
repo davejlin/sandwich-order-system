@@ -76,7 +76,7 @@ namespace SandwichOrderSystem.ViewModels
             if (itemList != null)
             {
                 var menuItem = itemList.Find(i => i.MenuCommand == c);
-                orderManager.AddItemToOrder<T>(menuItem);
+                orderManager.AddItemToOrder(menuItem);
             }
         }
 
