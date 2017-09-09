@@ -13,8 +13,8 @@ namespace SandwichOrderSystem.ViewControllers
         private ViewContext viewContext;
 
         private string currentCommand = EMPTY_STRING;
-        private IEnumerable<string> currentFuncResponse = new List<string>();
-        private IEnumerable<string> previousFuncResponse = new List<string>();
+        private IEnumerable<string> currentOutputList = new List<string>();
+        private IEnumerable<string> previousOutputList = new List<string>();
 
         public ViewController(IViewState viewState, IViewModel viewModel)
         {
@@ -32,10 +32,10 @@ namespace SandwichOrderSystem.ViewControllers
             var menuTitle = MENU_TITLES[viewContext];
             var menuCommandsList = invokeMenuCommandsFunc();
 
-            currentCommand = viewState.GetMenuCommand(menuTitle, menuCommandsList, currentFuncResponse);
+            currentCommand = viewState.GetMenuCommand(menuTitle, menuCommandsList, currentOutputList);
 
-            previousFuncResponse = currentFuncResponse;
-            currentFuncResponse = invokeExecuteFunc(currentCommand);
+            previousOutputList = currentOutputList;
+            currentOutputList = invokeExecuteFunc(currentCommand);
 
             segue(currentCommand);
 
@@ -84,7 +84,7 @@ namespace SandwichOrderSystem.ViewControllers
             if (segueAction == null)
             {
                 viewState.PromptInvalidCommand();
-                currentFuncResponse = previousFuncResponse;
+                currentOutputList = previousOutputList;
             }
             else
             {
@@ -94,14 +94,17 @@ namespace SandwichOrderSystem.ViewControllers
 
         private Action getSegueAction(string command)
         {
-            if (menuSegueActions.ContainsKey(viewContext) && menuSegueActions[viewContext].ContainsKey(command))
+            if (menuSegueFuncs.ContainsKey(viewContext))
             {
-                return menuSegueActions[viewContext][command];
+                var segueFunc = menuSegueFuncs[viewContext];
+                var segueActions = segueFunc();
+                if (segueActions.ContainsKey(command))
+                {
+                    return segueActions[command];
+                }
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 }

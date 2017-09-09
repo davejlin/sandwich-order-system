@@ -19,21 +19,26 @@ namespace SandwichOrderSystem.ViewControllers
 
             Func<string, IEnumerable<string>> func = c =>
             {
-                viewModel.ResetOrders();
-                return null;
-            };
-
-            funcsDict.Add(DELETE_COMMAND, func);
-
-            func = c =>
-            {
                 return showOrders();
             };
 
             funcsDict.Add(SHOW_COMMAND, func);
             funcsDict.Add(FINISH_COMMAND, func);
+            funcsDict.Add(DELETE_COMMAND, func);
 
             executeFuncs.Add(ViewContext.Main, funcsDict);
+
+            // Delete
+
+            func = c =>
+            {
+                viewModel.ResetOrders();
+                return null;
+            };
+
+            funcsDict.Add(CONFIRM_COMMAND, func);
+
+            executeFuncs.Add(ViewContext.Delete, funcsDict);
 
             // Review
 
