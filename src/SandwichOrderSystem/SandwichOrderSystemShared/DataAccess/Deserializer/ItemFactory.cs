@@ -6,6 +6,8 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 {
     public class ItemFactory : IItemFactory
     {
+        public ItemFactory() { }
+
         public T CreateItem<T> (string[] properties) where T : class
         {
             T item = null;

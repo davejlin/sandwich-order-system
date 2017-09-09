@@ -13,7 +13,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
             var files = Directory
                 .GetFiles(dataDirPath)
                 .Select(f => Regex.Matches(f, DATA_FILE_NAME_REGEX)[0].Groups[1].Value)
-                .ToArray<string>();
+                .ToArray();
 
             return files;
         }
