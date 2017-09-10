@@ -8,7 +8,7 @@ namespace SandwichOrderSystemShared.Services.Tests
         [TestMethod()]
         public void HandleErrorTest()
         {
-            // nothing to test
+            // nothing yet to test
             Assert.IsTrue(true);
         }
     }

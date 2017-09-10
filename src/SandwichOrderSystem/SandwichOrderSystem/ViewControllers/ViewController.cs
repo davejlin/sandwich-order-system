@@ -17,6 +17,8 @@ namespace SandwichOrderSystem.ViewControllers
         private IEnumerable<string> previousOutputList = new List<string>();
         private Action segue;
 
+        public ViewController() {}
+
         public ViewController(IViewState viewState, IViewModel viewModel)
         {
             this.viewState = viewState;
