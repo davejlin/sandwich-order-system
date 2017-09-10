@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using static SandwichOrderSystemShared.Constants;
 
@@ -37,6 +36,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
                     errorHandler.HandleError(ex.Message);
                 }
             }
+
             return itemNames;
         }
 

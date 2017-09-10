@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SandwichOrderSystemShared.Services;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
@@ -26,7 +27,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             var item2 = "Filling";
             var item3 = "Drink";
 
-            var itemNames = new string[] { item1, item2, item3 };
+            var itemNames = new List<string> { item1, item2, item3 };
 
             var suffix = ".txt";
 
@@ -34,7 +35,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             var item2FileName = item2 + suffix;
             var item3FileName = item3 + suffix;
 
-            var fileNames = new string[] { item1FileName, item2FileName, item3FileName };
+            var fileNames = new List<string> { item1FileName, item2FileName, item3FileName };
 
             mockDirectory.Setup(d => d.GetFiles(It.IsAny<string>())).Returns(fileNames);
 
@@ -46,7 +47,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
                 Assert.AreEqual(itemNames[i++], item, "should be item name");
             }
 
-            Assert.AreEqual(itemNames.Length, i, "should have items");
+            Assert.AreEqual(itemNames.Count, i, "should have items");
         }
 
         [TestMethod()]
@@ -56,7 +57,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             var item2 = "Filling";
             var item3 = "Drink";
 
-            var itemNames = new string[] { item1, item2, item3 };
+            var itemNames = new List<string> { item1, item2, item3 };
 
             var suffix = ".txt";
 
@@ -64,7 +65,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             var item2FileName = item2 + suffix;
             var item3FileName = item3 + suffix + "x"; // incorrect
 
-            var fileNames = new string[] { item1FileName, item2FileName, item3FileName };
+            var fileNames = new List<string> { item1FileName, item2FileName, item3FileName };
 
             mockDirectory.Setup(d => d.GetFiles(It.IsAny<string>())).Returns(fileNames);
 
@@ -78,6 +79,24 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             }
 
             Assert.AreEqual(1, i, "should have item from correct file name");
+        }
+
+        [TestMethod()]
+        public void GetItemNamesTest_ReturnsEmptyEnumerableIfDirectoryAlsoReturnsEmptyEnumberable()
+        {
+            var fileNames = new List<string> { };
+
+            mockDirectory.Setup(d => d.GetFiles(It.IsAny<string>())).Returns(fileNames);
+
+            var outputItemNames = fileSystemManager.GetItemNames();
+
+            var i = 0;
+            foreach (var item in outputItemNames)
+            {
+                Assert.Fail("should have no items");
+            }
+
+            Assert.AreEqual(0, i, "should have no items");
         }
 
         [TestMethod()]
