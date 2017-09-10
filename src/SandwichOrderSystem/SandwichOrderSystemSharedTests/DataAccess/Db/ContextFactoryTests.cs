@@ -1,7 +1,6 @@
 ﻿using Castle.Windsor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SandwichOrderSystemShared.DataAccess.Deserializer;
 using SandwichOrderSystemShared.DI;
 using System;
 
@@ -13,7 +12,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
         IContextFactory contextFactory;
         Mock<IDContainerIWrapper> mockContainer;
         Mock<IWindsorContainer> mockWindsorContainer;
-        Mock<IDatabaseInitializerFactory> mockDataInitializerFactory;
+        Mock<IDatabaseInitializerFactory> mockDatabaseInitializerFactory;
         Mock<Context> mockContext;
 
         [TestInitialize()]
@@ -32,8 +31,8 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
 
         private void setupMocks()
         {
-            mockDataInitializerFactory = new Mock<IDatabaseInitializerFactory>();
-            mockContext = new Mock<Context>(mockDataInitializerFactory.Object);
+            mockDatabaseInitializerFactory = new Mock<IDatabaseInitializerFactory>();
+            mockContext = new Mock<Context>(mockDatabaseInitializerFactory.Object);
 
             mockWindsorContainer = new Mock<IWindsorContainer>();
 

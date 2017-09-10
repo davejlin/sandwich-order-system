@@ -1,5 +1,4 @@
-﻿using System;
-using Castle.Windsor;
+﻿using Castle.Windsor;
 
 namespace SandwichOrderSystemShared.DI
 {

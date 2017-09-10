@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace SandwichOrderSystemShared.DataAccess.Deserializer
 {
@@ -39,8 +40,16 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 
                     foreach (var properties in entry.Value)
                     {
-                        var instance = createItem.Invoke(itemFactory, new object[] { properties });
-                        addToDBSet.Invoke(this, new object[] { instance, context });
+                        try
+                        {
+                            var instance = createItem.Invoke(itemFactory, new object[] { properties });
+                            addToDBSet.Invoke(this, new object[] { instance, context });
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex.Message);
+                        }
+
                     }
 
                     context.SaveChanges();
@@ -67,8 +76,10 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
         {
             string dbSetName = typeof(T).Name + DBSET_SUFFIX;
             var contextDBSet = context.GetType().GetProperty(dbSetName).GetValue(context) as DbSet<T>;
-            contextDBSet.Add(instance);
+            if (contextDBSet != null)
+            {
+                contextDBSet.Add(instance);
+            }
         }
-
     }
 }

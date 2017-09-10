@@ -7,25 +7,41 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
     [TestClass()]
     public class DatabaseInitializerTests
     {
-        DatabaseInitializer databaseInitializer;
+        DatabaseInitializerForTest databaseInitializer;
         Mock<IDataInitializer> mockDataInitializer;
-        Mock<IDatabaseInitializerFactory> mockDataInitializerFactory;
+        Mock<IDatabaseInitializerFactory> mockDatabaseInitializerFactory;
         Mock<Context> mockContext;
 
         [TestInitialize()]
         public void Setup()
         {
-            mockDataInitializerFactory = new Mock<IDatabaseInitializerFactory>();
-            mockContext = new Mock<Context>(mockDataInitializerFactory.Object);
-            mockDataInitializer = new Mock<IDataInitializer>();
-            databaseInitializer = new DatabaseInitializer(mockDataInitializer.Object);
+            setupMocks();
+            databaseInitializer = new DatabaseInitializerForTest(mockDataInitializer.Object);
         }
 
         [TestMethod()]
         public void DatabaseInitializerTest()
         {
-            // TODO:
-            Assert.IsTrue(true);
+            databaseInitializer.Seed(mockContext.Object);
+            mockDataInitializer.Verify(m => m.InitData(It.Is<Context>(c => c == mockContext.Object)), "should have passed context");
+        }
+
+        private class DatabaseInitializerForTest : DatabaseInitializer
+        {
+            public DatabaseInitializerForTest(IDataInitializer dataInitializer) : base(dataInitializer){ }
+
+            // need this because base Seed is a protected override method
+            public void Seed(Context context)
+            {
+                base.Seed(context);
+            }
+        }
+
+        private void setupMocks()
+        {
+            mockDatabaseInitializerFactory = new Mock<IDatabaseInitializerFactory>();
+            mockContext = new Mock<Context>(mockDatabaseInitializerFactory.Object);
+            mockDataInitializer = new Mock<IDataInitializer>();
         }
     }
 }
