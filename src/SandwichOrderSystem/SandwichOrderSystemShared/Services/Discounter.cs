@@ -6,8 +6,8 @@ namespace SandwichOrderSystemShared.Services
 {
     public class Discounter : IDiscounter
     {
-        private string drinkType = typeof(Drink).ToString();
-        private string chipsType = typeof(Chips).ToString();
+        private string drinkType = typeof(Drink).Name;
+        private string chipsType = typeof(Chips).Name;
 
         public IItem GetDiscountItemConditionally(IOrder order)
         {

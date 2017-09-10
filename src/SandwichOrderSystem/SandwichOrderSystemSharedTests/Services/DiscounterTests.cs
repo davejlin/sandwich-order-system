@@ -32,7 +32,7 @@ namespace SandwichOrderSystemShared.Services.Tests
 
             var discountItem = discounter.GetDiscountItemConditionally(order);
 
-            Assert.IsTrue(discountItem.Type == typeof(DiscountItem).ToString(), "should return discount item");
+            Assert.IsTrue(discountItem.Type == typeof(DiscountItem).Name, "should return discount item");
         }
 
         [TestMethod()]

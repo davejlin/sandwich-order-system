@@ -28,7 +28,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 
                 PropertyInfo prop = type.GetProperty(ITEM_TYPE);
                 if (prop != null)
-                    prop.SetValue(item, type.ToString());
+                    prop.SetValue(item, type.Name);
 
                 prop = type.GetProperty(ITEM_NAME);
                 if (prop != null)

@@ -17,6 +17,7 @@ namespace SandwichOrderSystem.Models.Tests
         {
             itemFactory = new ItemFactory();
         }
+
         [TestMethod()]
         public void MenuItemTest()
         {

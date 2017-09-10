@@ -31,7 +31,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 
             Assert.AreEqual(name, actualItem.Name);
             Assert.AreEqual(Convert.ToDecimal(price), actualItem.Price);
-            Assert.AreEqual(MODELS_NAMESPACE+"SignatureSandwich", actualItem.Type);
+            Assert.AreEqual("SignatureSandwich", actualItem.Type);
         }
 
         [TestMethod()]
@@ -45,7 +45,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 
             Assert.AreEqual(name, actualItem.Name);
             Assert.AreEqual(0, actualItem.Price);
-            Assert.AreEqual(MODELS_NAMESPACE + "SignatureSandwich", actualItem.Type);
+            Assert.AreEqual("SignatureSandwich", actualItem.Type);
 
             mockErrorHandler.Verify(er => er.HandleError(It.IsAny<string>()), Times.Once, "should call error handler");
         }

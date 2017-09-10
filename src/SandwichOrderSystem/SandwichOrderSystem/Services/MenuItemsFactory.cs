@@ -43,11 +43,10 @@ namespace SandwichOrderSystem.Services
             IEnumerable<T> itemList = repository.GetItem<T>();
             if (itemList != null)
             {
-                List<IMenuItem> menuItems = new List<IMenuItem>();
+                var menuItems = new List<IMenuItem>();
                 int itemNumber = 1;
                 foreach (IItem item in itemList)
                 {
-
                     IMenuItem menuItem = CreateMenuItem(item, itemNumber.ToString());
                     menuItems.Add(menuItem);
 
