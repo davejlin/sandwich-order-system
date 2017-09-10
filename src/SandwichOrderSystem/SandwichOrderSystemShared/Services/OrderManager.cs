@@ -54,7 +54,7 @@ namespace SandwichOrderSystemShared.Services
             }
         }
 
-        public decimal TotalOrdersPrice
+        public decimal OrdersPrice
         {
             get
             {
@@ -64,7 +64,7 @@ namespace SandwichOrderSystemShared.Services
             }
         }
 
-        public decimal CurrentOrderTotalPrice
+        public decimal CurrentOrderPrice
         {
             get
             {

@@ -3,6 +3,7 @@ using Moq;
 using SandwichOrderSystemShared.DataAccess.Deserializer;
 using SandwichOrderSystemShared.Models;
 using SandwichOrderSystemShared.Models.Items;
+using System;
 using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystemShared.Services.Tests
@@ -137,6 +138,54 @@ namespace SandwichOrderSystemShared.Services.Tests
 
             Assert.AreEqual(2, orderManager.CurrentOrder.Count, "should have added both an item and a discount item in current order");
             Assert.IsTrue(orderManager.CurrentOrder.ToString().Contains(DISCOUNT_ITEM_NAME));
+        }
+
+        [TestMethod()]
+        public void CurrentOrderPriceTest()
+        {
+            var priceSandwich = 2.50;
+            var sandwich = itemFactory.CreateItem<SignatureSandwich>(new string[] { "sandwich", priceSandwich.ToString() });
+            orderManager.AddItemToCurrentOrder(sandwich);
+
+            var priceDrink = 1.75;
+            var drink = itemFactory.CreateItem<Drink>(new string[] { "drink", priceDrink.ToString() });
+            orderManager.AddItemToCurrentOrder(drink);
+
+            var priceChips = 1.50;
+            var chips = itemFactory.CreateItem<Chips>(new string[] { "chips", priceChips.ToString() });
+            orderManager.AddItemToCurrentOrder(chips);
+
+            var expectedPriceTotal = Convert.ToDecimal(priceSandwich + priceDrink + priceChips);
+
+            Assert.AreEqual(expectedPriceTotal, orderManager.CurrentOrderPrice);
+        }
+
+        [TestMethod()]
+        public void OrdersPriceTest()
+        {
+            var priceSandwich = 2.50;
+            var priceDrink = 1.75;
+            var priceChips = 1.50;
+
+            var nOrders = 3;
+
+            for (var i = 0; i < nOrders; i++)
+            {
+                var sandwich = itemFactory.CreateItem<SignatureSandwich>(new string[] { "sandwich", priceSandwich.ToString() });
+                orderManager.AddItemToCurrentOrder(sandwich);
+
+                var drink = itemFactory.CreateItem<Drink>(new string[] { "drink", priceDrink.ToString() });
+                orderManager.AddItemToCurrentOrder(drink);
+
+                var chips = itemFactory.CreateItem<Chips>(new string[] { "chips", priceChips.ToString() });
+                orderManager.AddItemToCurrentOrder(chips);
+
+                orderManager.AddCurrentOrderToOrders();
+            }
+
+            var expectedPriceTotal = Convert.ToDecimal(nOrders * (priceSandwich + priceDrink + priceChips));
+
+            Assert.AreEqual(expectedPriceTotal, orderManager.OrdersPrice);
         }
 
         private void assertOrdersAndCurrentOrdersAreEmpty()

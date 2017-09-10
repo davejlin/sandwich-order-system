@@ -112,12 +112,12 @@ namespace SandwichOrderSystem.ViewModels
 
         public decimal GetOrdersPrice()
         {
-            return orderManager.TotalOrdersPrice;
+            return orderManager.OrdersPrice;
         }
 
         public decimal GetCurrentOrderPrice()
         {
-            return orderManager.CurrentOrderTotalPrice;
+            return orderManager.CurrentOrderPrice;
         }
     }
 }
