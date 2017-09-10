@@ -7,10 +7,16 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 {
     public class FileSystemManager : IFileSystemManager
     {
+        IDirectoryWrapper directory;
+        public FileSystemManager(IDirectoryWrapper directory)
+        {
+            this.directory = directory;
+        }
+
         public string[] GetItemNames()
         {
-            var dataDirPath = Path.Combine(getCurrentDirectory().FullName, DATA_DIRECTORY_NAME);
-            var files = Directory
+            var dataDirPath = Path.Combine(directory.GetCurrentDirectory().FullName, DATA_DIRECTORY_NAME);
+            var files = directory
                 .GetFiles(dataDirPath)
                 .Select(f => Regex.Matches(f, DATA_FILE_NAME_REGEX)[0].Groups[1].Value)
                 .ToArray();
@@ -21,22 +27,8 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
         public string GetContents(string fileName)
         {
             fileName = DATA_FULL_PATH_NAME_PREFIX + fileName + DATA_FULL_PATH_NAME_SUFFIX;
-            var filePath = Path.Combine(getCurrentDirectory().FullName, fileName);
-            return readFile(filePath);
-        }
-
-        private DirectoryInfo getCurrentDirectory()
-        {
-            string currentDirectory = Directory.GetCurrentDirectory();
-            return new DirectoryInfo(currentDirectory);
-        }
-
-        private string readFile(string fileName)
-        {
-            using (var reader = new StreamReader(fileName))
-            {
-                return reader.ReadToEnd();
-            }
+            var filePath = Path.Combine(directory.GetCurrentDirectory().FullName, fileName);
+            return directory.ReadFile(filePath);
         }
     }
 }

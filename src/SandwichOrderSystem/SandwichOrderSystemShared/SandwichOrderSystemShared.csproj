@@ -64,9 +64,11 @@
     <Compile Include="DataAccess\Db\IContextFactory.cs" />
     <Compile Include="DataAccess\Deserializer\DataInitializer.cs" />
     <Compile Include="DataAccess\Deserializer\DataParser.cs" />
+    <Compile Include="DataAccess\Deserializer\DirectoryWrapper.cs" />
     <Compile Include="DataAccess\Deserializer\FileSystemManager.cs" />
     <Compile Include="DataAccess\Deserializer\IDataInitializer.cs" />
     <Compile Include="DataAccess\Deserializer\IDataParser.cs" />
+    <Compile Include="DataAccess\Deserializer\IDirectoryWrapper.cs" />
     <Compile Include="DataAccess\Deserializer\IFileSystemManager.cs" />
     <Compile Include="DataAccess\Deserializer\IItemFactory.cs" />
     <Compile Include="DataAccess\Deserializer\ItemFactory.cs" />
@@ -76,7 +78,7 @@
     <Compile Include="DI\DIContainerWrapper.cs" />
     <Compile Include="DI\DISharedInstaller.cs" />
     <Compile Include="DataAccess\Db\IDatabaseInitializerFactory.cs" />
-    <Compile Include="DI\IDContainerIWrapper.cs" />
+    <Compile Include="DI\IDIContainerIWrapper.cs" />
     <Compile Include="Models\IOrders.cs" />
     <Compile Include="Models\IOrder.cs" />
     <Compile Include="Models\Items\Chips.cs" />

@@ -11,7 +11,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
     public class DatabaseInitializerFactoryTests
     {
         IDatabaseInitializerFactory databaseInstallerFactory;
-        Mock<IDContainerIWrapper> mockContainer;
+        Mock<IDIContainerIWrapper> mockContainer;
         Mock<IWindsorContainer> mockWindsorContainer;
         Mock<DatabaseInitializer> mockDatabaseInitializer;
 
@@ -52,7 +52,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
 
             mockWindsorContainer.Setup(c => c.Resolve<DatabaseInitializer>()).Returns(func);
 
-            mockContainer = new Mock<IDContainerIWrapper>();
+            mockContainer = new Mock<IDIContainerIWrapper>();
             mockContainer.SetupGet(c => c.Container).Returns(mockWindsorContainer.Object);
         }
     }

@@ -2,7 +2,7 @@
 
 namespace SandwichOrderSystemShared.DI
 {
-    public class DIContainerWrapper : IDContainerIWrapper
+    public class DIContainerWrapper : IDIContainerIWrapper
     {
         public DIContainerWrapper() { }
 

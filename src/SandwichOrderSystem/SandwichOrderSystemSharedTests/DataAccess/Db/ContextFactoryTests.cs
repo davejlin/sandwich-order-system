@@ -10,7 +10,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
     public class ContextFactoryTests
     {
         IContextFactory contextFactory;
-        Mock<IDContainerIWrapper> mockContainer;
+        Mock<IDIContainerIWrapper> mockContainer;
         Mock<IWindsorContainer> mockWindsorContainer;
         Mock<IDatabaseInitializerFactory> mockDatabaseInitializerFactory;
         Mock<Context> mockContext;
@@ -43,7 +43,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
 
             mockWindsorContainer.Setup(c => c.Resolve<Context>()).Returns(func);
 
-            mockContainer = new Mock<IDContainerIWrapper>();
+            mockContainer = new Mock<IDIContainerIWrapper>();
             mockContainer.SetupGet(c => c.Container).Returns(mockWindsorContainer.Object);
         }
     }

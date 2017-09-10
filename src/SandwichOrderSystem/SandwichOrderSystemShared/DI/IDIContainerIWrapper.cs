@@ -2,7 +2,7 @@
 
 namespace SandwichOrderSystemShared.DI
 {
-    public interface IDContainerIWrapper
+    public interface IDIContainerIWrapper
     {
         IWindsorContainer Container { get; }
     }
