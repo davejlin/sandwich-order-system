@@ -16,34 +16,34 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
         [TestMethod()]
         public void ParseDataTest()
         {
-            var entry1 = "entry1";
-            var entry2 = "entry2";
-            var entry3 = "entry3";
-            var entry4 = "entry4";
-            var entry5 = "entry5";
-            var entry6 = "entry6";
-            var entry7 = "entry7";
-            var entry8 = "entry8";
-            var entry9 = "entry9";
-            var entry10 = "entry10";
+            var prop1 = "prop1";
+            var prop2 = "prop2";
+            var prop3 = "prop3";
+            var prop4 = "prop4";
+            var prop5 = "prop5";
+            var prop6 = "prop6";
+            var prop7 = "prop7";
+            var prop8 = "prop8";
+            var prop9 = "prop9";
+            var prop10 = "prop10";
 
-            var inputValues = new string[]
+            var expectedProperties = new string[]
             {
-                entry1, entry2, entry3, entry4, entry5, entry6, entry7, entry8, entry9, entry10
+                prop1, prop2, prop3, prop4, prop5, prop6, prop7, prop8, prop9, prop10
             };
 
             var inputString = string.Format(
                 "{0},{1}\n {2},{3} \r\n{4}  ,{5}  \n \r\n  \n        {6} \r\n , ,, {7}\n,{8},,{9},,,",
-                entry1, entry2, entry3, entry4, entry5, entry6, entry7, entry8, entry9, entry10);
+                prop1, prop2, prop3, prop4, prop5, prop6, prop7, prop8, prop9, prop10);
 
-            var actualEnumerable = dataParser.ParseData(inputString);
+            var actualProperties = dataParser.ParseData(inputString);
 
             var i = 0;
-            foreach (var properties in actualEnumerable)
+            foreach (var properties in actualProperties)
             {
-                foreach(var property in properties)
+                foreach(var prop in properties)
                 {
-                    Assert.AreEqual(inputValues[i++], property, "should have parsed property");
+                    Assert.AreEqual(expectedProperties[i++], prop, "should have parsed property");
                 }
             }
         }

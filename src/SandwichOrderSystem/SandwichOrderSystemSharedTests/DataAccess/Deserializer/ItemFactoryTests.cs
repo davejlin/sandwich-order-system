@@ -46,7 +46,8 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             Assert.AreEqual(name, actualItem.Name);
             Assert.AreEqual(0, actualItem.Price);
             Assert.AreEqual(MODELS_NAMESPACE + "SignatureSandwich", actualItem.Type);
-            mockErrorHandler.Verify(er => er.HandleError(It.IsAny<string>()), Times.Once);
+
+            mockErrorHandler.Verify(er => er.HandleError(It.IsAny<string>()), Times.Once, "should call error handler");
         }
 
         private void setupMocks()
