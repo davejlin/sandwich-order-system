@@ -10,6 +10,8 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
     {
         IErrorHandler errorHandler;
 
+        public ItemFactory() {}
+
         public ItemFactory(IErrorHandler errorHandler)
         {
             this.errorHandler = errorHandler;

@@ -11,14 +11,11 @@ namespace SandwichOrderSystem.Models.Tests
     public class MenuItemTests
     {
         IItemFactory itemFactory;
-        Mock<IErrorHandler> mockErrorHandler;
 
         [TestInitialize()]
         public void Setup()
         {
-            setupMocks();
-
-            itemFactory = new ItemFactory(mockErrorHandler.Object);
+            itemFactory = new ItemFactory();
         }
         [TestMethod()]
         public void MenuItemTest()
@@ -33,11 +30,6 @@ namespace SandwichOrderSystem.Models.Tests
             Assert.AreEqual(name, menuItem.Name);
             Assert.AreEqual(Convert.ToDecimal(price), menuItem.Price);
             Assert.AreEqual(menuCommand, menuItem.MenuCommand);
-        }
-
-        private void setupMocks()
-        {
-            mockErrorHandler = new Mock<IErrorHandler>();
         }
     }
 }

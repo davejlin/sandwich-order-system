@@ -13,17 +13,15 @@ namespace SandwichOrderSystemShared.Services.Tests
     {
         IOrderManager orderManager;
         Mock<IDiscounter> mockDiscounter;
-        Mock<IErrorHandler> mockErrorHandler;
         IItemFactory itemFactory;
 
         [TestInitialize()]
         public void Setup()
         {
-            setupMocks();
             mockDiscounter = new Mock<IDiscounter>();
             orderManager = new OrderManager(mockDiscounter.Object);
 
-            itemFactory = new ItemFactory(mockErrorHandler.Object);
+            itemFactory = new ItemFactory();
 
             assertOrdersAndCurrentOrdersAreEmpty();
         }
@@ -192,11 +190,6 @@ namespace SandwichOrderSystemShared.Services.Tests
         {
             Assert.AreEqual(0, orderManager.Count, "should have no orders");
             Assert.AreEqual(0, orderManager.CurrentOrder.Count, "shoud have no items in current order");
-        }
-
-        private void setupMocks()
-        {
-            mockErrorHandler = new Mock<IErrorHandler>();
         }
     }
 }

@@ -11,14 +11,12 @@ namespace SandwichOrderSystemShared.Services.Tests
     {
         IDiscounter discounter;
         IItemFactory itemFactory;
-        Mock<IErrorHandler> mockErrorHandler;
 
         [TestInitialize]
         public void Setup()
         {
-            setupMocks();
             discounter = new Discounter();
-            itemFactory = new ItemFactory(mockErrorHandler.Object);
+            itemFactory = new ItemFactory();
         }
 
         [TestMethod()]
@@ -79,11 +77,6 @@ namespace SandwichOrderSystemShared.Services.Tests
             var discountItem = discounter.GetDiscountItemConditionally(order);
 
             Assert.IsNull(discountItem, "should return null");
-        }
-
-        private void setupMocks()
-        {
-            mockErrorHandler = new Mock<IErrorHandler>();
         }
     }
 }
