@@ -11,7 +11,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db
             this.container = container;
         }
 
-        public Context CreateContext()
+        public virtual Context CreateContext()
         {
             return container.Container.Resolve<Context>();
         }

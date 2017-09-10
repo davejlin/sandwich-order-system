@@ -23,7 +23,7 @@ namespace SandwichOrderSystemShared.DataAccess
         public IEnumerable<T> GetItem<T>() where T : class, IItem
         {
             string dBSetName = typeof(T).Name + DBSET_SUFFIX;
-            using (Context context = GetContext())
+            using (Context context = getContext())
             {
                 try
                 {
@@ -41,7 +41,7 @@ namespace SandwichOrderSystemShared.DataAccess
             }
         }
 
-        private Context GetContext()
+        private Context getContext()
         {
             var context = contextFactory.CreateContext();
             //context.Database.Log = (message) => Debug.WriteLine(message);
