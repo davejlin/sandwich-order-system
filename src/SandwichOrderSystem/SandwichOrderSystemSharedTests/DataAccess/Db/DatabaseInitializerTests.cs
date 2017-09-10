@@ -9,7 +9,6 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
     {
         DatabaseInitializerForTest databaseInitializer;
         Mock<IDataInitializer> mockDataInitializer;
-        Mock<IDatabaseInitializerFactory> mockDatabaseInitializerFactory;
         Mock<Context> mockContext;
 
         [TestInitialize()]
@@ -39,8 +38,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
 
         private void setupMocks()
         {
-            mockDatabaseInitializerFactory = new Mock<IDatabaseInitializerFactory>();
-            mockContext = new Mock<Context>(mockDatabaseInitializerFactory.Object);
+            mockContext = new Mock<Context>();
             mockDataInitializer = new Mock<IDataInitializer>();
         }
     }

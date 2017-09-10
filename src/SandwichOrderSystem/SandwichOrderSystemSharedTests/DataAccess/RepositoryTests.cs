@@ -14,7 +14,6 @@ namespace SandwichOrderSystemShared.DataAccess.Tests
         Mock<ContextFactory> mockContextFactory;
         Mock<IErrorHandler> mockErrorHandler;
         Mock<IDIContainerIWrapper> mockContainer;
-        Mock<IDatabaseInitializerFactory> mockDatabaseInitializerFactory;
         Mock<Context> mockContext;
 
         [TestInitialize()]
@@ -37,9 +36,8 @@ namespace SandwichOrderSystemShared.DataAccess.Tests
             mockErrorHandler = new Mock<IErrorHandler>();
             mockContainer = new Mock<IDIContainerIWrapper>();
             mockContextFactory = new Mock<ContextFactory>(mockContainer.Object);
-
-            mockDatabaseInitializerFactory = new Mock<IDatabaseInitializerFactory>();
-            mockContext = new Mock<Context>(mockDatabaseInitializerFactory.Object);
+            
+            mockContext = new Mock<Context>();
 
             // this doesn't work because GetType() is not virtual.
             // mockContext.Setup(c => c.GetType()

@@ -6,6 +6,9 @@ namespace SandwichOrderSystemShared.DataAccess.Db
     public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<Context>
     {
         IDataInitializer dataInitializer;
+
+        public DatabaseInitializer() { }
+
         public DatabaseInitializer(IDataInitializer dataInitializer)
         {
             this.dataInitializer = dataInitializer;

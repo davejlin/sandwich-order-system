@@ -14,7 +14,6 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
         Mock<IFileSystemManager> mockFileSystemManager;
         Mock<IDataParser> mockDataParser;
         Mock<IItemFactory> mockItemFactory;
-        Mock<IDatabaseInitializerFactory> mockDatabaseInitializerFactory;
         Mock<Context> mockContext;
         Mock<IErrorHandler> mockErrorHandler;
 
@@ -87,8 +86,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             mockItemFactory = new Mock<IItemFactory>();
             mockErrorHandler = new Mock<IErrorHandler>();
 
-            mockDatabaseInitializerFactory = new Mock<IDatabaseInitializerFactory>();
-            mockContext = new Mock<Context>(mockDatabaseInitializerFactory.Object);
+            mockContext = new Mock<Context>();
 
             mockItemFactory.Setup(f => f.CreateItem<SignatureSandwich>(It.IsAny<string[]>())).Returns(new SignatureSandwich());
             mockItemFactory.Setup(f => f.CreateItem<Bread>(It.IsAny<string[]>())).Returns(new Bread());

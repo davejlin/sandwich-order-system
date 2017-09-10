@@ -12,7 +12,6 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
         IContextFactory contextFactory;
         Mock<IDIContainerIWrapper> mockContainer;
         Mock<IWindsorContainer> mockWindsorContainer;
-        Mock<IDatabaseInitializerFactory> mockDatabaseInitializerFactory;
         Mock<Context> mockContext;
 
         [TestInitialize()]
@@ -31,8 +30,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
 
         private void setupMocks()
         {
-            mockDatabaseInitializerFactory = new Mock<IDatabaseInitializerFactory>();
-            mockContext = new Mock<Context>(mockDatabaseInitializerFactory.Object);
+            mockContext = new Mock<Context>();
 
             mockWindsorContainer = new Mock<IWindsorContainer>();
 
