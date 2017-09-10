@@ -24,7 +24,7 @@ namespace SandwichOrderSystem.ViewControllers
 
             viewContext = ViewContext.Main;
             initMenuCommands();
-            initMenuSegueActions();
+            initMenuSegueFuncs();
             initExecuteFuncs();
         }
 

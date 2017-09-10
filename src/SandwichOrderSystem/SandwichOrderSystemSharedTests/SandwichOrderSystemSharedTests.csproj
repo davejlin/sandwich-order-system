@@ -65,6 +65,7 @@
     <Compile Include="DataAccess\Db\DatabaseInitializerFactoryTests.cs" />
     <Compile Include="DataAccess\Db\DatabaseInitializerTests.cs" />
     <Compile Include="DataAccess\Deserializer\DataInitializerTests.cs" />
+    <Compile Include="DataAccess\Deserializer\DataParserTests.cs" />
     <Compile Include="Models\OrdersTests.cs" />
     <Compile Include="Models\OrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

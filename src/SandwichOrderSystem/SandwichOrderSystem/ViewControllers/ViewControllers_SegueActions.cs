@@ -10,7 +10,7 @@ namespace SandwichOrderSystem.ViewControllers
     {
         private Dictionary<ViewContext, Func<Dictionary<string, Action>>> menuSegueFuncs;
 
-        private void initMenuSegueActions()
+        private void initMenuSegueFuncs()
         {
             menuSegueFuncs = new Dictionary<ViewContext, Func<Dictionary<string, Action>>>();
 

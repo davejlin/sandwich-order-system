@@ -11,7 +11,6 @@ namespace SandwichOrderSystem.ViewModels
     public class ViewModel : IViewModel
     {
         private IDictionary<Type, List<IMenuItem>> menuItemsDict;
-
         IOrderManager orderManager;
 
         public ViewModel(IMenuItemsFactory menuItemsFactory, IOrderManager orderManager)
