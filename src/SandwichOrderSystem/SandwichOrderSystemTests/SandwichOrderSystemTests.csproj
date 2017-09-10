@@ -64,6 +64,7 @@
     <Compile Include="SandwichOrderSystemTests.cs" />
     <Compile Include="Services\MenuItemsFactoryTests.cs" />
     <Compile Include="ViewControllers\ViewControllerTests.cs" />
+    <Compile Include="ViewModels\ViewModelTests.cs" />
     <Compile Include="Views\ViewStateTests.cs" />
   </ItemGroup>
   <ItemGroup>

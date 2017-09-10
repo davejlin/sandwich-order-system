@@ -11,7 +11,7 @@ namespace SandwichOrderSystem.ViewModels
     public class ViewModel : IViewModel
     {
         private IDictionary<Type, List<IMenuItem>> menuItemsDict;
-        IOrderManager orderManager;
+        private IOrderManager orderManager;
 
         public ViewModel(IMenuItemsFactory menuItemsFactory, IOrderManager orderManager)
         {
@@ -22,7 +22,7 @@ namespace SandwichOrderSystem.ViewModels
 
         public IEnumerable<string> GetItemCommandMenu<T>() where T : class, IItem
         {
-            List<string> commandMenu = new List<string>();
+            var commandMenu = new List<string>();
 
             var itemList = getItemList<T>();
             if (itemList != null)
@@ -39,7 +39,7 @@ namespace SandwichOrderSystem.ViewModels
 
         public IEnumerable<string> GetItemCommands<T>() where T : class, IItem
         {
-            List<string> itemCommands = new List<string>();
+            var itemCommands = new List<string>();
 
             var itemList = getItemList<T>();
             if (itemList != null)
@@ -66,6 +66,16 @@ namespace SandwichOrderSystem.ViewModels
         public IOrder GetCurrentOrder()
         {
             return orderManager.CurrentOrder;
+        }
+
+        public decimal GetOrdersPrice()
+        {
+            return orderManager.OrdersPrice;
+        }
+
+        public decimal GetCurrentOrderPrice()
+        {
+            return orderManager.CurrentOrderPrice;
         }
 
         public void AddItem<T>(string c) where T : class, IItem
@@ -108,16 +118,6 @@ namespace SandwichOrderSystem.ViewModels
             {
                 return null;
             }
-        }
-
-        public decimal GetOrdersPrice()
-        {
-            return orderManager.OrdersPrice;
-        }
-
-        public decimal GetCurrentOrderPrice()
-        {
-            return orderManager.CurrentOrderPrice;
         }
     }
 }
