@@ -74,6 +74,7 @@
     <Compile Include="Models\OrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DiscounterTests.cs" />
+    <Compile Include="Services\ErrorHandlerTests.cs" />
     <Compile Include="Services\OrderManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
