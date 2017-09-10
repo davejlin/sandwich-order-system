@@ -1,15 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SandwichOrderSystem.Models;
-using SandwichOrderSystem.Services;
 using SandwichOrderSystemShared.DataAccess;
 using SandwichOrderSystemShared.DataAccess.Deserializer;
 using SandwichOrderSystemShared.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SandwichOrderSystem.Services.Tests
 {
@@ -20,11 +16,12 @@ namespace SandwichOrderSystem.Services.Tests
         Mock<IRepository> mockRepository;
         MenuItemsFactory menuItemsFactory;
 
+        Type[] types = new Type[] { typeof(SignatureSandwich), typeof(Bread), typeof(Filling), typeof(Cheese), typeof(Vegetable), typeof(Condiment), typeof(Drink), typeof(Chips) };
+
         [TestInitialize()]
         public void Setup()
         {
             setupMocks();
-
             menuItemsFactory = new MenuItemsFactory(mockRepository.Object);
         }
 
@@ -40,10 +37,10 @@ namespace SandwichOrderSystem.Services.Tests
 
             var actualMenuItem = menuItemsFactory.CreateMenuItem(item, menuCommand);
 
-            Assert.AreEqual(expectedMenuItem.Name, actualMenuItem.Name);
-            Assert.AreEqual(expectedMenuItem.Price, actualMenuItem.Price);
-            Assert.AreEqual(expectedMenuItem.Type, actualMenuItem.Type);
-            Assert.AreEqual(expectedMenuItem.MenuCommand, actualMenuItem.MenuCommand);
+            Assert.AreEqual(expectedMenuItem.Name, actualMenuItem.Name, "should have same name");
+            Assert.AreEqual(expectedMenuItem.Price, actualMenuItem.Price, "should have same price");
+            Assert.AreEqual(expectedMenuItem.Type, actualMenuItem.Type, "should have same type");
+            Assert.AreEqual(expectedMenuItem.MenuCommand, actualMenuItem.MenuCommand, "should have same menu command");
         }
 
         [TestMethod()]
@@ -60,7 +57,30 @@ namespace SandwichOrderSystem.Services.Tests
 
             var menuItems = menuItemsFactory.GetMenuItems();
 
-            Type[] types = new Type[] { typeof(SignatureSandwich), typeof(Bread), typeof(Filling), typeof(Cheese), typeof(Vegetable), typeof(Condiment), typeof(Drink), typeof(Chips) };
+            foreach (var type in types)
+            {
+                Assert.IsTrue(menuItems.Keys.Contains(type), "should have IItem type");
+
+                var i = 0;
+                foreach (var menuItem in menuItems[type])
+                {
+                    Assert.AreEqual(nameList[i], menuItem.Name, "shoud have same name");
+                    Assert.AreEqual(Convert.ToDecimal(priceList[i]), menuItem.Price, "should have same price");
+                    Assert.AreEqual(type.Name, menuItem.Type, "should have same type");
+                    Assert.AreEqual((i+1).ToString(), menuItem.MenuCommand, "should have correct menu command");
+
+                    i++;
+                }
+            }
+        }
+
+        [TestMethod()]
+        public void GetMenuItems_ReturnsEmptyListIfRepositoryReturnsNull()
+        {
+            mockRepository = new Mock<IRepository>();
+            menuItemsFactory = new MenuItemsFactory(mockRepository.Object);
+
+            var menuItems = menuItemsFactory.GetMenuItems();
 
             foreach (var type in types)
             {
@@ -69,13 +89,10 @@ namespace SandwichOrderSystem.Services.Tests
                 var i = 0;
                 foreach (var menuItem in menuItems[type])
                 {
-                    Assert.AreEqual(nameList[i], menuItem.Name);
-                    Assert.AreEqual(Convert.ToDecimal(priceList[i]), menuItem.Price);
-                    Assert.AreEqual(type.Name, menuItem.Type);
-                    Assert.AreEqual((i+1).ToString(), menuItem.MenuCommand);
-
-                    i++;
+                    Assert.Fail("should be empty");
                 }
+
+                Assert.AreEqual(0, i, "should be empty");
             }
         }
 
