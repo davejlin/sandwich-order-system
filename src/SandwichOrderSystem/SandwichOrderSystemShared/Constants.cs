@@ -9,6 +9,7 @@
 
         public const string NEW_LINE1 = "\n";
         public const string NEW_LINE2 = "\r\n";
+        public const char COMMA = ',';
 
         public const string EMPTY_STRING = "";
 

@@ -15,7 +15,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 
             foreach (string line in lines)
             {
-                var properties = line.Split(',');
+                var properties = line.Split(COMMA);
                 if (properties.Count() > 0)
                 {
                     propertiesList.Add(properties);
