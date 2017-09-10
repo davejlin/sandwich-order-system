@@ -36,10 +36,10 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
                 "{0},{1}\n {2},{3} \r\n{4}  ,{5}  \n \r\n  \n        {6} \r\n , ,, {7}\n,{8},,{9},,,",
                 entry1, entry2, entry3, entry4, entry5, entry6, entry7, entry8, entry9, entry10);
 
-            var outputEnumerable = dataParser.ParseData(inputString);
+            var actualEnumerable = dataParser.ParseData(inputString);
 
             var i = 0;
-            foreach (var properties in outputEnumerable)
+            foreach (var properties in actualEnumerable)
             {
                 foreach(var property in properties)
                 {

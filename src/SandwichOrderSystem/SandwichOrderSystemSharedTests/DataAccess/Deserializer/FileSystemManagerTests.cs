@@ -39,10 +39,10 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 
             mockDirectory.Setup(d => d.GetFiles(It.IsAny<string>())).Returns(fileNames);
 
-            var outputItemNames = fileSystemManager.GetItemNames();
+            var actualItemNames = fileSystemManager.GetItemNames();
 
             var i = 0;
-            foreach(var item in outputItemNames)
+            foreach(var item in actualItemNames)
             {
                 Assert.AreEqual(itemNames[i++], item, "should be item name");
             }
@@ -69,10 +69,10 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 
             mockDirectory.Setup(d => d.GetFiles(It.IsAny<string>())).Returns(fileNames);
 
-            var outputItemNames = fileSystemManager.GetItemNames();
+            var actualItemNames = fileSystemManager.GetItemNames();
 
             var i = 0;
-            foreach (var item in outputItemNames)
+            foreach (var item in actualItemNames)
             {
                 Assert.AreEqual(itemNames[1], item, "should be item name");
                 i++;
@@ -88,12 +88,13 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 
             mockDirectory.Setup(d => d.GetFiles(It.IsAny<string>())).Returns(fileNames);
 
-            var outputItemNames = fileSystemManager.GetItemNames();
+            var actualItemNames = fileSystemManager.GetItemNames();
 
             var i = 0;
-            foreach (var item in outputItemNames)
+            foreach (var item in actualItemNames)
             {
                 Assert.Fail("should have no items");
+                i++;
             }
 
             Assert.AreEqual(0, i, "should have no items");
@@ -105,9 +106,9 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             var expectedString = "expected string";
             mockDirectory.Setup(d => d.ReadFile(It.IsAny<string>())).Returns(expectedString);
 
-            var outputString = fileSystemManager.GetContents("fileName");
+            var actualString = fileSystemManager.GetContents("fileName");
 
-            Assert.AreEqual(expectedString, outputString);
+            Assert.AreEqual(expectedString, actualString);
         }
 
         private void setupMocks()
