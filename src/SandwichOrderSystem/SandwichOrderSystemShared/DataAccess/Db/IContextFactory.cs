@@ -2,6 +2,6 @@
 {
     public interface IContextFactory
     {
-        Context createContext();
+        Context CreateContext();
     }
 }

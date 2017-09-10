@@ -4,9 +4,16 @@ namespace SandwichOrderSystemShared.DataAccess.Db
 {
     public class ContextFactory : IContextFactory
     {
-        public Context createContext()
+        private IDContainerIWrapper container;
+
+        public ContextFactory(IDContainerIWrapper container)
         {
-            return DISharedInstaller.Container.Resolve<Context>();
+            this.container = container;
+        }
+
+        public Context CreateContext()
+        {
+            return container.Container.Resolve<Context>();
         }
     }
 }

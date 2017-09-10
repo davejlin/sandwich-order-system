@@ -1,6 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Castle.Windsor;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using SandwichOrderSystemShared.DataAccess.Deserializer;
 using SandwichOrderSystemShared.DI;
+using System;
 
 namespace SandwichOrderSystemShared.DataAccess.Db.Tests
 {
@@ -8,21 +11,41 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
     public class ContextFactoryTests
     {
         IContextFactory contextFactory;
-        Mock<DISharedInstaller> mockDIInstaller;
+        Mock<IDContainerIWrapper> mockContainer;
+        Mock<IWindsorContainer> mockWindsorContainer;
+        Mock<IDatabaseInitializerFactory> mockDataInitializerFactory;
+        Mock<Context> mockContext;
 
         [TestInitialize()]
         public void Setup()
         {
-            contextFactory = new ContextFactory();
-            mockDIInstaller = new Mock<DISharedInstaller>();
+            setupMocks();
+            contextFactory = new ContextFactory(mockContainer.Object);
         }
 
         [TestMethod()]
         public void createContextTest()
         {
-            //TODO:
-            //var context = contextFactory.createContext();
-            Assert.IsTrue(true);
+            var context = contextFactory.CreateContext();
+            Assert.AreEqual(mockContext.Object, context, "should create context");
+        }
+
+        private void setupMocks()
+        {
+            mockDataInitializerFactory = new Mock<IDatabaseInitializerFactory>();
+            mockContext = new Mock<Context>(mockDataInitializerFactory.Object);
+
+            mockWindsorContainer = new Mock<IWindsorContainer>();
+
+            Func<Context> func = () =>
+            {
+                return mockContext.Object;
+            };
+
+            mockWindsorContainer.Setup(c => c.Resolve<Context>()).Returns(func);
+
+            mockContainer = new Mock<IDContainerIWrapper>();
+            mockContainer.SetupGet(c => c.Container).Returns(mockWindsorContainer.Object);
         }
     }
 }

@@ -4,11 +4,15 @@ namespace SandwichOrderSystemShared.DataAccess.Db
 {
     public class DatabaseInitializerFactory : IDatabaseInitializerFactory
     {
-        public DatabaseInitializerFactory() { }
+        IDContainerIWrapper container;
+        public DatabaseInitializerFactory(IDContainerIWrapper container)
+        {
+            this.container = container;
+        }
 
         public DatabaseInitializer createDatabaseInitializer()
         {
-            return DISharedInstaller.Container.Resolve<DatabaseInitializer>();
+            return container.Container.Resolve<DatabaseInitializer>();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace SandwichOrderSystemShared.DataAccess
 
         private Context GetContext()
         {
-            var context = contextFactory.createContext();
+            var context = contextFactory.CreateContext();
             //context.Database.Log = (message) => Debug.WriteLine(message);
             return context;
         }

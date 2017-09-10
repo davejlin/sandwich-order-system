@@ -28,6 +28,7 @@ namespace SandwichOrderSystemShared.DI
         {
             Container = container;
 
+            container.Register(Component.For<IDContainerIWrapper>().ImplementedBy<DIContainerWrapper>());
             container.Register(Component.For<IDataInitializer>().ImplementedBy<DataInitializer>());
             container.Register(Component.For<IDataParser>().ImplementedBy<DataParser>());
             container.Register(Component.For<IFileSystemManager>().ImplementedBy<FileSystemManager>());
