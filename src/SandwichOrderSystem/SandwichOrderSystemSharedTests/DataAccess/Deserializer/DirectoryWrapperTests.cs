@@ -40,6 +40,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             }
 
             Assert.AreEqual(0, i, "should have no items");
+            mockErrorHandler.Verify(er => er.HandleError(It.IsAny<string>()), Times.Once, "should call error handler");
         }
 
         [TestMethod()]
@@ -49,6 +50,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             var contents = directoryWrapper.ReadFile(badFileName);
 
             Assert.AreEqual(EMPTY_STRING, contents);
+            mockErrorHandler.Verify(er => er.HandleError(It.IsAny<string>()), Times.Once, "should call error handler");
         }
 
         private void setupMocks()

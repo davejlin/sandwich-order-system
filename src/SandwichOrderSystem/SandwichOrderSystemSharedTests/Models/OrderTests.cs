@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SandwichOrderSystemShared.DataAccess.Deserializer;
+using SandwichOrderSystemShared.Services;
 
 namespace SandwichOrderSystemShared.Models.Tests
 {
@@ -8,12 +10,14 @@ namespace SandwichOrderSystemShared.Models.Tests
     {
         IOrder order;
         IItemFactory itemFactory;
+        Mock<IErrorHandler> mockErrorHandler;
 
         [TestInitialize()]
         public void Setup()
         {
+            setupMocks();
             order = new Order();
-            itemFactory = new ItemFactory();
+            itemFactory = new ItemFactory(mockErrorHandler.Object);
         }
 
         [TestMethod()]
@@ -37,6 +41,11 @@ namespace SandwichOrderSystemShared.Models.Tests
         private void assertOrderHasNoItems()
         {
             Assert.AreEqual(0, order.Count, "should be empty");
+        }
+
+        private void setupMocks()
+        {
+            mockErrorHandler = new Mock<IErrorHandler>();
         }
     }
 }

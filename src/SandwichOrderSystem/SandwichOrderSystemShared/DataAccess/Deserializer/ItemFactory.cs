@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SandwichOrderSystemShared.Models;
+using SandwichOrderSystemShared.Services;
+using System;
 using System.Reflection;
 using static SandwichOrderSystemShared.Constants;
 
@@ -6,9 +8,14 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 {
     public class ItemFactory : IItemFactory
     {
-        public ItemFactory() { }
+        IErrorHandler errorHandler;
 
-        public T CreateItem<T> (string[] properties) where T : class
+        public ItemFactory(IErrorHandler errorHandler)
+        {
+            this.errorHandler = errorHandler;
+        }
+
+        public T CreateItem<T> (string[] properties) where T : class, IItem
         {
             T item = null;
             try
@@ -17,7 +24,11 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
 
                 Type type = item.GetType();
 
-                PropertyInfo prop = type.GetProperty(ITEM_NAME);
+                PropertyInfo prop = type.GetProperty(ITEM_TYPE);
+                if (prop != null)
+                    prop.SetValue(item, type.ToString());
+
+                prop = type.GetProperty(ITEM_NAME);
                 if (prop != null)
                     prop.SetValue(item, properties[0]);
 
@@ -25,13 +36,9 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
                 if (prop != null)
                     prop.SetValue(item, Convert.ToDecimal(properties[1]));
 
-                prop = type.GetProperty(ITEM_TYPE);
-                if (prop != null)
-                    prop.SetValue(item, type.ToString());
-
             } catch (Exception ex)
             {
-                Console.WriteLine(ITEM_CREATION_ERROR_MESSAGE, ex.ToString());
+                errorHandler.HandleError(ITEM_CREATION_ERROR_MESSAGE + ex.Message);
             }
 
             return item;

@@ -68,6 +68,7 @@
     <Compile Include="DataAccess\Deserializer\DataParserTests.cs" />
     <Compile Include="DataAccess\Deserializer\DirectoryWrapperTests.cs" />
     <Compile Include="DataAccess\Deserializer\FileSystemManagerTests.cs" />
+    <Compile Include="DataAccess\Deserializer\ItemFactoryTests.cs" />
     <Compile Include="Models\OrdersTests.cs" />
     <Compile Include="Models\OrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
