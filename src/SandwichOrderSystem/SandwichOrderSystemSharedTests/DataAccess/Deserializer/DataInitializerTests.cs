@@ -2,8 +2,8 @@
 using Moq;
 using SandwichOrderSystemShared.DataAccess.Db;
 using SandwichOrderSystemShared.Models;
+using SandwichOrderSystemShared.Services;
 using System.Collections.Generic;
-using System.Data.Entity;
 
 namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 {
@@ -16,12 +16,13 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
         Mock<IItemFactory> mockItemFactory;
         Mock<IDatabaseInitializerFactory> mockDatabaseInitializerFactory;
         Mock<Context> mockContext;
+        Mock<IErrorHandler> mockErrorHandler;
 
         [TestInitialize()]
         public void Setup()
         {
             setupMocks();
-            dataInitializer = new DataInitializer(mockFileSystemManager.Object, mockDataParser.Object, mockItemFactory.Object);
+            dataInitializer = new DataInitializer(mockFileSystemManager.Object, mockDataParser.Object, mockItemFactory.Object, mockErrorHandler.Object);
         }
 
         [TestMethod()]
@@ -48,7 +49,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 
             dataInitializer.InitData(mockContext.Object);
 
-            mockContext.Verify(c => c.SaveChanges(), Times.Exactly(8));
+            mockContext.Verify(c => c.SaveChanges(), Times.Exactly(8), "should save changes to context");
         }
 
         [TestMethod()]
@@ -76,7 +77,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 
             dataInitializer.InitData(mockContext.Object);
 
-            mockContext.Verify(c => c.SaveChanges(), Times.Exactly(2));
+            mockContext.Verify(c => c.SaveChanges(), Times.Exactly(2), "should save changes to context");
         }
 
         private void setupMocks()
@@ -84,6 +85,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             mockFileSystemManager = new Mock<IFileSystemManager>();
             mockDataParser = new Mock<IDataParser>();
             mockItemFactory = new Mock<IItemFactory>();
+            mockErrorHandler = new Mock<IErrorHandler>();
 
             mockDatabaseInitializerFactory = new Mock<IDatabaseInitializerFactory>();
             mockContext = new Mock<Context>(mockDatabaseInitializerFactory.Object);

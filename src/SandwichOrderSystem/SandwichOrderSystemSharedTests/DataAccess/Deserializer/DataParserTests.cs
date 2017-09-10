@@ -43,7 +43,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             {
                 foreach(var property in properties)
                 {
-                    Assert.AreEqual(inputValues[i++], property);
+                    Assert.AreEqual(inputValues[i++], property, "should have parsed property");
                 }
             }
         }

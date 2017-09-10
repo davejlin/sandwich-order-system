@@ -1,8 +1,10 @@
-﻿namespace SandwichOrderSystemShared.DataAccess.Deserializer
+﻿using System.Collections.Generic;
+
+namespace SandwichOrderSystemShared.DataAccess.Deserializer
 {
     public interface IFileSystemManager
     {
-        string[] GetItemNames();
+        IEnumerable<string> GetItemNames();
         string GetContents(string fileName);
     }
 }

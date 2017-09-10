@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Reflection;
 using System.Diagnostics;
+using SandwichOrderSystemShared.Services;
 
 namespace SandwichOrderSystemShared.DataAccess.Deserializer
 {
@@ -13,12 +14,14 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
         IFileSystemManager fileSystemManager;
         IDataParser dataParser;
         IItemFactory itemFactory;
+        IErrorHandler errorHandler;
 
-        public DataInitializer(IFileSystemManager fileSystemManager, IDataParser dataParser, IItemFactory itemFactory)
+        public DataInitializer(IFileSystemManager fileSystemManager, IDataParser dataParser, IItemFactory itemFactory, IErrorHandler errorHandler)
         {
             this.fileSystemManager = fileSystemManager;
             this.dataParser = dataParser;
             this.itemFactory = itemFactory;
+            this.errorHandler = errorHandler;
         }
         
         public void InitData(Context context)
@@ -47,7 +50,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine(ex.Message);
+                            errorHandler.HandleError(ex.Message);
                         }
 
                     }

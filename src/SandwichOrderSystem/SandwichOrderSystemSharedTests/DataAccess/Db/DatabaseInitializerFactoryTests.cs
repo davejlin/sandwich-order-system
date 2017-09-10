@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SandwichOrderSystemShared.DataAccess.Deserializer;
 using SandwichOrderSystemShared.DI;
+using SandwichOrderSystemShared.Services;
 using System;
 
 namespace SandwichOrderSystemShared.DataAccess.Db.Tests
@@ -14,6 +15,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
         Mock<IDIContainerIWrapper> mockContainer;
         Mock<IWindsorContainer> mockWindsorContainer;
         Mock<DatabaseInitializer> mockDatabaseInitializer;
+        Mock<IErrorHandler> mockErrorHandler;
 
         Mock<IFileSystemManager> mockFileSystemManager;
         Mock<IDataParser> mockDataParser;
@@ -39,8 +41,9 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
             mockFileSystemManager = new Mock<IFileSystemManager>();
             mockDataParser = new Mock<IDataParser>();
             mockItemFactory = new Mock<IItemFactory>();
+            mockErrorHandler = new Mock<IErrorHandler>();
 
-            mockDataInitializer = new Mock<DataInitializer>(mockFileSystemManager.Object, mockDataParser.Object, mockItemFactory.Object);
+            mockDataInitializer = new Mock<DataInitializer>(mockFileSystemManager.Object, mockDataParser.Object, mockItemFactory.Object, mockErrorHandler.Object);
             mockDatabaseInitializer = new Mock<DatabaseInitializer>(mockDataInitializer.Object);
 
             mockWindsorContainer = new Mock<IWindsorContainer>();
