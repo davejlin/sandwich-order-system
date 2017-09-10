@@ -64,6 +64,7 @@
     <Compile Include="SandwichOrderSystemTests.cs" />
     <Compile Include="Services\MenuItemsFactoryTests.cs" />
     <Compile Include="ViewControllers\ViewControllerTests.cs" />
+    <Compile Include="Views\ViewStateTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SandwichOrderSystemShared\SandwichOrderSystemShared.csproj">
