@@ -30,7 +30,7 @@ User functions available to the user are:
 * Finish and checkout
 * Quit and exit the system
 
-During the order creation, the user may:
+During the order creation process, the user may:
 
 * Delete the current order
 * Review the current order before finalizing it
@@ -39,7 +39,9 @@ Upon choosing to finish ordering, the user is prompted to review all of his orde
 
 Program Entry Point
 -----
+```
 sandwich-order-system\src\SandwichOrderSystem\SandwichOrderSystem\Program.cs
+```
 
 Third Party Library Framework and Database Dependencies
 -----
