@@ -1,6 +1,6 @@
 ﻿using SandwichOrderSystemShared.Models;
 
-namespace SandwichOrderSystemShared.DataAccess.Deserializer
+namespace SandwichOrderSystemShared.Services
 {
     public interface IItemFactory
     {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SandwichOrderSystemShared.DataAccess.Deserializer;
+using SandwichOrderSystemShared.Services;
 
 namespace SandwichOrderSystemShared.Models.Tests
 {

@@ -1,10 +1,9 @@
 ﻿using SandwichOrderSystemShared.Models;
-using SandwichOrderSystemShared.Services;
 using System;
 using System.Reflection;
 using static SandwichOrderSystemShared.Constants;
 
-namespace SandwichOrderSystemShared.DataAccess.Deserializer
+namespace SandwichOrderSystemShared.Services
 {
     public class ItemFactory : IItemFactory
     {
