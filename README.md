@@ -63,9 +63,9 @@ Upon first-time startup, database initialization may cause a lag of roughly 10 s
 
 To change the seed data:
 
-1. Edit the contents of item seed files in the Data directory.  The format is the name and price separated by a comma, one item per line.
+1. Edit the contents of item seed files in the `...\SandwichOrderSystemShared\Data` directory.  The format is the name and price separated by a comma, one item per line.
 
-2. In Visual Studio's SQL Server Object Explorer, delete the database named SandwichOrderSystem within (localdb)\MSSQLLocalDB.
+2. In Visual Studio's SQL Server Object Explorer, delete the database named `SandwichOrderSystem` within `(localdb)\MSSQLLocalDB`.
 
 3. Clean and Rebuild the project.
 
