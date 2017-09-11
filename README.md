@@ -7,14 +7,17 @@ General Description
 Sandwich Order System is a console program written in C# using Visual Studio Community Edition 2015.  It allows the user to order sandwiches according to the following requirements:
 
 * An order may consist of either a Signature Sandwich or a Custom Sandwich
+
 * A Custom Sandwich must have one Bread and one Filling
 * Optional extras for a Custom Sandwich include Cheese, Vegetables, and Condiments
--- If selected, only one Cheese is allowed
--- If selected, unlimited Vegetables and Condiments are allowed
+ - If selected, only one Cheese is allowed
+ - If selected, unlimited Vegetables and Condiments are allowed
+
 * Optional extras for each order include a Drink and Chips
--- If selected, only one Drink is allowed
--- If selected, only one Chips is allowed
--- If both are selected, a discount to the order is applied
+ - If selected, only one Drink is allowed
+ - If selected, only one Chips is allowed
+ - If both are selected, a ComboMeal discount is applied
+
 * A list of several options for each type of item is presented
 
 The system allows the user to create as many orders as desired.
@@ -48,17 +51,20 @@ Third Party Library Framework and Database Dependencies
 
 Note that SQL Server LocalDB is provided by default in Visual Studio Community Edition 2015.  The default local database should be named **(localdb)\MSSQLLocalDB**.
 
-####Database Seed Data
+#### Database Seed Data
 
 Seed data for the items is provided in:
+```
 sandwich-order-system\src\SandwichOrderSystem\SandwichOrderSystemShared\Data
-
+```
 Upon first-time startup, database initialization may cause a lag of roughly 10 seconds.  A welcoming message is displayed during this initialization period.  After the first-time startup, system initialization is less than a second.
 
 To change the seed data:
 
-1. Edit the contents of item seed files in the SandwichOrderSystemShared\Data directory.  The format is the name and price separated by a comma, one item per line.
-2. In Visual Studio's SQL Server Object Explorer, delete the database named SandwichOrderSystem in (localdb)\MSSQLLocalDB.
+1. Edit the contents of item seed files in the Data directory.  The format is the name and price separated by a comma, one item per line.
+
+2. In Visual Studio's SQL Server Object Explorer, delete the database named SandwichOrderSystem within (localdb)\MSSQLLocalDB.
+
 3. Clean and Rebuild the project.
 
 Visual Studio Solution Projects
@@ -99,3 +105,5 @@ Several design patterns were used, including:
 * **MVVM** to separate concerns
 * **State** to efficiently organize the many view states, contexts, and segues in the UI/UX
 * **Repository** to handle database interaction
+
+
