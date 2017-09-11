@@ -10,7 +10,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db
             this.container = container;
         }
 
-        public DatabaseInitializer createDatabaseInitializer()
+        public DatabaseInitializer CreateDatabaseInitializer()
         {
             return container.Container.Resolve<DatabaseInitializer>();
         }

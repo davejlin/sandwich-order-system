@@ -2,6 +2,6 @@
 {
     public interface IDatabaseInitializerFactory
     {
-        DatabaseInitializer createDatabaseInitializer();
+        DatabaseInitializer CreateDatabaseInitializer();
     }
 }

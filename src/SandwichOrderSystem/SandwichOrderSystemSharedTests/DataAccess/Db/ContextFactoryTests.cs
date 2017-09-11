@@ -22,7 +22,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
         }
 
         [TestMethod()]
-        public void createContextTest()
+        public void CreateContextTest()
         {
             var context = contextFactory.CreateContext();
             Assert.AreEqual(mockContext.Object, context, "should create context");

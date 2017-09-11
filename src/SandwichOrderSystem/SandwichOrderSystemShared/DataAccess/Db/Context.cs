@@ -19,7 +19,7 @@ namespace SandwichOrderSystemShared.DataAccess.Db
 
         public Context(IDatabaseInitializerFactory databaseInitializerFactory)
         {
-            var databaseInitializer = databaseInitializerFactory.createDatabaseInitializer();
+            var databaseInitializer = databaseInitializerFactory.CreateDatabaseInitializer();
             Database.SetInitializer(databaseInitializer);
         }
 

@@ -1,9 +1,7 @@
 ﻿using Castle.Windsor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SandwichOrderSystemShared.DataAccess.Deserializer;
 using SandwichOrderSystemShared.DI;
-using SandwichOrderSystemShared.Services;
 using System;
 
 namespace SandwichOrderSystemShared.DataAccess.Db.Tests
@@ -24,9 +22,9 @@ namespace SandwichOrderSystemShared.DataAccess.Db.Tests
         }
 
         [TestMethod()]
-        public void createDatabaseInitializerTest()
+        public void CreateDatabaseInitializerTest()
         {
-            var databaseInitializer = databaseInstallerFactory.createDatabaseInitializer();
+            var databaseInitializer = databaseInstallerFactory.CreateDatabaseInitializer();
             Assert.AreEqual(mockDatabaseInitializer.Object, databaseInitializer, "should create database initializer");
         }
 
