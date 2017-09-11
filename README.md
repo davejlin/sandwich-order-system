@@ -10,32 +10,35 @@ Sandwich Order System is a console program written in C# using Visual Studio Com
 
 * A Custom Sandwich must have one Bread and one Filling
 * Optional extras for a Custom Sandwich include Cheese, Vegetables, and Condiments
-  - If selected, only one Cheese is allowed
-  - If selected, unlimited Vegetables and Condiments are allowed
+  * If selected, only one Cheese is allowed
+  * If selected, unlimited Vegetables and Condiments are allowed
 
 * Optional extras for each order include a Drink and Chips
-  - If selected, only one Drink is allowed
-  - If selected, only one Chips is allowed
-  - If both are selected, a ComboMeal discount is applied
+  * If selected, only one Drink is allowed
+  * If selected, only one Chips is allowed
+  * If both are selected, a ComboMeal discount is applied
 
 * A list of several options for each type of item is presented
 
-The system allows the user to create as many orders as desired.
+* The system allows the user to create as many orders as desired.
 
 User functions available to the user are:
 
-* Add order, which starts the item selection flow
+* Add order, which starts the order creation process
 * Show all orders, the prices of all items, and the total price
 * Delete all orders
 * Finish and checkout
-* Quit and exit the system
+* Quit to exit the system
 
 During the order creation process, the user may:
 
 * Delete the current order
 * Review the current order before finalizing it
 
-Upon choosing to finish ordering, the user is prompted to review all of his orders, each item price, and the total price.  He may then choose to pay and checkout, after which his order is sent to fulfillment, and the orders list is reset for the next user.
+Upon choosing to finish ordering:
+
+* The user is prompted to review all of his orders, each item price, and the total price.  
+* He may then choose to pay and checkout, after which his order is sent to fulfillment, and the orders collection is reset for the next user.
 
 Program Entry Point
 -----
@@ -48,14 +51,14 @@ Third Party Library Framework and Database Dependencies
 
 * **Castle Windsor** : dependency injection
 * **Entity** : object relational mapping
-* **Moq** : for unit test mocking
+* **Moq** : unit test mocking
 * **SQL Server LocalDB** : database
 
-Note that SQL Server LocalDB is provided by default in Visual Studio Community Edition 2015.  The default local database should be named **(localdb)\MSSQLLocalDB**.
+Note that SQL Server LocalDB is provided by default in Visual Studio Community Edition 2015.  The default local database should be named **(localdb)\MSSQLLocalDB**, which this system requires to function.
 
 #### Database Seed Data
 
-Seed data for the items is provided in:
+Seed data for the items are specified in files separated by item names in:
 ```
 sandwich-order-system\src\SandwichOrderSystem\SandwichOrderSystemShared\Data\
 ```
@@ -72,11 +75,11 @@ To change the seed data:
 Visual Studio Solution Projects
 -----
 
-The entire solution is currently separated into 4 projects:
+The entire solution is separated into 4 projects:
 
 1.  **SandwichOrderSystem**
 * DI
-*  Models
+* Models
 * Services
 * ViewControllers
 * ViewModels
@@ -107,5 +110,4 @@ Several design patterns were used, including:
 * **MVVM** to separate concerns
 * **State** to efficiently organize the many view states, contexts, and segues in the UI/UX
 * **Repository** to handle database interaction
-
 
