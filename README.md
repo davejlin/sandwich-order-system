@@ -10,13 +10,13 @@ Sandwich Order System is a console program written in C# using Visual Studio Com
 
 * A Custom Sandwich must have one Bread and one Filling
 * Optional extras for a Custom Sandwich include Cheese, Vegetables, and Condiments
- - If selected, only one Cheese is allowed
- - If selected, unlimited Vegetables and Condiments are allowed
+  - If selected, only one Cheese is allowed
+  - If selected, unlimited Vegetables and Condiments are allowed
 
 * Optional extras for each order include a Drink and Chips
- - If selected, only one Drink is allowed
- - If selected, only one Chips is allowed
- - If both are selected, a ComboMeal discount is applied
+  - If selected, only one Drink is allowed
+  - If selected, only one Chips is allowed
+  - If both are selected, a ComboMeal discount is applied
 
 * A list of several options for each type of item is presented
 
