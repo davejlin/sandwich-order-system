@@ -57,13 +57,13 @@ Note that SQL Server LocalDB is provided by default in Visual Studio Community E
 
 Seed data for the items is provided in:
 ```
-sandwich-order-system\src\SandwichOrderSystem\SandwichOrderSystemShared\Data
+sandwich-order-system\src\SandwichOrderSystem\SandwichOrderSystemShared\Data\
 ```
 Upon first-time startup, database initialization may cause a lag of roughly 10 seconds.  A welcoming message is displayed during this initialization period.  After the first-time startup, system initialization is less than a second.
 
 To change the seed data:
 
-1. Edit the contents of item seed files in the `...\SandwichOrderSystemShared\Data` directory.  The format is the name and price separated by a comma, one item per line.
+1. Edit the contents of item seed files in the `...\SandwichOrderSystemShared\Data\` directory.  The format is the name and price separated by a comma, one item per line.
 
 2. In Visual Studio's SQL Server Object Explorer, delete the database named `SandwichOrderSystem` within `(localdb)\MSSQLLocalDB`.
 
