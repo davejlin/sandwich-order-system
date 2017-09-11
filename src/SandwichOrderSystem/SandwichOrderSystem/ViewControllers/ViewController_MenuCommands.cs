@@ -135,7 +135,7 @@ namespace SandwichOrderSystem.ViewControllers
             return () =>
             {
                 var commandList = new List<string>();
-                commandList.AddRange(viewModel.GetItemCommandMenu<T>());
+                commandList.AddRange(viewModel.GetMenuItemCommandStrings<T>());
 
                 if (addNextForOptionalItem)
                 {

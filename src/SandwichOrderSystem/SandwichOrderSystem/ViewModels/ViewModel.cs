@@ -20,7 +20,7 @@ namespace SandwichOrderSystem.ViewModels
             menuItemsDict = menuItemsFactory.GetMenuItems();
         }
 
-        public IEnumerable<string> GetItemCommandMenu<T>() where T : class, IItem
+        public IEnumerable<string> GetMenuItemCommandStrings<T>() where T : class, IItem
         {
             var commandMenu = new List<string>();
 
@@ -37,7 +37,7 @@ namespace SandwichOrderSystem.ViewModels
             return commandMenu;
         }
 
-        public IEnumerable<string> GetItemCommands<T>() where T : class, IItem
+        public IEnumerable<string> GetMenuItemCommands<T>() where T : class, IItem
         {
             var itemCommands = new List<string>();
 
@@ -51,6 +51,19 @@ namespace SandwichOrderSystem.ViewModels
             }
 
             return itemCommands;
+        }
+
+        public void AddItem<T>(string command) where T : class, IItem
+        {
+            var itemList = getItemList<T>();
+            if (itemList != null)
+            {
+                var menuItem = itemList.Find(i => i.MenuCommand == command);
+                if (menuItem != null)
+                {
+                    orderManager.AddItemToCurrentOrder(menuItem);
+                }
+            }
         }
 
         public int GetOrdersCount()
@@ -78,22 +91,12 @@ namespace SandwichOrderSystem.ViewModels
             return orderManager.CurrentOrderPrice;
         }
 
-        public void AddItem<T>(string c) where T : class, IItem
-        {
-            var itemList = getItemList<T>();
-            if (itemList != null)
-            {
-                var menuItem = itemList.Find(i => i.MenuCommand == c);
-                orderManager.AddItemToCurrentOrder(menuItem);
-            }
-        }
-
-        public void AddOrder()
+        public void AddCurrentOrderToOrders()
         {
             orderManager.AddCurrentOrderToOrders();
         }
 
-        public void ResetOrder()
+        public void ResetCurrentOrder()
         {
             orderManager.ResetCurrentOrder();
         }
@@ -110,7 +113,7 @@ namespace SandwichOrderSystem.ViewModels
 
         private List<IMenuItem> getItemList<T>() where T : class, IItem
         {
-            if (menuItemsDict.ContainsKey(typeof(T)))
+            if (menuItemsDict != null && menuItemsDict.ContainsKey(typeof(T)))
             {
                 return menuItemsDict[typeof(T)];
             }

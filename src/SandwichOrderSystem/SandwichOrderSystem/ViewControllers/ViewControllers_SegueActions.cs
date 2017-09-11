@@ -134,18 +134,18 @@ namespace SandwichOrderSystem.ViewControllers
             return () =>
             {
                 var commandActionDict = new Dictionary<string, Action>();
-                var itemMenuCommands = viewModel.GetItemCommands<T>();
+                var menuItemCommands = viewModel.GetMenuItemCommands<T>();
 
                 if (shouldSegueToNextState)
                 {
-                    foreach (string command in itemMenuCommands)
+                    foreach (string command in menuItemCommands)
                     {
                         commandActionDict.Add(command, () => viewContext = nextState);
                     }
                 }
                 else
                 {
-                    foreach (string command in itemMenuCommands)
+                    foreach (string command in menuItemCommands)
                     {
                         commandActionDict.Add(command, () => { });
                     }

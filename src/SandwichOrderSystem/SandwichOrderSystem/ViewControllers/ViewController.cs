@@ -71,31 +71,34 @@ namespace SandwichOrderSystem.ViewControllers
 
         private Func<string, IEnumerable<string>> getExectueFunc(string command)
         {
-            if (executeFuncs.ContainsKey(viewContext) && executeFuncs[viewContext].ContainsKey(command))
+            if (command != null)
             {
-                return executeFuncs[viewContext][command];
+                if (executeFuncs.ContainsKey(viewContext) && executeFuncs[viewContext].ContainsKey(command))
+                {
+                    return executeFuncs[viewContext][command];
+                }
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         private void getSegue(string command)
         {
-            if (menuSegueFuncs.ContainsKey(viewContext))
+            if (command != null)
             {
-                var segueFunc = menuSegueFuncs[viewContext];
-                var segueActions = segueFunc();
-                if (segueActions.ContainsKey(command))
+                if (menuSegueFuncs.ContainsKey(viewContext))
                 {
-                    segue = segueActions[command];
-                }
-                else
-                {
-                    segue = null;
+                    var segueFunc = menuSegueFuncs[viewContext];
+                    var segueActions = segueFunc();
+                    if (segueActions.ContainsKey(command))
+                    {
+                        segue = segueActions[command];
+                        return;
+                    }
                 }
             }
+
+            segue = null;
         }
 
         private void invokeSegue()

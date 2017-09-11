@@ -5,14 +5,14 @@ namespace SandwichOrderSystem.ViewModels
 {
     public interface IViewModel
     {
-        IEnumerable<string> GetItemCommandMenu<T>() where T : class, IItem;
-        IEnumerable<string> GetItemCommands<T>() where T : class, IItem;
+        IEnumerable<string> GetMenuItemCommandStrings<T>() where T : class, IItem;
+        IEnumerable<string> GetMenuItemCommands<T>() where T : class, IItem;
         IOrders GetOrders();
         IOrder GetCurrentOrder();
         int GetOrdersCount();
-        void AddItem<T>(string c) where T : class, IItem;
-        void AddOrder();
-        void ResetOrder();
+        void AddItem<T>(string command) where T : class, IItem;
+        void AddCurrentOrderToOrders();
+        void ResetCurrentOrder();
         void ResetOrders();
         void FinishOrders();
         decimal GetOrdersPrice();

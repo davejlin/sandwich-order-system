@@ -85,14 +85,7 @@ namespace SandwichOrderSystem.Services.Tests
             foreach (var type in types)
             {
                 Assert.IsTrue(menuItems.Keys.Contains(type), "should have IItem type");
-
-                var i = 0;
-                foreach (var menuItem in menuItems[type])
-                {
-                    Assert.Fail("should be empty");
-                }
-
-                Assert.AreEqual(0, i, "should be empty");
+                Assert.IsNull(menuItems[type].GetEnumerator().Current, "should be empty");
             }
         }
 

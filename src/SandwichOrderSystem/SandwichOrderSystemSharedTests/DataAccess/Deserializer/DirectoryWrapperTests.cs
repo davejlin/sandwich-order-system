@@ -33,13 +33,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
             var badPath = "";
             var files = directoryWrapper.GetFiles(badPath);
 
-            var i = 0;
-            foreach (var file in files)
-            {
-                Assert.Fail("should be empty");
-            }
-
-            Assert.AreEqual(0, i, "should have no items");
+            Assert.IsNull(files.GetEnumerator().Current, "should be empty");
 
             mockErrorHandler.Verify(er => er.HandleError(It.IsAny<string>()), Times.Once, "should call error handler");
         }

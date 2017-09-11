@@ -90,14 +90,7 @@ namespace SandwichOrderSystemShared.DataAccess.Deserializer.Tests
 
             var actualItemNames = fileSystemManager.GetItemNames();
 
-            var i = 0;
-            foreach (var item in actualItemNames)
-            {
-                Assert.Fail("should have no items");
-                i++;
-            }
-
-            Assert.AreEqual(0, i, "should have no items");
+            Assert.IsNull(actualItemNames.GetEnumerator().Current, "should be empty");
         }
 
         [TestMethod()]

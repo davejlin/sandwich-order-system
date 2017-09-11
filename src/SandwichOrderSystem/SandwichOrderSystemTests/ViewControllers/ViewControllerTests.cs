@@ -24,27 +24,27 @@ namespace SandwichOrderSystem.ViewControllers.Tests
         [TestMethod()]
         public void AdvanceViewCycleTest()
         {
-            string menuTitle = EMPTY_STRING;
-            IEnumerable<string> menuCommands = new List<string>();
-            IEnumerable<string> output = new List<string>();
+            string actualMenuTitle = EMPTY_STRING;
+            IEnumerable<string> actualMenuCommands = new List<string>();
+            IEnumerable<string> actualOutput = new List<string>();
 
             mockViewState.Setup(vs => vs.GetMenuCommand(It.IsAny<string>(), It.IsAny<IEnumerable<string>>(), It.IsAny<IEnumerable<string>>()))
                 .Returns(ADD_COMMAND)
                 .Callback<string, IEnumerable<string>, IEnumerable<string>>((t, c, o) =>
                 {
-                    menuTitle = t;
-                    menuCommands = c;
-                    output = o;
+                    actualMenuTitle = t;
+                    actualMenuCommands = c;
+                    actualOutput = o;
                 });
 
             var actualCommand = viewController.AdvanceViewCycle();
 
-            Assert.IsTrue(menuTitle.Contains(MAIN_TITLE), "should have main title");
+            Assert.IsTrue(actualMenuTitle.Contains(MAIN_TITLE), "should have main title");
 
             bool hasAddCommand = false;
             bool hasQuitCommand = false;
 
-            foreach (var line in menuCommands)
+            foreach (var line in actualMenuCommands)
             {
                 if (line.Contains(ADD_COMMAND))
                 {
@@ -59,16 +59,19 @@ namespace SandwichOrderSystem.ViewControllers.Tests
 
             Assert.IsTrue(hasAddCommand, "should have add command");
             Assert.IsTrue(hasQuitCommand, "should have quit command");
-
-            var i = 0;
-            foreach (var line in output)
-            {
-                Assert.Fail("should not have output");
-            }
-
-            Assert.AreEqual(0, i, "should not have output");
-
+            Assert.IsNull(actualOutput.GetEnumerator().Current, "should be empty");
             Assert.AreEqual(ADD_COMMAND, actualCommand, "should return command");
+        }
+
+        [TestMethod()]
+        public void AdvanceViewCycleTest_NullCommandDoesNotCrashSystem()
+        {
+            mockViewState.Setup(vs => vs.GetMenuCommand(It.IsAny<string>(), It.IsAny<IEnumerable<string>>(), It.IsAny<IEnumerable<string>>()))
+                .Returns((string)null);
+
+            var actualCommand = viewController.AdvanceViewCycle();
+
+            Assert.IsNull(actualCommand);
         }
 
         private void setupMocks()

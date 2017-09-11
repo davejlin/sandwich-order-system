@@ -45,7 +45,7 @@ namespace SandwichOrderSystem.ViewControllers
 
             func = c =>
             {
-                viewModel.AddOrder();
+                viewModel.AddCurrentOrderToOrders();
                 return null;
             };
 
@@ -53,7 +53,7 @@ namespace SandwichOrderSystem.ViewControllers
 
             func = c =>
             {
-                viewModel.ResetOrder();
+                viewModel.ResetCurrentOrder();
                 return null;
             };
 
@@ -113,15 +113,15 @@ namespace SandwichOrderSystem.ViewControllers
         private void addItemExecuteFuncDict<T>(ViewContext context) where T : class, IItem
         {
             var funcsDict = new Dictionary<string, Func<string, IEnumerable<string>>>();
-            var itemMenuCommands = viewModel.GetItemCommands<T>();
+            var menuItemCommands = viewModel.GetMenuItemCommands<T>();
 
-            foreach (string command in itemMenuCommands)
+            foreach (string command in menuItemCommands)
             {
                 funcsDict.Add(command, createItemExecuteFunc<T>());
             }
 
             funcsDict.Add(NEXT_COMMAND, c => showPendingOrder());
-            funcsDict.Add(DELETE_COMMAND, c => { viewModel.ResetOrder(); return null; });
+            funcsDict.Add(DELETE_COMMAND, c => { viewModel.ResetCurrentOrder(); return null; });
 
             executeFuncs.Add(context, funcsDict);
         }
