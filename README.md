@@ -67,7 +67,7 @@ To change the seed data:
 
 2. In Visual Studio's SQL Server Object Explorer, delete the database named `SandwichOrderSystem` within `(localdb)\MSSQLLocalDB`.
 
-3. Clean and Rebuild the project.
+3. Clean, Rebuild, and Run the project.
 
 Visual Studio Solution Projects
 -----
