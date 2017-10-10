@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using static SandwichOrderSystem.Constants;
+using static SandwichOrderSystemShared.Constants;
 using SandwichOrderSystemShared.Models;
 
 namespace SandwichOrderSystem.ViewControllers
@@ -66,11 +67,17 @@ namespace SandwichOrderSystem.ViewControllers
 
             func = c =>
             {
-                viewModel.FinishOrders();
+                PaymentMethodType type = PaymentMethodType.Cash;
+                if (c == "c")
+                {
+                    type = PaymentMethodType.CreditCard;
+                }
+                viewModel.FinishOrders(type);
                 return new List<string> { FINISH_COMPLETE_TITLE };
             };
 
-            funcsDict.Add(PAY_COMMAND, func);
+            funcsDict.Add(PAY_CREDIT_CARD_COMMAND, func);
+            funcsDict.Add(PAY_CASH_COMMAND, func);
             executeFuncs.Add(ViewContext.Finish, funcsDict);
 
             // Items
@@ -89,7 +96,7 @@ namespace SandwichOrderSystem.ViewControllers
             if (viewModel.GetOrdersCount() > 0)
             {
                 var orders = viewModel.GetOrders();
-                return new List<string>() { orders.ToString(), string.Format(TOTAL_PRICE_FORMAT, TOTAL_PRICE_TITLE, viewModel.GetOrdersPrice()), EMPTY_STRING };
+                return new List<string>() { orders.ToString(), string.Format(TOTAL_PRICE_FORMAT, TOTAL_PRICE_TITLE, viewModel.GetOrdersPrice()), Constants.EMPTY_STRING };
             }
             else
             {
@@ -102,7 +109,7 @@ namespace SandwichOrderSystem.ViewControllers
             var order = viewModel.GetCurrentOrder();
             if (order.Items.Count > 0)
             {
-                return new List<string>() { order.ToString(), EMPTY_STRING, string.Format(TOTAL_PRICE_FORMAT, TOTAL_PRICE_TITLE, viewModel.GetCurrentOrderPrice()), EMPTY_STRING };
+                return new List<string>() { order.ToString(), Constants.EMPTY_STRING, string.Format(TOTAL_PRICE_FORMAT, TOTAL_PRICE_TITLE, viewModel.GetCurrentOrderPrice()), Constants.EMPTY_STRING };
             }
             else
             {

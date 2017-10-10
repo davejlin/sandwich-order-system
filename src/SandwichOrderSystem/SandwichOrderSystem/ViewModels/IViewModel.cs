@@ -1,5 +1,6 @@
 ﻿using SandwichOrderSystemShared.Models;
 using System.Collections.Generic;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystem.ViewModels
 {
@@ -14,7 +15,7 @@ namespace SandwichOrderSystem.ViewModels
         void AddCurrentOrderToOrders();
         void ResetCurrentOrder();
         void ResetOrders();
-        void FinishOrders();
+        void FinishOrders(PaymentMethodType type);
         decimal GetOrdersPrice();
         decimal GetCurrentOrderPrice();
     }

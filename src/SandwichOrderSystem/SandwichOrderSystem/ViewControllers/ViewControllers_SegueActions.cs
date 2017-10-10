@@ -66,7 +66,8 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var segueActionDict = new Dictionary<string, Action>();
-                segueActionDict.Add(PAY_COMMAND, () => viewContext = ViewContext.Pay);
+                segueActionDict.Add(PAY_CREDIT_CARD_COMMAND, () => viewContext = ViewContext.Pay);
+                segueActionDict.Add(PAY_CASH_COMMAND, () => viewContext = ViewContext.Pay);
                 segueActionDict = segueActionDict.Concat(returnQuitSegueActions).ToDictionary(x => x.Key, x => x.Value);
                 return segueActionDict;
             };

@@ -1,5 +1,6 @@
 ﻿using SandwichOrderSystemShared.Models;
 using System.Linq;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystemShared.Services
 {
@@ -99,9 +100,19 @@ namespace SandwichOrderSystemShared.Services
             Orders.Reset();
         }
 
-        public void FinishOrders()
+        public void FinishOrders(PaymentMethodType type)
         {
             // TODO: Pass order along to payment and repository services
+            switch (type)
+            {
+                case PaymentMethodType.CreditCard:
+                    break;
+                case PaymentMethodType.Cash:
+                    break;
+                default:
+                    break;
+            }
+
             ResetOrders();
         }
 

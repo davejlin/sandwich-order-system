@@ -65,7 +65,8 @@ namespace SandwichOrderSystem.ViewControllers
             func = () =>
             {
                 var commandList = new List<string>();
-                commandList.Add(string.Format(ITEM_LIST_FORMAT, PAY_COMMAND, FINISH_PAY_COMMAND_TITLE));
+                commandList.Add(string.Format(ITEM_LIST_FORMAT, PAY_CREDIT_CARD_COMMAND, FINISH_PAY_CREDIT_CARD_COMMAND_TITLE));
+                commandList.Add(string.Format(ITEM_LIST_FORMAT, PAY_CASH_COMMAND, FINISH_PAY_CASH_COMMAND_TITLE));
                 commandList.AddRange(returnQuitCommands);
 
                 return commandList;

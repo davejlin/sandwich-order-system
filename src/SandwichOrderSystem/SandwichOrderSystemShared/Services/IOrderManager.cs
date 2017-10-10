@@ -1,4 +1,5 @@
 ﻿using SandwichOrderSystemShared.Models;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystemShared.Services
 {
@@ -14,6 +15,6 @@ namespace SandwichOrderSystemShared.Services
         void AddCurrentOrderToOrders();
         void ResetCurrentOrder();
         void ResetOrders();
-        void FinishOrders();
+        void FinishOrders(PaymentMethodType type);
     }
 }

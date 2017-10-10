@@ -5,6 +5,7 @@ using SandwichOrderSystemShared.Services;
 using static SandwichOrderSystem.Constants;
 using System;
 using System.Collections.Generic;
+using static SandwichOrderSystemShared.Constants;
 
 namespace SandwichOrderSystem.ViewModels
 {
@@ -106,9 +107,9 @@ namespace SandwichOrderSystem.ViewModels
             orderManager.ResetOrders();
         }
 
-        public void FinishOrders()
+        public void FinishOrders(PaymentMethodType type)
         {
-            orderManager.FinishOrders();
+            orderManager.FinishOrders(type);
         }
 
         private List<IMenuItem> getItemList<T>() where T : class, IItem

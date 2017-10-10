@@ -44,5 +44,11 @@
         public const int DISCOUNT_ITEM_ID = -1;
         public const string DISCOUNT_ITEM_NAME = "ComboMeal Discount";
         public const decimal DISCOUNT_ITEM_PRICE = -1.00m;
+
+        public enum PaymentMethodType
+        {
+            CreditCard = 0,
+            Cash
+        }
     }
 }

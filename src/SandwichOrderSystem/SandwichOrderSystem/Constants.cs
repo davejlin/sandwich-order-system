@@ -68,6 +68,12 @@ namespace SandwichOrderSystem
         public const string RETURN_COMMAND = "r";
         public const string QUIT_COMMAND = "q";
 
+        public const string PAY_CREDIT_CARD_COMMAND = "c";
+        public const string PAY_CASH_COMMAND = "h";
+
+        public const string FINISH_PAY_CREDIT_CARD_COMMAND_TITLE = "Pay by credit card and checkout";
+        public const string FINISH_PAY_CASH_COMMAND_TITLE = "Pay by cash and checkout";
+
         public const string SIGNATURE_SANDWICH_COMMAND_TITLE = "Add Signature Sandwich";
         public const string CUSTOM_SANDWICH_COMMAND_TITLE = "Add Custom Sandwich";
 
